@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击按钮</button>
+</body>
+<script>
+
+    // 定义一个全局变量,用来接收 类的构造函数中的this
+    let obj;
+
+    // 1.创建一个明星类
+    class Start{
+        // 2.创建一个构造函数
+        constructor(uname,age) {
+            this.uname = uname;
+            this.age = age;
+        }
+
+        // 类里面的函数,不需要加function关键字
+        eat (food) {
+            // ES6的字符串拼接的新语法
+            return `我叫${this.uname},我刚才吃了一个${food}`;
+        }
+
+        // 类里面的多个函数之间,不需要添加逗号进行分割
+        introduce () {
+            return `我叫${this.uname},我今年${this.age}岁了`;
+        }
+
+        say () {
+            return "我是Start";
+        }
+    }
+
+    // 3. 利用类创建一个对象
+    var jft = new Start("贾飞天",18);
+    var jdy = new Start("贾登月",19);
+
+    console.log(jft.uname);  // 贾飞天
+    console.log(jdy.uname);  // 贾登月
+    console.log(jdy.eat("苹果"));  // 我叫贾登月,我刚才吃了一个苹果
+
+//  -------------------------------------------------------------------------------------------
+
+    // 创建一个子类,继承父类
+    class SonStart extends Start {
+
+        constructor(uname,age) {
+            // 子类通过super关键字调用父类中的构造函数.可以把子类的构造函数中的参数传递给父类的构造函数
+            // 如果子类的构造函数和父类不同,不会出错
+            // 如果子类构造函数和父类完全相同,但是不通过super关键字调用父类的构造函数,则会报错
+            // super关键字可以调用父类的构造函数,也可以调用父类的普通函数
+            // 在构造函数中,必须要先通过super()关键字调用父类的构造函数,然后才能构建子类的构造函数,super()关键字必须在最上面
+            super(uname,age);
+            // 子类的构造函数
+            this.uname = uname;
+            this.age = age;
+
+            // 类里面的共有的属性和方法一定要添加this使用,我们通过选择器选择的 button 对象也要添加this
+            this.btn = document.querySelector("button");
+            // 我们希望通过点击按钮来实现方法的触发,因此被调用的方法不能加(),否则会在类初始化的时候就会被调用
+            this.btn.onclick = this.autoPrint;
+
+            // 把子类对象赋值给一个全局变量
+            obj = this;
+        }
+
+        // 子类和父类拥有同名的方法
+        say () {
+            // 通过super关键字调用父类中的say()方法
+            return `${super.say()}的儿子`;
+        }
+
+        // 子类独有的方法,父类没有
+        introduceMySelf (uname,age) {
+            return `${this.uname}--${this.age}`;
+        }
+        
+        // 构造函数中会调用该方法
+        autoPrint () {
+            // 方法中的this,谁调用这个方法,this就是谁.由于我们是通过点击按钮来实现autoPrint()方法的触发,而autoPrint()方法中
+            // 并没有 uname 和 age 属性,因此 把这两个属性打印为 undefined
+            console.log(`我被自动调用了,我打印了${this.uname}和${this.age}`);  // 我被自动调用了,我打印了undefined和undefined
+
+            // 如果就是想在方法中获取构造函数中的变量,可以在构造函数中把this赋值给一个全局变量,然后在此处接收打印
+            console.log(`我从全局变量中获取属性,我打印了${obj.uname}和${obj.age}`);  // 我从全局变量中获取属性,我打印了张三和45
+        }
+
+    }
+
+    var person = new SonStart("张三",45);
+    // 子类调用父类的方法
+    console.log(person.introduce());  // 我叫张三,我今年45岁了
+    //
+    console.log(person.say());  // 我是Start的儿子
+    //
+    console.log(person.introduceMySelf());  // 张三--45
+
+// --------------------------------注意点----------------------------------------
+/*
+    1. 在ES6中并没有变量提升,所以必须先定义类,然后才能通过类实例化对象
+    2. 类里面的共有的属性和方法一定要添加this使用
+*/
+</script>
+</html>
