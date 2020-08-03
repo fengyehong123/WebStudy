@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    Array.prototype.sum = function () {
+        var sum = 0;
+        // 原型中的this指向实例对象,谁调用,this就是谁
+        for (let i = 0; i < this.length; i++) {
+            sum += this[i];
+        }
+
+        return sum;
+    }
+
+    var arr = [1, 2, 3];
+    console.log(arr.sum());  // 6
+</script>
+</html>
