@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // forEach 迭代(遍历)数组
+    var arr = [1, 2, 3];
+    var sum = 0;
+    /*
+        参数1: 数组中的每一个元素
+        参数2: 每一个元素的索引
+        参数3: 数组本身
+    */
+    arr.forEach(function(value, index, array) {
+        console.log("每一个数组元素:" + value);  // 每一个数组元素:1
+        console.log("每一个数组元素的索引号:" + index);  // 每一个数组元素的索引号:0
+        console.log("数组自己本身:" + array);  // 数组自己本身:1,2,3 
+        sum += value;
+
+        // forEach中就算 return true 也不会终止循环
+    })
+    console.log("数组元素的和为:" + sum);  // 数组元素的和为:6
+
+// ----------------------------------filter 筛选数组------------------------------
+
+    var arr1 = [12, 66, 4, 88];
+    /*
+        参数1: 数组中的每一个元素
+        参数2: 每一个元素的索引
+        参数3: 数组本身
+        返回值: 一个新的数组
+    */
+    var newArrary = arr1.filter(function (value, index, array) {
+
+        // filter方法就算 return true 也不会终止迭代
+        return value >= 20;
+    });
+    console.log("新数组为:" + newArrary);  // 新数组为:66,88
+
+// ------------------------some 查找数组中是否有满足条件的元素----------------------
+    var arr2 = [10, 30, 4, 50];
+    /*
+        参数1: 数组中的每一个元素
+        参数2: 每一个元素的索引
+        参数3: 数组本身
+        返回值: 布尔值
+
+        注意点: 当找到第一个满足条件的元素,就终止循环,不在继续查找
+    */
+    var flag = arr2.some(function (value, index, array) {
+
+        if (value >= 30) {
+            // 返回true 会终止循环
+            return true;
+        }
+    })
+    console.log("是否有大于30的元素存在:" + flag);  // 是否有大于30的元素存在:true
+
+</script>
+</html>

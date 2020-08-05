@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // call方法
+    function fn(x, y) {
+        console.log("我是一个fn()函数");
+        console.log(this);
+        console.log(x + y);
+    }
+
+    var o = {
+        name: 'andy',
+    }
+
+    // 1. call()可以调用函数
+    fn.call();  // 我是一个fn()函数
+
+    // 2. call()可以改变这个函数this的指向,此时这个函数fn中的this就指向了o这个对象
+    // 参数1: 指定要指向的对象 参数2和3:要传递的参数
+    fn.call(o, 1, 2);  // {name: "andy"}
+</script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 父构造函数
+    function Father (uname, age) {
+        this.uanme = uname;
+        this.age = age;
+    }
+    // 父类独有的方法
+    Father.prototype.getMoney = function() {
+        console.log("我会赚钱");
+    }
+
+
+    // 子构造函数
+    function Son (uname, age) {
+        // 我们在子构造函数中调用父构造函数,但是父构造函数中的this并不指向子构造函数
+        // 但是我们可以通过call()方法将父构造函数中的this,指向子构造函数,从而使子构造函数也可以使用父构造函数中的属性
+        Father.call(this, uname, age);  // 将子构造函数中的this通过call()函数,改变父构造函数中this的指向
+
+        // 子类自己专门的属性
+        this.sex = '男人';
+    }
+
+    // 子类的原型对象指向父类的实例对象
+    Son.prototype = new Father();
+    // 如果利用对象的形式修改了原型对象,需要利用constructor指回原来的构造函数
+    Son.prototype.constructor = Son;
+    // 通过上面两行代码实现了,子类继承父类
+
+    Son.prototype.exam = function () {
+        console.log("孩子要考试的");
+    }
+
+    var son = new Son("张三", 31);
+    // 虽然子构造函数并没有uname属性,但是父构造函数中有,所以能打印出来
+    console.log(son.uanme);  // 张三
+    console.log(son.sex);  // 男人
+
+    // 子类继承的父类的方法
+    son.getMoney();  // 我会赚钱
+    // 子类独有的方法
+    son.exam();  // 孩子要考试的
+
+</script>
+</html>

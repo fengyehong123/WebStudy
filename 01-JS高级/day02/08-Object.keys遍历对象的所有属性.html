@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 用于获取对象自身所有的属性
+    var obj = {
+        id: 1,
+        pname: '小米',
+        price: 4464,
+        num: 2000
+    };
+
+    // 把一个对象的所有的属性组成一个数组
+    var arr = Object.keys(obj);
+    console.log(arr);  // ["id", "panme", "price", "num"]
+    arr.forEach(function(value){
+        console.log(value);
+    })
+
+// -------------------Object.defineProperty()------------------------
+    var huawei = {
+        id: 2,
+        pname: '华为',
+        price: 999,
+    };
+
+    // 1. 以前的对象添加和修改属性的方法
+    huawei.country = "中国";  // 添加
+    huawei.price = 99999;  // 修改
+
+    // 2. Object.defineProperty()定义新属性或者修改原有的属性
+    /*
+        参数1: 是当前设置的对象。
+        参数2: 是需定义或修改的属性的名字。
+        参数3: 是一个对象。
+            属性一是value: 设置属性的值,默认为undefined,数据类型任意
+            属性二是writable: false/true;如果值为false 不允许修改这个属性值 默认值也是false
+            属性三是enumerable: false/true;如果值为false 则不允许遍历, 默认的值是 false
+            属性四是configurable: false/true;如果为false 则不允许删除这个属性 不允许在修改第三个参数里面的特性 默认为false
+    */
+    Object.defineProperty(huawei, "pname", {
+        // 把华为 改为 大为
+        value: "大为",
+    });
+
+    Object.defineProperty(huawei, "id", {
+        // 禁止修改对象中的id属性
+        writable: false,
+    });
+    console.log(huawei.pname);
+    // 准备把huawei对象的id,由2改为200
+    huawei.id = 200;
+    // 由于我们设置了禁止修改属性,所以id还是2
+    console.log(huawei.id);  // 2
+
+    Object.defineProperty(huawei, "address", {
+        value: "广东省深圳市XXX楼层",
+        // 禁止修改这个属性
+        writable: false,
+        // 禁止遍历这个属性,如果不写的话,默认就是false
+        enumerable: false,
+        // 禁止该属性被删除
+        configurable: false,
+    })
+
+    // 结果并没有 address 属性
+    console.log(Object.keys(huawei));  // ["id", "pname", "price", "country"]
+
+    // 尝试删除 huawei对象的address属性
+    delete huawei.address
+    // 我们依然能获取到该属性的值,说明属性未能被删除
+    console.log(huawei.address);  // 广东省深圳市XXX楼层
+
+    delete huawei.pname
+    // 未规定该属性不能被删除
+    console.log(huawei.pname);  // undefined
+
+    // 当通过 Object.defineProperty() 定义或者修改过对象的某个属性之后,无法再次通过一个新的Object.defineProperty() 方法修改一遍
+    // 我们在上面已经修改了 huawei对象的 address属性,因此在此处修改会报错
+    Object.defineProperty(huawei, "address", {
+        value: "广东省深圳市XXX楼层",
+        writable: true,
+        enumerable: true,
+        configurable: true,
+    })
+    // 报错 Uncaught TypeError: Cannot redefine property: address
+</script>
+</html>
