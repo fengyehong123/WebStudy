@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="nav">
+        <li>榴莲</li>
+        <li>臭豆腐</li>
+        <li>鲱鱼罐头</li>
+        <li>大猪蹄子</li>
+    </ul>
+</body>
+<script>
+    // 闭包应用-点击li输出当前li的索引号
+    // 1. 普通的做法
+    var lis = document.querySelector(".nav").querySelectorAll("li");
+    lis.forEach(function(value, index) {
+        value.index = index;
+        value.onclick = function() {
+            // 此时的this相当于 value
+            console.log(this.index);
+        };
+    })
+
+    // 2. 闭包的做法
+    lis.forEach(function(value, index) {
+        // 利用forEach循环创建了4个立即执行函数
+        // 立即执行函数也成为小闭包因为立即执行函数里面的任何一个函数都可以使用它的i这变量
+        (function(index) {
+            value.onclick = function() {
+                console.log(index);
+            }
+        })(index);
+    })
+
+</script>
+</html>

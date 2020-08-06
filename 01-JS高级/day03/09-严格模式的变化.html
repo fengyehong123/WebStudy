@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    "use strict";
+
+    // 1. 严格模式中,变量必须先声明再使用
+    /*num = 10;  // 非严格模式中,会当成全局变量来使用
+    console.log(num);  // Uncaught ReferenceError: num is not defined */
+
+    // 2. 严格模式下,不能随意删除已经定义好的变量
+    var num = 10;
+    console.log(num);
+    // delete num;  // Uncaught SyntaxError: Delete of an unqualified identifier in strict mode.
+
+    // 3. 以前的全局作用域函数中的this指向window对象,严格模式下全局作用域中的函数中的this是 undefined
+    function fn() {
+        console.log(this);
+    }
+    fn();  // undefined
+
+    // 4. 以前构造函数不加new调用会当做普通函数来使用,而普通函数中的this指向window
+    //    在严格模式下,构造函数不加new来调用this会报错,因为严格模式下的普通函数的this指向undefined
+    function Star() {
+        this.sex  = "男";
+    }
+    // Star(); // Uncaught TypeError: Cannot set property 'sex' of undefined
+    // 普通模式下才可以执行这句代码
+    // console.log(window.sex);  // 男
+
+    // 严格模式下通过new来调用构造函数,函数中的this指向创建的对象实例
+    var star = new Star();
+    console.log(star.sex);  // 男
+
+    // 5. 严格模式下定时器中的this还是和普通模式一样,指向的是window
+    setTimeout(function () { 
+        console.log(this);  // Window {parent: Window, opener: null, top: Window, ......}
+     }, 2000);
+
+    // 6. 在严格模式下,函数的参数不能重名
+    function fn(a, a) {
+        // 如果是在非严格模式下,会打印出4.
+        /*
+            第一个a = 1;
+            第二个a = 2;
+            第二个a替换了第一个a,所以变成 2 + 2 = 4
+        */
+        console.log(a + a);
+    }
+    // 严格模式下会报错 
+    fn(1, 2);  // Uncaught SyntaxError: Duplicate parameter name not allowed in this context
+
+    // 7. 不能在if或者for等花括号{}内声明一个函数,但是在一个函数内部声明一个函数是被允许的
+</script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">按钮</button>
+</body>
+<script>
+    // 函数的不同的调用方式决定了this的指向不同
+
+    // 1. 普通函数的this,指向window
+    function fn() {
+        console.log("普通函数的this:" + this);
+    }
+    window.fn();  // 普通函数的this:[object Window]
+
+    // 2. 对象的方法 this 指向的是对象 o
+    var o = {
+        test: function () {
+            console.log("对象的方法this:" + this);
+        }
+    }
+    o.test();  // 对象的方法this:[object Object]
+
+    // 3. 构造函数 this 指向obj 这个实例对象
+    // 原型对象里面的this指向的也是obj这个实例对象
+    function Star() {};
+    Star.prototype.sing = function () {
+        console.log("构造函数的this:" + this);
+    }
+    var obj = new Star();
+    obj.sing();  // 构造函数的this:[object Object]
+
+    // 4. 绑定事件函数 this 指向的是函数的调用者 btn 这个按钮对象
+    document.querySelector("#btn").onclick = function () {
+        console.log("绑定事件函数this:" + this);  // 绑定事件函数this:[object HTMLButtonElement]
+    };
+
+    // 5. 定时器函数 this 指向window
+    window.setInterval(function(){
+        console.log("定时器函数this:" + this);  // 定时器函数this:[object Window]
+    }, 1000);
+
+    // 6.立即执行函数 this 指向的是window
+    (function(){
+        console.log("我自己调用我自己,我是立即执行函数");
+    })();
+
+
+</script>
+</html>

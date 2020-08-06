@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+</style>
+<body>
+    <div></div>
+</body>
+<script src="../jquery.min.js">
+</script>
+<script>
+    // 高阶函数-函数可以作为参数进行传递
+    function fn(a, b, callback) {
+        console.log(a + b);  // 3
+        // callback这个参数本质上是一个函数
+        callback && callback();  // 如果该参数不为空才会去执行该函数
+    }
+    // 将函数作为参数传递
+    fn(1, 2, function() {
+        console.log("我是最后调用的");
+    });
+
+    // 回调函数的使用
+    $("div").animate({left: 500}, function() {
+        // 运动到终点之后,将背景颜色变为紫色
+        $("div").css("backgroundColor", "purple");
+    })
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 改变函数内this的指向,js提供了3种方法. call() apply() bind()
+
+    // 1. call()
+    var o = {
+        name: "andy"
+    }
+    function fn(a, b) {
+        console.log(this);
+        console.log(a + b);
+    }
+    // 普通函数中的this原本是指向window,但是我们可以通过call()函数将this的指向改为 o 对象
+    fn.call(o, 1, 2);  // 改变指向的同时可以传递参数
+
+    // call的主要作用是实现继承
+    function Father(uname, age, sex) {
+        this.uname = uname,
+        this.age = age,
+        this.sex = sex
+    }
+
+    function Son(uname, age, sex) {
+        Father.call(this, uname, age, sex);
+    }
+    var obj = new Son("张三", 25, "男");
+    console.log(obj.age);  // 25
+    
+</script>
+</html>
