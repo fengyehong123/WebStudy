@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 全局变量name挂在window下
+    var name = "The Window";
+    // 函数中没有局部变量,因此没有闭包的产生
+    var object = {
+        name: "My Object",
+        getNameFunc: function() {
+            return function() {
+                // 此处的this指向的是window
+                return this.name;
+            };
+        }
+    }
+
+    // 所以在此处打印的时候,打印的是name属性的值
+    console.log(object.getNameFunc()());  // The Window
+
+// -------------------------------------------------------------
+    var name1 = "The Window1";
+    var object1 = {
+        name1: "My Object1", 
+        getNameFunc1: function() {
+            // 由于是object1调用的getNameFunc1函数,所以此时this指向的是object1
+            var that = this;
+            // 由于return返回的是一个函数,而该函数又用到了另一个作用域中的变量,因此这是一种闭包
+            return function() {
+                // 此处的that是由外部的this赋值的.而外部的this指向object1.所以that.name1为My Object1
+                return that.name1;
+            }
+        }
+    }
+    console.log(object1.getNameFunc1()());  // My Object1
+</script>
+</html>

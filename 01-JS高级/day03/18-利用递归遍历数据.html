@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var data = [
+        {
+            id: 1,
+            name: '家电',
+            goods: [
+                {
+                    id: 11,
+                    gname: '冰箱',
+                    goods: [
+                        {
+                            id: 111,
+                            gname: '海尔',
+                            goods: [
+                                {
+                                    id: 999,
+                                    gname: "海尔青岛"
+                                }
+                            ]
+                        }, 
+                        {
+                            id: 112,
+                            gname: '美的'
+                        }
+                    ]
+                }, 
+                {
+                    id: 12,
+                    gname: '洗衣机'
+                }
+            ]
+        }, 
+        {
+            id: 2,
+            name: '服饰'
+        }
+    ];
+
+    // 输入id号码,可以返回数据对象
+    // 利用forEach去遍历里面的每一个对象
+    function getID(json, id) {
+        var o = {};
+        json.forEach(function(value,index) {
+            if(value.id == id) {
+                o = value;
+            
+            // 里面应该有goods这个数组并且数组的长度不为 0 
+            } else if(value.goods && value.goods.length > 0) {
+                o = getID(value.goods, id)
+            }
+        })
+
+        return o;
+    }
+
+    console.log(getID(data, 1));
+    console.log(getID(data, 999));
+</script>
+</html>

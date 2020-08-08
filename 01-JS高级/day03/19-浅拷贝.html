@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 浅拷贝只是拷贝一层, 更深层次对象级别的只拷贝引用.
+
+    var obj = {
+        id: 1,
+        name: "andy",
+        msg: {
+            age: 18,
+        }
+    };
+
+    var o = {};
+
+    // 通过for ... in 的方式进行浅拷贝
+    for (const key in obj) {
+        // for...in 方式获取的key是对象属性的名称
+        if (obj.hasOwnProperty(key)) {
+            // 通过对象.属性名称的方式获取属性值 然后赋值给另外一个对象
+            o[key] = obj[key];
+        }
+    }
+
+    // o对象是浅拷贝之后产生的对象
+    console.log(o);
+    // 由于o是浅拷贝的对象,所以我们修改msg对象中的age属性会影响到原对象的数据
+    o.msg.age = 20;
+    console.log(obj);
+
+// -----------------------------------------------------------------------
+
+    // ES6中新增加了浅拷贝的方法
+    /*
+        参数1: 目标对象
+        参数2: 原对象
+    */
+    // 我们将obj对象浅拷贝给o对象
+    Object.assign(o, obj);
+    console.log(o);
+        o.msg.age = 200000000;
+        console.log(obj);
+</script>
+</html>

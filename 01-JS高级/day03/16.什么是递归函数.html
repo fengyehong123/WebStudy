@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 函数的内部自己调用自己,这个函数就是递归函数
+    // 由于函数的递归很容易发生栈溢出错误(stack overflow),所以必须要添加退出条件return
+
+    var num = 0;
+    function fn() {
+        console.log(`我正在打印第${num + 1}句话`);
+        // 添加递归退出的条件
+        if(num === 5) {
+            return;
+        }
+        num++;
+        fn();
+    }
+
+    fn();
+
+</script>
+</html>
