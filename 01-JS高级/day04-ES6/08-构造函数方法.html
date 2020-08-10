@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// ----------Array.from()将伪数组转换为数组----------------
+    // 定义一个对象,这个对象是一个伪数组
+    var arrLike = {
+        "0": "张三",
+        "1": "李四",
+        "2": "王五",
+        // 伪数组中一定要有length属性,否则无法转换为真正的数组
+        // 伪数组中只有3个元素,但是我们指定元素数量为4,所以多出来的会变成 undefined
+        "length": 4
+    }
+    var arr = Array.from(arrLike);
+    console.log(arr);  // ["张三", "李四", "王五", undefined]
+
+    let arrayList = {
+        "0": 1,
+        "1": 2,
+        "length": 2
+    }
+    // Array.from()还可以接收第二个参数.作用类似于数组的map方法,用来对每个元素进行处理,将处理后的值放入返回的数组
+    let newArr = Array.from(arrayList, (element) => element*2);
+    console.log(newArr);  // [2, 4]
+</script>
+</html>

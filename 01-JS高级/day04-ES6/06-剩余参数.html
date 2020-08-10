@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 剩余参数 ...变量名的形式,可以存放不定长的参数
+    const sum = (a, ...args) => {
+        let total = 0;
+        // 使用箭头函数简化回调函数的书写
+        /*args.forEach((value, index) => {
+            total += value;
+        })*/
+        // 还可以简写为
+        args.forEach(value => total += value);
+
+        return total;
+    }
+    
+    console.log(sum(10, 20, 30));  // 50
+    console.log(sum(10, 20, 30, 40));  // 90
+
+// -----------剩余参数和解构配合使用--------------------------
+    let arr1 = ["张三", "李四", "王五"];
+    // 除了第一个元素,剩下的元素都放到 s2中
+    let [s1, ...s2] = arr1;
+    console.log(s1);  // 张三
+    console.log(s2);  // ["李四", "王五"]
+    
+</script>
+</html>
