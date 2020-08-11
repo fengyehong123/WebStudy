@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let result = {
+        name: "zhangsan",
+        age: 20
+    };
+
+    // 模板字符串可以换行
+    let html = `
+        <div>
+            <span>${result.name}</span>
+            <span>${result.age}</span>
+        </div>
+    `;
+    console.log(html);
+    /*
+        <div>
+            <span>zhangsan</span>
+            <span>20</span>
+        </div>
+    */
+
+    // 模板字符串可以调用函数
+    const fn = () => {
+        return "我是fn函数啊";
+    }
+    // 模板字符串中调用了函数fn()
+    let str = `我是模板字符串 ${fn()}`;
+    console.log(str);  // 我是模板字符串 我是fn函数啊
+</script>
+</html>

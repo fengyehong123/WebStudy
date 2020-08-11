@@ -30,5 +30,39 @@
     // Array.from()还可以接收第二个参数.作用类似于数组的map方法,用来对每个元素进行处理,将处理后的值放入返回的数组
     let newArr = Array.from(arrayList, (element) => element*2);
     console.log(newArr);  // [2, 4]
+
+// ---------find()方法用来查找第一个满足条件的对象---------------------------
+    var arrObj = [{
+        id: 1,
+        name: "张三"
+    },{
+        id: 2,
+        name: "李四"
+    }];
+    let target = arrObj.find((item,value) => {
+        // 查找id为2的对象
+        return item.id == 2;
+    });
+    console.log(target); // {id: 2, name: "李四"}
+
+    // 查询id为3的对象,由于不存在,所以返回 undefined
+    let target1 = arrObj.find((item,value) => item.id == 3);
+    console.log(target1);  // undefined
+
+// --------------------findIndex()查询第一个符合条件的数组成员的位置,没有找到就返回-1-------------
+    let arr2 = [10, 20, 30];
+    let index = arr2.findIndex((item) => {
+        // 返回整个数组中第一个大于15的元素的下标
+        return item > 15;
+    });
+    console.log(index);  // 1
+
+// --------------------includes()表示某个数组是否包含给定的值,返回布尔值--------------------------
+    let arry3 = ["a", "b", "c"];
+    let result = arry3.includes("a");
+    console.log(result);  // true
+    let result1 = arry3.includes("d");
+    console.log(result1);  // false
+
 </script>
 </html>
