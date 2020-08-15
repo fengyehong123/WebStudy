@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 200px;
+        height: 200px;
+        /* 设置边框5个像素 边框线为虚线 边框颜色为红色 */
+        border: 5px dashed red;
+
+        /* 我们还可以分别单独指定四个边框的属性 */
+        /* border-top: 1px solid green;
+        border-bottom: 1px dashed pink; */
+    }
+    input {
+        /* 我们把输入框的三个边框都设置为无,只留下下边框 */
+        /* border-top: none;
+        border-left: none;
+        border-right: none; */
+
+        /* 简化写法
+           先指定所有的边框都消失,然后单独指定下边框显示 
+        */
+        border: none;
+        border-bottom: 1px dashed pink;
+    }
+</style>
+<body>
+    <div></div>
+    用户名: <input type="text"><br>
+    密码: <input type="text">
+</body>
+</html>

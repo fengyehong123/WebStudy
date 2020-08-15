@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .nav {
+        height: 41px;
+        background-color: #FCFCFC;
+        /* 上边框 */
+        border-top: 3px solid #FF8500;
+        /* 下边框 */
+        border-bottom: 1px solid #edeef0;
+    }
+    /* 因为导航栏中的字数不同,所以我们无法给出具体的宽度,我们利用padding撑开盒子的特性来操作 */
+    .nav a {
+        text-decoration: none;
+        height: 41px;
+        /* 行高等于高 可以 让文字垂直居中 */
+        line-height: 41px;
+        /* 设置超链接文字的颜色 */
+        color: #4c4c4c;
+        /* padding设置 上下0px 左右20px的内边距
+           由于padding会撑开盒子,因此不同字数的盒子最终的宽度是不同的
+        */
+        padding: 0 20px;
+        /* 设置字体大小 */
+        font-size: 12px;
+        /* 块元素 转换为行内块元素 */
+        display: inline-block;
+    }
+    /* 鼠标经过导航栏变色 */
+    .nav a:hover {
+        background-color: #eee;
+        color: orange;
+    }
+</style>
+<body>
+    <div class="nav">
+        <a href="#">设为首页</a>
+        <a href="#">手机新浪网</a>
+        <a href="#">移动客户端</a>
+        <a href="#">博客</a>
+        <a href="#">留言</a>
+        <a href="#">赞</a>
+    </div>
+</body>
+</html>
