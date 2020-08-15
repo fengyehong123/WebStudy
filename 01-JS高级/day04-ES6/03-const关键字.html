@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // const关键字声明的常量必须赋初始值
+
+    // 常量声明后值不可以更改
+    const PI = 3.14;
+    // PI = 100;
+    // console.log(PI);  // Uncaught TypeError: Assignment to constant variable.
+
+    const arr = [100, 200];
+    // 我们声明的是常量数组arr,数组本身的内存地址不可以改变
+    // 但是我们可以修改数组中的元素
+    arr[0] = 300;
+    arr[1] = 400;
+    console.log(arr);  // [300, 400]
+    // 由于我们声明的是常量数组,所以数组本身是不可以改变的
+    arr = [500, 600];
+    console.log(arr);  // Uncaught TypeError: Assignment to constant variable.
+</script>
+</html>

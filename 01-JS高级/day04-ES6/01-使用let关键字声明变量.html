@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        1. let关键字就是用来声明变量的
+        2. 使用let关键字声明的变量具有块级作用域
+        3. 一个大括号中 使用let关键字声明的变量才具有块级作用域 var关键字是不具备这个特点的
+        4. 防止循环变量变成全局变量
+        5. 使用let关键字声明的变量没有变量提升
+        6. 使用let关键字声明的变量具有暂时性死区特性
+    */
+
+    // 1. 在一个大括号中 使用let关键字声明的变量才具有块级作用域 var关键字是不具备这个特点的
+    if(true) {
+        var num1 = 100;
+        let num2 = 200;
+    }
+    console.log(num1);  // 100
+    // 因为num2变量使用let关键字定义,在块元素之外无法访问let关键字定义的变量
+    // console.log(num2);  // Uncaught ReferenceError: num2 is not defined
+
+// -------------------------------------------------------------------------------
+
+    // 2. let可以防止循环变量变成全局变量
+    // 我们使用var定义的变量,虽然循环结束了,但是循环外还是可以访问到我们定义的变量aa
+    for (var aa = 0; aa < 2; aa++) {
+        
+    }
+    console.log(aa);  // 2
+    // 用let定义的循环变量在外部无法访问
+    /*for (let i = 0; i < 2; i++) {
+
+    }
+    console.log(i);  // Uncaught ReferenceError: i is not defined
+    */
+
+// -------------------------------------------------------------------------------
+
+    // 使用let关键字声明的变量没有变量提升
+    console.log(bb);  // undefined
+    var bb ="我是bb";
+
+    // console.log(cc);  // Uncaught ReferenceError: Cannot access 'cc' before initialization
+    let cc = "我是cc";
+
+// --------------------------------------------------------------------------------
+
+    // 使用let关键字声明的变量具有暂时性死区特性
+    var dd = 10
+    if (true) {
+
+        // 如果块级元素内部的dd是用var声明的,则会打印出10
+        console.log(dd);  // Uncaught ReferenceError: Cannot access 'dd' before initialization
+        // 如果我们使用var关键字来定义下面的变量,上面的输出语句就会打印出10
+        // let声明的变量和块级元素是绑定的.虽然块级元素外面也定义了dd,但是由于花括号内部有用let声明的dd,所以不会向块级元素外寻找变量
+        let dd = 20;
+    }
+
+</script>
+</html>
