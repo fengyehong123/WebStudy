@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 无法直接给行内元素设置宽和高 */
+    span {
+        width: 200px;
+        height: 400px;
+        background-color: green;
+    }
+    /* 可以直接给块级元素设置宽和高 */
+    div {
+        width: 200px;
+        height: 300px;
+        background-color: hotpink;
+    }
+</style>
+<body>
+    <!-- 
+        标签的显示模式:例如div自己占一行,span标签一行可以放置很多个
+        div和span 标签都是用来网页进行布局的
+
+        块级元素 div h1 p ul ol  li等
+        行内元素 span a等 
+        行内块元素
+     -->
+
+     <!-- 
+         块级元素的高度,宽度和内外边距等都可以控制
+         块级元素是一个容器盒子,里面可以放置任何标签
+      -->
+     <div>div0</div>
+     <div>div2</div>
+     <!-- 
+         行内元素只可以放置文本或者其他的行内元素
+         无法直接给行内元素设置宽和高
+         默认宽度就是本身内容的宽度
+      -->
+     <span>111</span>
+     <span>222222222</span>
+
+     <!-- 行内块元素
+        一行上可以有多个
+        高度宽度和内外边距都可以调整
+        默认的宽度就是他本身内容的宽度
+        img input td
+     -->
+</body>
+</html>

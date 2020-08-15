@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    span {
+        /* 将行内元素转换为块级元素,从而使设置的宽和高度生效 */
+        display: block;
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+    }
+
+    div {
+        /* 将块级元素转换为行内元素,从而使设置的宽和高度失效 */
+        display: inline;
+        width: 200px;
+        height: 200px;
+        background-color: purple;
+    }
+    a {
+        /* 行元素转行内块元素 */
+        display: inline-block;
+        width: 80px;
+        height: 30px;
+        background-color: orange;
+    }
+</style>
+<body>
+    <!-- 行内元素转块级元素 -->
+    <span>行内元素span1</span>
+    <span>行内元素span2</span>
+    <hr>
+    <!-- 块级元素转行内元素 -->
+    <div>块级元素div1</div>
+    <div>块级元素div2</div>
+    <hr>
+    <!-- 行内元素转行内块元素 -->
+    <a href="#">百度</a>
+    <a href="#">新浪</a>
+</body>
+</html>

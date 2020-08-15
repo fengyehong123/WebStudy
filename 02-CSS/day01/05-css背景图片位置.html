@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .bg {
+        width: 800px;
+        height: 500px;
+        background-color: pink;
+        background-image: url(./images/l.jpg);
+        background-repeat: no-repeat;
+        /* 背景图片位置 background-position*/
+        /* 背景图片在盒子的右上角:通过指定方位名词 */
+        /* background-position: right top; */
+        /* 水平居中,垂直居中 */
+        /* background-position: center center; */
+        /* 水平靠左居中 */
+        /* background-position: left center; */
+        /* 如果只指定了一个方位名词,另一个未指定的方位名词则居中对齐 */
+        /* background-position: left; */
+
+        /* 如果后面跟精确坐标(px),则第一个肯定是x坐标,第二个肯定是y坐标 */
+        /* background-position: 10px 50px; */
+        /* 如果我们只写一个精确坐标,那么肯定是x坐标,另一个坐标默认居中对齐
+           精确坐标可以和方位名词混用  
+        */
+        background-position: 10px center;
+    }
+</style>
+<body>
+    <div class="bg">
+        11111111111111111111111
+    </div>
+</body>
+</html>

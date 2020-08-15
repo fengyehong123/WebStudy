@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    a {
+        /* 导航栏在一栏显示并且有大小宽度,所以用到了行内块元素 */
+        display: inline-block;
+        width: 100px;
+        height: 30px;
+        /* 文字的行高,当行高等于高度的时候,文字垂直居中
+           行高 > 高度,文字会偏下
+           行高 < 高度,文字会偏上
+        */
+        line-height: 30px;  /*文字的行高,用来设置文字的显示位置*/
+        background-color: pink;
+        /* 文字水平居中 */
+        text-align: center;
+        /* 文字颜色是白色 */
+        color: #fff;
+        /* 去掉超链接的下划线 */
+        text-decoration: none;
+    }
+    /* 鼠标经过的时候变化底色和文字的颜色 */
+    a:hover {
+        background-color: orange;
+        color: yellow;
+    }
+</style>
+<body>
+    <a href="#">新闻</a>
+    <a href="#">娱乐</a>
+    <a href="#">漫画</a>
+    <a href="#">音乐</a>
+</body>
+</html>
