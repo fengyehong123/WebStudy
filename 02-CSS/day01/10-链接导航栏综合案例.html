@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .nav {
+        /* 让超链接居中对齐
+           对行内元素和行内块元素都有效果 
+        */
+        text-align: center;
+    }
+    .nav > a {
+        /* 先把a标签转换为行内块元素,然后才能给超链接设置宽度和高度 */
+        display: inline-block;
+        width: 120px;
+        height: 50px;
+        /* 去除超链接的下划线 */
+        text-decoration: none;
+        /* 行高等于盒子的高度,可以让单行文本垂直居中对齐 */
+        line-height: 50px;
+        /* 把超链接的字体颜色改为白色 */
+        color: #fff;
+        /* 背景的简写 */
+        background: url(./images/bg.png) no-repeat;
+    }
+    /* 鼠标经过链接的时候,背景图片更换 */
+    .nav > a:hover {
+        background: url(./images/bgc.png) no-repeat;
+    }
+</style>
+<body>
+    <!-- 一个大盒子里面包含着6个超链接 -->
+    <div class="nav">
+        <a href="#">网站首页</a>
+        <a href="#">网站首页</a>
+        <a href="#">网站首页</a>
+        <a href="#">网站首页</a>
+        <a href="#">网站首页</a>
+        <a href="#">网站首页</a>
+    </div>
+</body>
+</html>

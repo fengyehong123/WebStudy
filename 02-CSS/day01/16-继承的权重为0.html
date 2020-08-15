@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        color: red;
+    }
+    p {
+        color: teal;
+    }
+    .demo {
+        color: violet;
+    }
+</style>
+<body>
+    <div class="demo">
+        <!-- 虽然父标签用到了类选择器,看似父标签的类选择器的权重 > 子标签的标签选择器
+             但是因为父子标签之前存在继承性,而继承的权重为0,所以父标签的颜色不会影响字标签
+        -->
+        <p>继承的权重为0</p>
+    </div>
+</body>
+</html>

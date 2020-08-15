@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 当多个不同的选择器作用于同一个属性上的时候,会出现权重
+       权重高的选择器优先起作用
+    */
+
+    /* 标签选择器的权重 0,0,0,1 小组长 */
+    div {
+        color: seagreen;
+    }
+    /* 类选择器的权重 0,0,1,0 班长 */
+    .classObj {
+        color: seashell;
+    }
+    /* id选择器的权重 0,1,0,0 班主任 */
+    #idObj {
+        color: red;
+    }
+    div {
+        /* !important代码权重无限大,被它修饰的样式会优先起作用 */
+        color: violet !important;
+    }
+</style>
+<body>
+    <!-- 行内样式的权重 1,0,0,0 教导主任 -->
+    <div class="classObj" id="idObj" style="color: yellow;">权重还有30秒到达战场</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 
+        子元素可以继承父元素的样式
+            text-
+            font-
+            line-
+            color属性
+        并不是所有的属性都可以继承的,宽度和高度就不可以继承.以上开头的属性和color属性才可以继承
+    */
+    div {
+        color: red;
+    }
+</style>
+<body>
+    <div>
+        <!-- 
+            我们虽然给p标签的父标签设置了字体颜色为红色,但是CSS具有继承性,所以子标签p继承了父标签
+            div的颜色.因此显示为红色
+         -->
+        <p>我是一个子元素</p>
+    </div>
+</body>
+</html>

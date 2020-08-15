@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 出现了权重叠加的现象
+       .nav a 的权重(0,0,1,1) = 0,0,1,0 + 0,0,0,1  
+    */
+    .nav a {
+        color: red;
+    }
+    /* 
+        我们想把第一个a标签的颜色设置为茶色,但是设置完成之后发现颜色还是红色,并没有变化
+        因为仅仅一个 .first的权重 小于 .nav a 的权重,所以设置失败
+    */
+    .first {
+        color: teal;
+    }
+    /* 我们可以提升权重来设置第一个a标签的颜色 */
+    .nav .first {
+        color: blue;
+    }
+</style>
+<body>
+    <div>人生四大悲</div>
+    <div class="nav">
+        <a href="#" class="first">家里没宽带</a>
+        <a href="#">网速不够快</a>
+        <a href="#">手机没流量</a>
+        <a href="#">学校无wifi</a>
+    </div>
+</body>
+</html>

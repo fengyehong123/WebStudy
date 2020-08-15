@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .alpha {
+        /* 背景半透明的盒子,最后一个参数是alpha透明度,取值范围在0~1之间
+           我们习惯上把0.3的0给去掉
+           背景半透明是指盒子背景半透明,盒子里面的内容不受影响  
+        */
+        background: rgba(0, 0, 0, .3);
+        width: 300px;
+        height: 300px;
+    }
+</style>
+<body>
+    <div class="alpha" style="text-align: center;line-height: 300px;">
+        <span>我是一个span</span>
+    </div>
+</body>
+</html>
