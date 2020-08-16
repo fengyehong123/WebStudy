@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 清除所有元素默认的内外边距
+       我们以后写CSS的第一句话 
+       我们清除掉默认的内外边距之后,自己指定相应元素的内外边距
+     */
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    span {
+        /* 我们给span标签设置了 上下左右边距都是30px,
+        但是实际上只有左右外边距起作用,上下外边距并没有起作用
+        既然都不起作用,就不要设置
+         */
+        margin: 30px;
+    }
+</style>
+<body>
+    一个问题
+    <p>又是一个问题</p>
+    <span>行内元素为了照顾兼容性,尽量只设置左右内外边距,不要设置上下内外边距</span>
+</body>
+</html>

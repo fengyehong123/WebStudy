@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .father{
+        width: 500px;
+        height: 500px;
+        background-color: pink;
+        /* 解决父子盒子嵌套时,垂直方向塌陷的问题 */
+
+        /* 方案1: 给父盒子添加一个透明边框 */
+        /* border-top: 1px solid transparent; */
+        /* 方案2: 可以给父盒子指定一个上 padding值 */
+        /* padding-top: 1px; */
+        /* 方案3: 可以为父元素添加 overflow: hidden;*/
+        /* 方案3是最好的办法,因为没有改变父和子盒子的大小 */
+        overflow: hidden;
+    }
+    .son {
+        width: 200px;
+        height: 200px;
+        background-color: purple;
+        /* 原本寻思给子元素添加上外边框,然后子盒子和父盒子之间就会产生100px的距离
+           但是实际上父子盒子之间没有产生距离,父盒子和外侧反而产生了距离
+         */
+        margin-top: 100px;
+    }
+</style>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+</html>

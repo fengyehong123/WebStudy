@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .pic,
+    .bg {
+        width: 500px;
+        height: 500px;
+        border: 1px solid red;
+        /* 通过给盒子指定内边距,从而实现图片与盒子之间产生边距,但是这样盒子会撑开 */
+        /* padding: 30px; */
+    }
+    .pic img {
+        /* 通过给图片添加外边距,这样盒子不会撑开 */
+        margin: 30px;
+    }
+    .bg {
+        background: url(./images/3.jpg) no-repeat;
+        /* 给背景图片移动位置,和盒子模型不同,背景图片移动位置只能通过下面的属性进行移动 */
+        background-position: 30px 30px;
+    }
+</style>
+<body>
+    <div class="pic">
+        <img src="./images/3.jpg" alt="">
+    </div>
+    <div class="bg">
+
+    </div>
+</body>
+</html>

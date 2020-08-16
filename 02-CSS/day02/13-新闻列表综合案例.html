@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    /* 去掉列表的样式(小圆点) */
+    li {
+        list-style: none;
+    }
+    .box {
+        /* 因为padding会撑大盒子,因此我们需要减小宽和高 */
+        width: 298px;
+        height: 198px;
+        border: 1px solid #ccc;
+        /* 块级盒子水平居中 */
+        margin: 100px auto;
+        /* 一个盒子给了一个padding值,会撑大盒子 */
+        padding: 15px;
+        /* 给整体的盒子添加背景图片 */
+        background: url(./images/line.jpg);
+    }
+    .box h2 {
+        font-size: 18px;
+        /* 给盒子添加padding值,撑开下边框线 */
+        padding: 5px 0;
+        /* 给标题添加下边框,相当于添加了下划线 */
+        border-bottom: 1px solid #ccc;
+        /* 两个盒子之间保持距离 */
+        margin-bottom: 10px;
+    }
+    .box ul li {
+        /* 给每一个li元素指定高度,宽度和父元素保持一致 */
+        height: 30px;
+        /* 和行高保持一致,使文字居中 */
+        line-height: 30px;
+        border-bottom: 1px dashed #ccc;
+        /* 给li标签元素添加背景图片 */
+        background: url(./images/arr.jpg) no-repeat;
+        /* 通过背景定位来指定背景图片的位置 */
+        background-position: 5px center;
+        /* 我们通过给li标签指定padding来实现背景图标图片和文字保持距离 */
+        /* 因为这个li没有宽度,所以padding不会撑开盒子 */
+        padding-left: 20px;
+    }
+    .box ul li a {
+        text-decoration: none;
+        font-size: 12px;
+        color: #333;
+        /* 我们也可以给a标签指定外边距来实现图片和文字保持距离 */
+        /* margin-left: 20px; */
+    }
+    /* 鼠标经过的时候给超链接文件添加下划线 */
+    .box ul li a:hover {
+        text-decoration: underline;
+    }
+</style>
+<body>
+    <div class="box">
+        <!-- 标题盒子 -->
+        <h2>最新文章/New Articels</h2>
+        <!-- 列表内容盒子 -->
+        <ul>
+            <li>
+                <a href="#">背景招聘网页设计,平面设计,php</a>
+            </li>
+            <li>
+                <a href="#">体验javascript的魅力</a>
+            </li>
+            <li>
+                <a href="#">Jquery世界来临</a>
+            </li>
+            <li>
+                <a href="#">网页设计师的梦想</a>
+            </li>
+            <li>
+                <a href="#">ES6中的新语法</a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

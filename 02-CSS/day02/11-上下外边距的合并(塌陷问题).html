@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .top,
+    .bottom {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+    }
+    .top {
+        margin-bottom: 100px;
+    }
+    /* 我们给top盒子的底部添加了100px的外边距
+       给bottom盒子的顶部添加了50px的外边距
+       按理来说两个盒子之间的边距是 150px
+       但是实际上两个盒子的边距是100px
+       两个盒子的垂直外边距(水平外边距不会有这种现象),会发生外边距合并现象
+       即取两个外边距较大的那个作为外边距 100 > 50 所以两个盒子的外边距是100,而不是150px
+
+       没有好的解决办法,当两个盒子垂直的时候,只能取其中一个盒子设置外边距
+     */
+    .bottom {
+        margin-top: 50px;
+    }
+    .bottom {
+        background-color: purple;
+        
+    }
+</style>
+<body>
+    <div class="top"></div>
+    <div class="bottom"></div>
+</body>
+</html>
