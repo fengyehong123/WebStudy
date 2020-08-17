@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .one,
+    .two {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+    }
+    /* 我们给one和two盒子都添加了左浮动
+       one和two盒子都由原先的块级元素(一个盒子一行)变为行内块元素(一行有多个)
+       两个盒子靠在一起,中间没有缝隙
+     */
+    .one {
+        float: left;
+    }
+    .two {
+        float: left;
+        background-color: purple;
+    }
+    .three {
+        float: left;
+        width: 300px;
+        height: 300px;
+        background-color: red;
+    }
+</style>
+<body>
+    <!-- 如果父级宽度装不下浮动的盒子,多出来的盒子会另起一行来对齐 -->
+    <div class="one"></div>
+    <div class="two"></div>
+    <div class="three"></div>
+</body>
+</html>

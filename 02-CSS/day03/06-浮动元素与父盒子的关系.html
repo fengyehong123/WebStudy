@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .father {
+        width: 500px;
+        height: 500px;
+        background-color: pink;
+        border: 20px solid red;
+        padding: 10px;
+    }
+    .son {
+        /* 子元素浮动,会贴到右边,但是不会与父盒子的边框重叠,也不会超过父盒子的内边距 */
+        float: right;
+        width: 200px;
+        height: 200px;
+        background-color: purple;
+    }
+</style>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+</html>

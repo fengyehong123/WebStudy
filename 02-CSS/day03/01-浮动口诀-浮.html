@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .one {
+        /* 不添加浮动之前,one盒子在two盒子的上方
+           添加浮动之后,one盒子浮动起来,压在two盒子的上面
+         */
+        float: left;
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+    }
+    .two {
+        width: 300px;
+        height: 300px;
+        background-color: purple;
+    }
+</style>
+<body>
+    <div class="one"></div>
+    <div class="two"></div>
+</body>
+</html>

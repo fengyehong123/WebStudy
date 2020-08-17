@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航栏案例</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        list-style: none;
+    }
+    .banner {
+        width: 760px;
+        height: 150px;
+        /* 居中对齐 */
+        margin: auto;
+    }
+    .nav {
+        width: 760px;
+        height: 32px;
+        /* 居中对齐 */
+        margin: 0 auto;
+        /* 添加背景图片 */
+        background: url(./images/nav_bg.jpg) repeat-x;
+    }
+    .nav ul li {
+        /* 因为li让文字竖着显示,所以必须给li添加浮动 */
+        float: left;
+    }
+    .nav ul li a {
+        /* a元素时行内元素,没有大小,我们把行内元素转换为行内块元素 */
+        display: inline-block;
+        /* 去除超链接下划线 */
+        text-decoration: none;
+        width: 80px;
+        height: 32px;
+        background: url(./images/button1.jpg) no-repeat;
+        font-size: 16px;
+        /* 居中对齐 */
+        line-height: 32px;
+        text-align: center;
+    }
+    .nav ul li a:hover {
+        background: url(./images/button2.jpg);
+    }
+</style>
+<body>
+    <!-- banner是广告条的意思 -->
+    <div class="banner">
+        <img src="./images/banner.jpg" alt="">
+    </div>
+    <!-- nav导航栏部分 -->
+    <div class="nav">
+        <!-- 以后我们重要的导航栏,都要采取li标签中包含a标签的写法 -->
+        <ul>
+            <li><a href="#">网站首页</a></li>
+            <li><a href="#">技术博客</a></li>
+            <li><a href="#">浏览版</a></li>
+            <li><a href="#">关注我</a></li>
+            <li><a href="#">CSS</a></li>
+            <li><a href="#">ES6语法</a></li>
+        </ul>
+    </div>
+</body>
+</html>

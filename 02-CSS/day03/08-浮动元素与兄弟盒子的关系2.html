@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .father {
+        width: 500px;
+        height: 500px;
+        background-color: pink;
+    }
+    .damao {
+        width: 150px;
+        height: 150px;
+        background-color: red;
+    }
+    /* 虽然ermao浮动了,但是由于ermao上方的damao没有浮动,damao还是一个标准流
+       标准流就占据一行,所以我们虽然给ermao添加了浮动,ermao也确实浮动起来了
+       但是表面上看来什么变化也没有
+     */
+    .ermao {
+        float: left;
+        width: 200px;
+        height: 200px;
+        background-color: purple;
+    }
+</style>
+<body>
+    <div class="father">
+        <div class="damao">
+
+        </div>
+        <div class="ermao">
+
+        </div>
+    </div>
+   
+</body>
+</html>

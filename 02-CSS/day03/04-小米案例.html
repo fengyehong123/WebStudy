@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    /* 清除所有li标签的属性,放置自带的小圆点出现 */
+    li {
+        list-style: none;
+    }
+    .box {
+        width: 1200px;
+        height: 550px;
+        background-color: pink;
+        /* 居中对齐 */
+        margin: auto;
+    }
+    .left {
+        float: left;
+        width: 200px;
+        height: 550px;
+        background-color: purple;
+    }
+    .right {
+        float: right;
+        width: 1000px;
+        height: 550px;
+        background-color: skyblue;
+    }
+    .left img {
+        /* 图片的宽度和高度保持和父级别元素相同 */
+        width: 100%;
+        height: 100%;
+    }
+    .right li {
+        float: left;
+        width: 234px;
+        height: 270px;
+        /* 给每个li标签指定外边距 */
+        margin-left: 16px;
+        margin-bottom: 10px;
+        background-color: pink;
+    }
+</style>
+<body>
+    <!-- 
+        布局要点:
+            1. 先给一个总的大盒子
+            2. 然后在大盒子里放两个小盒子,分别设置左右浮动
+            3. 通过ul + li 的方式布局
+            4. li 标签们浮动,当一行装不下所有的li标签盒子的时候,会自动换行帮助我们完成布局
+     -->
+    <div class="box">
+        <!-- 父盒子box里面包含着两个子盒子 left 和 right
+             在未浮动之前,这两个盒子并列显示
+        -->
+        <div class="left">
+            <img src="./images/mi.jpg" alt="">
+        </div>
+        <!-- 因为有很多个小盒子排列,所以我们用ul + li 标签的形式布局 -->
+        <ul class="right">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+        </ul>
+    </div>
+</body>
+</html>

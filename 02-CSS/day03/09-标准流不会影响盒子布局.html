@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/*one是父级，但是很多情况下，不方便给高度 子盒子有多少内容，就显示多少内容，自动撑开父亲最为合理*/
+		.one {
+			width: 500px;
+			background-color: pink;
+		}
+		.damao {
+			width: 200px;
+			height: 200px;
+			background-color: purple;
+		}
+		.ermao {
+			width: 250px;
+			height: 250px;
+			background-color: skyblue;
+		}
+		.two {
+			width: 700px;
+			height: 150px;
+			background-color: #000;
+		}
+	</style>
+</head>
+<body>
+	<div class="one">
+		<div class="damao"></div>
+		<div class="ermao"></div>
+	</div>
+	<div class="two"></div>
+</body>
+</html>

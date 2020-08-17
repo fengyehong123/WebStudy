@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.one {
+			width: 500px;
+			border: 1px  solid red;
+			/* 给父盒子添加overflow属性就可以清除浮动 */
+			/* 这种做法的缺点是:
+			    内容增多的时候容易造成不会自动换行导致内容被隐藏掉,无法显示需要溢出的元素
+			 */
+			overflow: hidden;
+		}
+		/* 两个子盒子浮动 */
+		.damao {
+			float: left;
+			width: 200px;
+			height: 200px;
+			background-color: purple; 
+		}
+		.ermao {
+			float: left;
+			width: 250px;
+			height: 250px;
+			background-color: skyblue;
+		}
+		.two {
+			width: 700px;
+			height: 150px;
+			background-color: #000;
+		}
+	</style>
+</head>
+<body>
+	<div class="one">
+		<div class="damao"></div>
+		<div class="ermao"></div>
+	</div>
+	<div class="two"></div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/* 很多情况下，我们的父盒子，不方便给高度  
+		   因为父盒子内部的子盒子的内容可能不固定
+				  例如父盒子内部的子盒子存放文章,而每一篇文章的字数不同
+				从而导致,每篇文章的高度不同,我们给父盒子指定了固定的高度
+				如果子盒子的内容太多导致子盒子超出了父盒子,会影响布局
+		   最好父盒子根据子盒子额内容撑开，子盒子有多少内容，我的父盒子就有多高
+		   这个时候就用到了清除浮动
+		 */
+		.one {
+			width: 500px;
+			background-color: pink;
+		}
+		/*因为damao ermao 浮动了，不占有位置， 而父级又没有高度， 所以two 就到底下去了*/
+		.damao {
+			float: left;
+			width: 200px;
+			height: 200px;
+			background-color: purple;
+		}
+		.ermao {
+			float: left;
+			width: 250px;
+			height: 250px;
+			background-color: skyblue;
+		}
+		.two {
+			width: 700px;
+			height: 150px;
+			background-color: #000;
+		}
+	</style>
+</head>
+<body>
+	<div class="one">
+		<div class="damao"></div>
+		<div class="ermao"></div>
+	</div>
+	<div class="two"></div>
+</body>
+</html>

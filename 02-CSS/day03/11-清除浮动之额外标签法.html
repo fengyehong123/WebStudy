@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/* 很多情况下，我们的父盒子，不方便给高度  根据内容撑开，有多少内容，我的父盒子就有多高 */
+		.one {
+			width: 500px;
+			border: 1px  solid red;
+		}
+		/* 两个子盒子浮动 */
+		.damao {
+			float: left;
+			width: 200px;
+			height: 200px;
+			background-color: purple;
+		}
+		.ermao {
+			float: left;
+			width: 250px;
+			height: 250px;
+			background-color: skyblue;
+		}
+		.two {
+			width: 700px;
+			height: 150px;
+			background-color: #000;
+		}
+		/* 清除浮动的方法
+		   给最后一个浮动的元素后面添加一个标签,标签内什么内容都没有
+		   然后添加 clear: both 属性(意思为清除所有两侧的浮动)
+		 */
+		.clear {
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<div class="one">
+		<div class="damao"></div>
+		<div class="ermao"></div>
+		<!-- 在最后一个浮动的元素后面添加一个空标签(什么内容都没有,然后指定 clear: both 属性) -->
+		<div class="clear"></div>
+	</div>
+	<div class="two"></div>
+</body>
+</html>
