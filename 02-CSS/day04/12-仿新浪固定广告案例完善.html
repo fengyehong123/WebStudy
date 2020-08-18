@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .box {
+        width: 1002px;
+        margin: 0 auto;
+        /* 导航栏固定定位,是不占用位置的,因此导航栏下面的盒子的一部分会跑到导航栏下面 */
+        /* 解决方式: 给下面的盒子指定一个margin-top值,具体的值等于导航栏的宽度 */
+        margin-top: 44px;
+    }
+    /* 将左右的两个广告设置为固定定位 */
+    .ad-l {
+        position: fixed;
+        top: 100px;
+        left: 0;
+    }
+    .ad-r {
+        position: fixed;
+        top: 100px;
+        right: 0;
+    }
+    .top {
+        /* 给顶部的导航栏添加固定定位 */
+        /* div是块级元素,当我们添加固定定位的时候,由块级元素转换为行内块元素
+           行内块元素不给width的时候,默认的宽度就是内容的宽度
+           如果我们没有写内容的话,是看不见的
+         */
+         /* 以后我们定位的盒子很多时候都需要单独指定宽度 */
+        width: 100%;  /* 我们让父盒子的宽度变为100%,可以保证浏览器缩放时,父盒子一直撑满屏幕
+                         如果我们不设置100%的话,当浏览器的屏幕尺寸变化的时候,父盒子内部的图片是不会居中显示的
+                       */
+        position: fixed;
+        top: 0;
+        height: 44px;
+        background-color: pink;
+        /* 让图片居中对齐 */
+        text-align: center;
+    }
+</style>
+<body>
+    <div class="top">
+        <img src="./images/top.png" alt="">
+    </div>
+    <!-- 左右的固定定位 -->
+    <img class="ad-r" src="./images/ad-r.png" alt="">
+    <img class="ad-l" src="./images/ad-l.png" alt="">
+    <div class="box">
+        <img src="./images/box.png" alt="">
+    </div>
+</body>
+</html>

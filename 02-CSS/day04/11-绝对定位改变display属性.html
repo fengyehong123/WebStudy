@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        /* 块级元素,不给width 默认一整栏显示 */
+        /* 1. 利用display inline-block 转换为行内块元素
+           行内块元素 如果不给width的话,默认的宽度就是内容的宽度
+         */
+        /* display: inline-block; */
+
+        /* 2. 浮动也能转换 */
+        /* float: left; */
+
+        /* 3. 绝对定位和固定定位也能转换 */
+        position: absolute;
+        height: 100px;
+        background-color: pink;
+    }
+    span {
+        /* 给行内元素的span添加了绝对定位之后,span就有行内元素转换为行内块元素,从而就有了宽度和高度等属性 */
+        position: absolute;
+        top: 200px;
+        left: 200px;
+        width: 300px;
+        height: 300px;
+        background-color: purple;
+    }
+</style>
+<body>
+    <div>一去二三里,烟村四五家</div>
+    <span></span>
+    </span>
+</body>
+</html> 
