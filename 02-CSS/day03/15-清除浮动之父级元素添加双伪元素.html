@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+/* --------------------------------------------------------- */
+		/* 声明清除浮动的样式 */
+		.clearfix:before,
+		.clearfix:after {
+			content: "";
+			display: table;
+		}
+		.clearfix:after {
+			clear: both;
+		}
+		.clearfix {
+			/* ie6和ie7专门用来清除浮动的样式 */
+			*zoom: 1;
+		}
+/* ------------------------------------------------------- */
+		.one {
+			width: 500px;
+			border: 1px  solid red;
+		}
+		/* 两个子盒子浮动 */
+		.damao {
+			float: left;
+			width: 200px;
+			height: 200px;
+			background-color: purple; 
+		}
+		.ermao {
+			float: left;
+			width: 250px;
+			height: 250px;
+			background-color: skyblue;
+		}
+		.two {
+			width: 700px;
+			height: 150px;
+			background-color: #000;
+		}
+	</style>
+</head>
+<body>
+	<!-- 给父类添加我们自定义的clearfix类,从而实现浮动的清除 -->
+	<div class="one clearfix">
+		<div class="damao"></div>
+		<div class="ermao"></div>
+	</div>
+	<div class="two"></div>
+</body>
+</html>
