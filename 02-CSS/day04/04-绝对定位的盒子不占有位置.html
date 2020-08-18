@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 一般来说绝对定位都是配合父级元素来使用的
+       绝对定位不占用位置,可以随意的移动
+       一般来说
+       子元素用绝对定位,而父元素用相对定位
+       子元素使用绝对定位可以使子元素压在父元素身上,且不占用位置(例如轮播图的左右的切换按钮)
+       父元素使用相对定位,可以保证占用位置,保证父元素下面的元素不会跑到父元素底下
+
+       父级要占用位置,子级要随意摆放,这就是 子绝父相的由来
+     */
+    .father {
+        width: 500px;
+        height: 500px;
+        background-color: pink;
+    }
+    /* 我们给damao这个盒子添加了绝对定位,相对定位不占用位置,但是绝对定位占用位置,所以ermao这个盒子会移动到上方 */
+    .damao {
+        /* 我们使用了绝对定位,由于父级元素没有定位,所以damao这个盒子相对于浏览器进行定位 */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 200px;
+        background-color: purple;
+    }
+    .ermao {
+        width: 250px;
+        height: 250px;
+        background-color: skyblue;
+    }
+</style>
+<body>
+    <div class="father">
+        <div class="damao"></div>
+        <div class="ermao"></div>
+    </div>
+</body>
+</html>

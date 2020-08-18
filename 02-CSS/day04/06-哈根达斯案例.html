@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        width: 310px;
+        height: 190px;
+        border: 1px solid #ccc;
+        /* 上下100px 左右居中 */
+        margin: 100px auto;
+        /* 父盒子添加内边距留白 */
+        padding: 10px;
+        position: relative;
+    }
+    .top {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .down {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+</style>
+<body>
+    <div class="box">
+        <!-- 绝对定位 -->
+        <img class="top" src="./images/top_tu.gif" alt="">
+        <img src="./images/adv.jpg" alt="">
+        <!-- 绝对定位 -->
+        <img class="down" src="./images/br.gif" alt="">
+    </div>
+</body>
+</html>

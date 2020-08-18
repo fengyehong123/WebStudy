@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .yeye {
+        width: 500px;
+        height: 500px;
+        background-color: skyblue;
+        /* 父级元素没有定位,爷爷级别的元素有定位,则孙子元素会根据爷爷元素来定位 */
+        /* 对于子元素而言,爷爷或者父亲元素只要有定位就可以,绝对定位或者相对定位都可以 */
+        position: relative;
+    }
+    .father {
+        width: 350px;
+        height: 350px;
+        background-color: pink;
+        /* 标准流的子盒子总是以父级盒子为基准移动位置 */
+        /* 我们给父盒子添加了外边距,父盒子相对于浏览器移动了位置
+           而父盒子里面的子盒子,跟着父盒子也移动了位置
+         */
+        margin: 100px;
+        /* 给父级元素添加定位 */
+        /* 如果父级元素没有定位,但是爷爷级别的有定位,则 孙子会参照爷爷进行定位 */
+        /* position: relative; */
+    }
+    .son {
+        width: 200px;
+        height: 200px;
+        background-color: purple;
+        /* 子盒子使用了绝对定位
+            如果父级盒子没有使用定位,
+              则使用绝对定位的子盒子以浏览器为基准移动位置
+            如果父级盒子使用了绝对定位
+              则使用绝对定位的子盒子以父级盒子为基准移动位置
+            如果父级别元素没有定位,但是爷爷级别元素有定位
+              则参照爷爷元素来绝地定位  
+         */
+        position: absolute;
+        top: 50px;
+        left: 50px;
+    }
+</style>
+<body>
+    <div class="yeye">
+        <div class="father">
+            <div class="son"></div>
+        </div>
+    </div>
+</body>
+</html>

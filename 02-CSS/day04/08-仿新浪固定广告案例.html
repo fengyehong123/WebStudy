@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        width: 1002px;
+        margin: 0 auto;
+    }
+    /* 将左右的两个广告设置为固定定位 */
+    .ad-l {
+        position: fixed;
+        top: 100px;
+        left: 0;
+    }
+    .ad-r {
+        position: fixed;
+        top: 100px;
+        right: 0;
+    }
+</style>
+<body>
+    <img class="ad-l" src="./images/ad-l.png" alt="">
+    <div class="box">
+        <img src="./images/box.png" alt="">
+    </div>
+    <img class="ad-r" src="./images/ad-r.png" alt="">
+</body>
+</html>

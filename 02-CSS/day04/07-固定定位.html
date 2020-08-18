@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        height: 1500px;
+    }
+    .box {
+        /* 虽然父级元素添加了相对定位,但是子元素是固定定位,和父元素没有任何关系 */
+        position: relative;
+        width: 300px;
+        height: 300px;
+        background-color: pink;
+        margin: 100px auto;
+    }
+    .box img {
+        /* 
+           固定定位
+           跟父级元素没有任何关系
+         */
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
+</style>
+<body>
+    <div class="box">
+        <img src="./images/sun.jpg" alt="" width="150">
+    </div>
+</body>
+</html>

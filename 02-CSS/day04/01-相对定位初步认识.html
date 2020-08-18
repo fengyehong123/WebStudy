@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+        /* 我们给div盒子添加了上下左右100px的外边款,div盒子移动了位置 */
+        margin: 100px;
+        /* 定位 = 定位模式 + 边偏移 */
+        /* 
+          相对定位
+          相对定位是相对于盒子原来的位置进行的移动
+          我们给div盒子添加了 margin: 100px 之后,盒子位于 上边距100px,左边距100px的位置上
+          我们的相对定位在盒子 margin: 100px 的基础之上 进行 top: 100px left: 100px 的移动
+        */
+        position: relative;  
+        top: 100px;
+        left: 100px;
+    }
+</style>
+<body>
+    <div></div>
+</body>
+</html>

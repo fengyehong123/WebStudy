@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .damao,
+    .ermao,
+    .sanmao {
+        /* 三个盒子绝对定位 */
+        /* 当三个盒子都绝对定位的时候,原先最下面的盒子,在最上面显示(遵循后来者居上的原则) */
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background-color: red;
+    }
+    .damao {
+        /* 当三个盒子都绝对定位的时候,通过z-index来指定最上方显示的盒子
+           z-index的值越大,就越靠上显示
+           z-index 后面跟的值没有单位
+           z-index 只能用于相对定位,绝对定位和固定定位的元素,标准流,浮动和静态定位无效
+         */
+        z-index: 2;
+    }
+    .ermao {
+        top: 50px;
+        left: 50px;
+        z-index: 1;
+        background-color: seagreen;
+    }
+    .sanmao {
+        top: 100px;
+        left: 100px;
+        background-color: blue;
+    }
+</style>
+<body>
+    <div class="damao"></div>
+    <div class="ermao"></div>
+    <div class="sanmao"></div>
+</body>
+</html>

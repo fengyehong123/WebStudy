@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+    }
+    .two {
+        background-color: purple;
+        /* 相对定位 */
+        /* 
+          相对定位的特性:
+            1. 相对于自己原来在标准流中的位置移动
+            2. 相对定位之后,原来在标准流的区域继续占有(这一点和浮动不相同,浮动的盒子不占用原来的位置),
+            后面的盒子仍然以标准流的方式对待它
+         */
+        position: relative;
+        top: 80px;
+        left: 120px;
+    }
+</style>
+<body>
+    <div>1</div>
+    <div class="two">2</div>
+    <div>3</div>
+</body>
+</html>

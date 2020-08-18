@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .up {
+        /* 父元素使用相对定位,保证能占用位置 */
+        position: relative;
+        width: 1000px;
+        height: 90px;
+        background-color: pink;
+    }
+    .down {
+        width: 1000px;
+        height: 150px;
+        background-color: black;
+    }
+    .arr-l {
+        /* 子元素使用绝对定位保证,小盒子能出现在图片的上方 */
+        position: absolute;
+        top: 25px;
+        /* 小盒子贴近左边显示 */
+        left: 0;
+        width: 40px;
+        height: 40px;
+        background-color: purple;
+    }
+    .arr-r {
+        /* 子元素使用绝对定位保证,小盒子能出现在图片的上方 */
+        position: absolute;
+        top: 25px;
+        /* 小盒子贴近右边显示 */
+        right: 0;
+        width: 40px;
+        height: 40px;
+        background-color: purple;
+    }
+</style>
+<body>
+    <div class="up">
+        <img src="./images/img.jpg" alt="">
+        <!-- 左侧盒子 -->
+        <div class="arr-l"></div>
+        <!-- 右侧盒子 -->
+        <div class="arr-r"></div>
+    </div>
+    <div class="down"></div>
+</body>
+</html>

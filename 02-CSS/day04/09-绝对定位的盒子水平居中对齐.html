@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        /* margin 左右auto 无法让绝对定位的盒子水平居中 */
+        position: absolute;
+        /* ---------------- */
+        /* 绝对定位的盒子水平居中
+           1. left: 50%;
+           2. 绝对定位元素自身宽度的一半 margin-left: -100px
+        */
+        left: 50%;
+        margin-left: -100px;  /* 向左移动自己宽度的一半 */
+        /* ---------------- */
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+        /* 以前的标准流 margin 左右auto 就可以让盒子水平居中 */
+        /* margin: auto; */
+    }
+</style>
+<body>
+    <div></div>
+</body>
+</html>
