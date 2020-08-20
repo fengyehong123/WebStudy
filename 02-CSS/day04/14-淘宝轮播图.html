@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        list-style: none;
+    }
+    .taobao {
+        width: 520px;
+        height: 280px;
+        background-color: pink;
+        margin: 100px auto;
+        position: relative;
+    }
+    .arrow-l,
+    .arrow-r {
+        /* 我们使用定位来使箭头放置到最上层 */
+        /* 绝对定位的盒子无需转换,直接给大小就好了 */
+        position: absolute;
+        /* 箭头需要垂直居中,垂直居中公式 */
+        /* 父级高度的一半 */
+        top: 50%;
+        /* 向上走自己高度的一半 */
+        margin-top: -15px;
+        text-decoration: none;
+
+        width: 20px;
+        height: 30px;
+        background-color: rgba(0, 0, 0, 0.2);
+        color: #fff;
+        line-height: 30px;
+    }
+    .arrow-l {
+        /* 箭头居中 */
+        text-align: center;
+        left: 0;
+        /* 圆角矩形 */
+        /* 下面的矩形弧度设置是给矩形的四个角同时设置弧度 */
+        /* border-radius: 15px; */
+        /* 我们给矩形的右上角和右下角设置弧度 */
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+    .arrow-r {
+        /* 箭头居中 */
+        text-align: right;
+        right: 0;
+        text-decoration: none;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+    }
+    /* 鼠标经过的时候变颜色 */
+    .arrow-l:hover,
+    .arrow-r:hover {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    .circle {
+        /* 小圆圈盒子也要绝对定位,放到最上层 */
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        margin-left: -35px;
+        width: 70px;
+        height: 13px;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 7.5px;
+    }
+    .circle li {
+        /* 小圆点浮动排列 */
+        float: left;
+        width: 8px;
+        height: 8px;
+        background-color: #fff;
+        border-radius: 50%;
+        margin: 3px;
+    }
+    /* 此处一定要注意优先级的问题.我们多添加了 .circle 使得选择器的权重增大.因此才显示 #ff5000 否则会显示 #fff */
+    .circle .current {
+        background-color: #ff5000;
+    }
+</style>
+<body>
+    <div class="taobao">
+        <!-- 左侧箭头 -->
+        <a class="arrow-l" href="#"> &lt; </a>
+        <!-- 右侧箭头 -->
+        <a class="arrow-r" href="#"> &gt; </a>
+        <img src="./images/taobao.jpg" alt="">
+        <!-- 小圆点 -->
+        <ul class="circle">
+            <li></li>
+            <li class="current"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 
+        滑动门就是一个长条图片,一边靠左侧对齐,另一边靠右侧对齐
+        整个滑动门会随着文字的增多而变化
+        1. a是设置左侧背景(左门)
+        2. span是设置右侧背景(右门)
+        3. 因为整个导航栏都是链接,所以a标签要包含span标签
+        4. 因为我们是滑动门,左右推拉.跟文字的内容多少有关系,此时需要用文字撑开盒子,就要用到行内块元素
+     */
+    a {
+        display: inline-block;
+        height: 33px;
+        /* 默认图片是靠左侧对齐的 */
+        background: url(./images/to.png) no-repeat;
+        /* 显示出左侧按钮 */
+        padding-left: 15px;
+        margin: 100px;
+        color: #fff;
+    }
+    a span {
+        display: inline-block;
+        height: 33px;
+        /* 一定要注意span需要背景图片右对齐 */
+        background: url(./images/to.png) no-repeat right top;
+        padding-right: 15px;
+        text-align: center;
+        line-height: 33px;
+    } 
+</style>
+<body>
+    <!-- a标签里面包含span标签是最常见的滑动门布局方法 -->
+    <a href="#">
+        <span>首页</span>
+    </a>
+    <!-- 虽然文字增多了但是导航栏两侧的圆形并没有变化,这就是滑动门的魅力 -->
+    <a href="#">
+        <span>公司首页</span>
+    </a>
+</body>
+</html>

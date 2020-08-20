@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        border: 1px solid red;
+    }
+    .div1 img {
+        /* 通过来设置图片的底线对齐来去除图片下面的缝隙 */
+        vertical-align: bottom;
+        /* 只要不是默认的基线对齐,剩下的对齐方式都可以解决这个问题 */
+        /* vertical-align: middle;
+        vertical-align: top; */
+    }
+    .div2 img {
+        /* 还有一种解决方式是 把 img的行内块元素转换为 块级元素
+           转换为块级元素之后,vertical-align就会失效,不存在任何对齐方式,然后多余的白色区域就没有了
+         */
+        display: block;
+    }
+</style>
+<body>
+    <div>
+        <img src="./images/3.jpg" alt="">
+    </div>
+    <hr>
+    <div class="div1">
+        <img src="./images/3.jpg" alt="">
+    </div>
+    <hr>
+    <div class="div2">
+        <img src="./images/3.jpg" alt="">
+    </div>
+</body>
+</html>

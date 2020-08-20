@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 150px;
+        height: 25px;
+        border: 1px solid pink;
+        /* 当文字显示不开的时候,自动换行 */
+        /* white-space: normal; */
+        /* 要文字强制一行内显示,如果一行显示不开,就超出当前元素显示 除非遇见br强制换行 */
+        white-space: nowrap;
+        /* 将超出元素部分的文字隐藏(溢出隐藏) */
+        overflow: hidden;
+        /* 文字用省略号来替代超出的部分 */
+        text-overflow: ellipsis;
+    }
+</style>
+<body>
+    <div>一去二三里,烟村四五家,亭台六七座</div>
+</body>
+</html>

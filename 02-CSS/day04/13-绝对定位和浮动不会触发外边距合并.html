@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 我们给盒子添加浮动或者定位,就不会有垂直外边距合并的问题了 */
+    .father {
+        /* float: left; */
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background-color: pink;
+    }
+    .son {
+        /* 子元素浮动可以解决外边距合并的问题 */
+        /* float: left; */
+        /* 绝对定位也可以解决外边距合并的问题 */
+        /* position: absolute; */
+        width: 200px;
+        height: 200px;
+        background-color: purple;
+        /* 会发生外边距合并问题 */
+        margin-top: 100px;
+    }
+</style>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+</html>

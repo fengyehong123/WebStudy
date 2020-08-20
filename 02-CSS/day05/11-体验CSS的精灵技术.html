@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 给盒子指定小的背景图片的时候,每个小背景图片的定位基本上都是负值 */
+    .icon1 {
+        /* 盒子的大小和我们切出来的精灵图的大小应该相等,具体的尺寸需要测量精灵图的位置获取 */
+        width: 23px;
+        height: 23px;
+        background: url(./images/index.png) no-repeat;
+        /* 我们把精灵图放到icon1盒子里显示,我们需要调整精灵图的位置,让我们想要的部分显示出来 */
+        /* 我们想要的部分具体在哪个位置,需要自己通过工具进行测量 */
+        background-position: 0 -107px;
+    }
+    .icon2 {
+        width: 23px;
+        height: 23px;
+        background: url(./images/index.png) no-repeat;
+        background-position: -157px -107px;
+    }
+</style>
+<body>
+    <!-- 
+         CSS中的精灵技术 其实就是将网页中的很多个背景图片整合到一张大图中(精灵图),各个网页元素通常只需要精灵图中的不同位置的小图.只需要精确定位小图就可以了
+         通过精灵技术,我们可以把请求很多次小图的请求转换为请求一张大图的请求,减少了向服务器的请求次数,减缓了服务器的压力
+     -->
+     <!-- 第一个精灵图 -->
+     <div class="icon1"></div>
+     <hr>
+     <!-- 第二个精灵图 -->
+     <div class="icon2"></div>
+
+</body>
+</html>
