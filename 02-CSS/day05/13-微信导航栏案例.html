@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        list-style: none;
+    }
+    body {
+        /* 背景图片横向平铺 */
+        background: url(./images/wx.jpg) repeat-x;
+    }
+    .nav {
+        margin-top: 20px;
+    }
+    .nav li {
+        float: left;
+        /* 上下0像素,左右5像素 */
+        margin: 0 5px;
+    }
+    .nav a {
+        /* a标签转换为块级别元素,方便给a元素添加宽高等样式 */
+        display: inline-block;
+        text-decoration: none;
+        height: 33px;
+        background: url(./images/to.png) no-repeat;
+        /* 左侧空出15像素撑开 */
+        padding-left: 15px;
+        color: #fff;
+    }
+    .nav a span {
+        display: inline-block;
+        height: 33px;
+        background: url(./images/to.png) no-repeat right;
+        /* 右侧空出15像素撑开 */
+        padding-right: 15px;
+        text-align: center;
+        line-height: 33px;
+        font-size: 14px;
+    }
+    /* 鼠标经过的时候,背景图片换成凹下去的图片 */
+    .nav a:hover,
+    .nav a:hover span{
+        background-image: url(./images/ao.png);
+    }
+</style>
+<body>
+    <div class="nav">
+        <!-- 在导航栏中 ul包含li,li包含a,a包含span是常见的布局方式 -->
+        <ul>
+            <li>
+                <a href="#">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>帮助与反馈</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>公众平台</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>开放平台</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

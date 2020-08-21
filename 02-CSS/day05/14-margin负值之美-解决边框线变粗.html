@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 200px;
+        height: 300px;
+        border: 1px solid #ccc;
+        /* 我们给每个盒子都添加了边框线,当我们把盒子添加浮动样式的时候.盒子会水平的排列在一起
+           由于盒子的是有边框线的,因此边框线和边框线靠在一起,边框线的颜色就会变粗
+           我们可以采用 margin负值的方 式来解决这个问题
+         */
+        float: left;
+        /* 我们给每一个盒子向左移动一个像素,实现一个盒子的边框压住另一个盒子,从而解决边框线变粗的问题 */
+        margin-left: -1px;
+        /* 解决上下边框线变粗的问题 */
+        margin-top: -1px;
+    }
+</style>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

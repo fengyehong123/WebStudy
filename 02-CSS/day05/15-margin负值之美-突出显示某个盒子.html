@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        /* 我们需要使用定位来保证鼠标经过的盒子的层级最高,否则当前盒子的框线就会被旁边的盒子给压住
+           但是所有的盒子都相对定位的话,边框线还是会被压住,我们可以使用 z-index 指定当前鼠标经过的盒子
+           的优先级最高
+         */
+        /* 我们使用相对定位,因为相对定位的盒子还是占据位置的 */
+        position: relative;
+        width: 200px;
+        height: 300px;
+        border: 1px solid #ccc;
+        float: left;
+        margin-left: -1px;
+        margin-top: -1px;
+    }
+    /* 鼠标经过div标签的效果 */
+    div:hover {
+        border: 1px solid #f40;
+        /* 所有的盒子都使用了相对定位,我们给当前鼠标经过的盒子的优先级别最高 */
+        z-index: 1;
+    }
+</style>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>
