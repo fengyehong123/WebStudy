@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 声明样式属性名,但是样式属性值在我们自定义的变量中 -->
+        <div v-bind:style='{border: borderStyle, width: widthStyle, height: heightStyle}'></div>
+        <!-- style的值可以使一个样式对象 -->
+        <div v-bind:style='objStyles'></div>
+        <!-- 我们可以添加一个数组,数组中存放一个个的样式对象 -->
+        <div v-bind:style='[objStyles, overrideStyles]'></div>
+        <button v-on:click='handle'>切换</button>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            // 把样式的值放到一个变量中
+            borderStyle: '1px solid blue',
+            widthStyle: '100px',
+            heightStyle: '200px',
+            // 对象中存放若干个样式
+            objStyles: {
+                border: '1px solid green',
+                width: '200px',
+                height: '100px'
+            },
+            overrideStyles: {
+                border: '5px solid orange',
+                backgroundColor: 'blue'
+            }
+        },
+        methods: {
+            handle: function() {
+                this.heightStyle = '100px';
+                this.objStyles.width = '100px';
+            }
+        }
+    });
+</script>
+</html>

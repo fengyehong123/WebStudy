@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .active {
+      border: 1px solid red;
+      width: 100px;
+      height: 100px;
+    }
+    .error {
+      background-color: orange;
+    }
+</style>
+<body>
+    <div id="app">
+        <div :class='[activeClass, errorClass]'>测试样式</div>
+        <button @click='handle'>点击切换样式</button>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            activeClass: 'active',
+            errorClass: 'error',
+    
+        },
+        methods: {
+            // 点击切换样式的时候,把类的值设置为空,就可以清除样式
+            handle: function() {
+                this.activeClass = '';
+                this.errorClass = '';
+            },
+        },
+    })
+</script>
+</html>

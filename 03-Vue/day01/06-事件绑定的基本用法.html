@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>{{num}}</div>
+        <hr>
+        <div>
+            <!-- 事件绑定的写法及其简写 -->
+            <button v-on:click='num++'>点击0</button>
+            <!-- 事件绑定的简写 -->
+            <button @click='num++'>点击1</button>
+            <!-- 直接绑定函数名称 -->
+            <button @click='handle'>点击2</button>
+            <!-- 直接调用函数 -->
+            <button @click='handle()'>点击3</button>
+        </div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            num: 0,
+        },
+        // methods中主要是定义一些函数
+        methods: {
+            // 自定义函数,handle是我们自定义函数的名称
+            handle: function() {
+                // 这里的this是Vue的实例对象+
+                console.log(this === vm) // true
+                // 在函数中 想要使用data里面的数据的话,一定要加this 
+                this.num++;
+            }
+        },
+
+    })
+</script>
+</html>

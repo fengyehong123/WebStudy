@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>{{num}}</div>
+        <hr>
+        <!-- 
+            我们点击div标签中的按钮,会触发handle1()函数
+            但是由于button按钮是包含在div标签中的,所以我们的点击事件也冒泡到div标签中
+            触发div标签中的handle0函数
+         -->
+        <div v-on:click='handle0'>
+            <!-- 使用了Vue点击事件自带的方式阻止冒泡行为 -->
+            <button v-on:click.stop='handle1'>点击1</button><br>
+            <!-- 
+                没有使用Vue点击事件自带的阻止冒泡行为的方式
+                但是可以在相应的函数中使用js原生的方式阻止函数冒泡
+            -->
+            <button v-on:click='handle1'>点击2</button>
+        </div>
+        <div>
+            <!-- 使用了Vue点击事件自带的方式阻止a标签的默认行为 -->
+            <a href="http://www.baidu.com" v-on:click.prevent='handle2'>百度</a><br>
+            <!-- 
+                没有使用了Vue点击事件自带的方式阻止a标签的默认行为
+                但是可以在函数中使用js原生的方式阻止a标签的默认行为
+             -->
+            <a href="http://www.baidu.com" v-on:click='handle2'>百度</a>
+        </div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            num: 0,
+        },
+        methods: {
+            handle0: function(){
+                this.num++;
+            },
+            handle1: function(event){
+                // js原生方式阻止冒泡
+                // event.stopPropagation();
+            },
+            handle2: function(event){
+                // js原生方式,阻止默认行为,因为是a标签绑定了此函数
+                // 因此点击a标签的时候,默认的跳转行为会被阻止
+                event.preventDefault();
+            },
+        },
+
+    })
+</script>
+</html>

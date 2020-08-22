@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>{{msg}}</div>
+        <!-- 
+            v-once的应用场景：
+            如果显示的信息后续不需要再修改，这时可以使用v-once，
+            添加v-once之后就失去了数据的响应式功能,我们就算改变info的内容,页面上也不会有变化
+            这样可以提高性能。
+         -->
+        <div v-once>{{info}}</div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    /*
+        1. 什么叫做响应式
+            html5中的响应式(屏幕尺寸的变化导致样式的变化)
+            数据的响应式(数据的变化导致页面内容的变化)
+        2. 什么是数据绑定
+            将数据填充到标签中的过程就叫做数据绑定
+    */
+    new Vue({
+        el: '#app',
+        data: {
+           msg: 'Hello Vue', 
+           info: 'nihao'
+        }
+    })
+</script>
+</html>

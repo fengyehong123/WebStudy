@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 
+        什么是指令
+        指令的本质就是自定义的属性
+        指令的格式: 以v- 开始(例如:v-cloak)
+    */
+    /* 
+        Vue自带的解决插值表达式闪动的指令
+        用法:
+        1. 现在css中提供样式
+        2. 在插值表达式中放置指令
+    */
+    [v-cloak] {
+        display: none;
+    }
+</style>
+<body>
+    <div id="app">
+        <!-- 差值表达式中加入指令,解决闪动的问题 -->
+        <!-- 
+            之所有会有闪动的问题,是因为浏览器显示的时候,先显示差值表达式
+            然后再将数据放入插值表达式中,进行替换
+            如果遇到网络延迟或者浏览器卡顿的情况就会出现闪动的问题
+
+            解决的原理:
+                先通过样式隐藏内容,然后再内存中进行值的替换,替换好之后再显示最终的内容
+         -->
+        <div v-cloak>{{msg}}</div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app", 
+        data: {
+            msg: 'hello world Vue'
+        }
+    })
+</script>
+</html>

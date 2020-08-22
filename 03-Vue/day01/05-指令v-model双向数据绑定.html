@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>{{msg}}</div>
+        <hr>
+        <div>
+            <!-- 我们这个input输入框和 msg数据对象双向数据绑定
+                 msg的数据会同步显示到input输入框中
+                 同时我们修改input输入框的内容也会同步修改 msg数据对象的内容
+            -->
+            <!-- 
+                什么是数据绑定
+                    将数据填充到标签中的过程就叫做数据绑定
+                    如果标签中的内容同时也影响到了原始的数据,这就叫双向数据绑定
+             -->
+            <input type="text" v-model='msg'>
+        </div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+           msg: 'Hello Vue', 
+        }
+    })
+</script>
+</html>

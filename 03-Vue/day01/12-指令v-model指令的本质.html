@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            采用属性绑定的方式,将我们自定义的msg放入input标签的value属性中
+            给input标签添加一个input输入事件,给事件添加一个handle函数
+         -->
+        <input type="text" v-bind:value='msg' v-on:input='handle'><br>
+        <!-- 我们也可以将上面的input输入框写作下面的形式,下面的形式是对 handle函数的拆解 -->
+        <input type="text" v-bind:value='msg' v-on:input='msg=$event.target.value'><br>
+        <!-- v-model就是上面两种方法的简写 -->
+        <input type="text" v-model='msg'>
+        <div>{{msg}}</div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello',
+        },
+        /*
+            我们虽然没有使用v-model,但是却仍然实现了双向绑定
+            由此可见 v-model的本质就是 使用了v-bind来绑定值,然后使用 v-on:input 来处理值的变化
+        */
+        methods: {
+            handle: function(event) {
+                // 一旦我们在input输入框内输入东西,我们就从input对象中获取输入的值,替换掉自定义的msg变量
+                // 进行影响到input标签的value属性的值
+                this.msg = event.target.value;
+            }
+        }
+    })
+</script>
+</html>

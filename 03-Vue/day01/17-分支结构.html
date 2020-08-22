@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-if='score>=90'>优秀</div>
+        <div v-else-if='score < 90 && score >= 80'>良好</div>
+        <div v-else-if='score <80 && score > 60'>一般</div>
+        <div v-else='score'>差劲</div>
+        <hr>
+        点击显示或者消失<br>
+        <!-- 当v-show的值为true的时候,该标签显示.为false的时候,标签不显示 -->
+        <div v-show="flag">我是div元素</div>
+        <button @click='handle'>按钮</button>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            score: 10,
+            flag: false
+        },
+        methods: {
+            handle: function() {
+                this.flag = !this.flag;
+            }
+        },
+    })
+</script>
+</html>

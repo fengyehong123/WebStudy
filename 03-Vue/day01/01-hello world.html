@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            插值表达式,将数据填充到HTML标签中
+            插值表达式支持基本的计算操作
+         -->
+        <div>{{msg}}</div>
+        <div>{{1 + 99}}</div>
+        <div>{{ 100 + " " + msg}}</div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    // Vue代码经过Vue框架转换为原生的js代码
+    new Vue({
+        // 元素的挂载位置,需要把数据放置到什么地方
+        el: "#app",  // 值可以是CSS选择器或者是DOM元素
+        // 模型数据,值是一个对象
+        data: {
+            msg: 'hello world Vue'
+        }
+
+        什么是指令
+        指令的本质就是自定义的属性
+        指令的格式: 以v- 开始(例如:v-cloak)
+    })
+</script>
+</html>

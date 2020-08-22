@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    .active {
+        border: 1px solid red;
+        width: 100px;
+        height: 100px;
+    }
+    .error {
+        background-color: orange;
+    }
+    .test {
+        color: blue;
+    }
+    .base {
+        font-size: 28px;
+    }
+  </style>
+<body>
+    <div id="app">
+        <!-- 
+            对象绑定和数组绑定可以结合使用
+            当isTest为true的时候,就会加载test属性到div标签上
+         -->
+        <div v-bind:class='[activeClass, errorClass, {test: isTest}]'>测试样式</div>
+        <button v-on:click='handle'>切换</button>
+        <hr>
+
+        <div :class='arrClasses'>class绑定简化操作</div>
+        <hr>
+
+        <div :class='objClasses'></div>
+        <button v-on:click='change'>部分样式切换</button>
+        <hr>
+
+        <!-- 虽然我们又绑定了objClasses.但是默认的类 base会一直保留 -->
+        <div class="base" v-bind:class='objClasses'>默认的类的样式会保留</div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    /*
+        样式绑定相关语法细节：
+        1、对象绑定和数组绑定可以结合使用
+        2、class绑定的值可以简化操作
+        3、默认的class如何处理？默认的class会保留
+    */
+    new Vue({
+        el: '#app',
+        data: {
+            activeClass: 'active',
+            errorClass: 'error',
+            isTest: true,
+            /*
+                class绑定的值可以简化操作,当我们有好几个类作用于div标签上时.我们可以把若干个类放到一个数组对象中
+                然后再把存放若干个类的数组对象添加到 div中.这样就起到了简化操作的作用
+            */
+            arrClasses: ['active','error'],
+            // 类绑定的简化操作 + 类样式添加与否的控制
+            objClasses: {
+                active: true,
+                error: true
+            }
+        },
+        methods: {
+            handle: function(){
+                // 点击的时候,isTest样式来回切换
+                this.isTest = !this.isTest;
+            },
+            change: function() {
+                this.objClasses.error = !this.objClasses.error;
+            },
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 遍历出所有的数值 -->
+        <div v-for='(value, name, index) in obj'>{{value + '---' + name + '---' + index}}</div>
+        <hr>
+        <!-- 只显示值为13时候的值 -->
+        <div v-if='value==13' v-for='(value, name, index) in obj'>{{value + '---' + name + '---' + index}}</div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    // 使用原生js遍历对象
+    var obj = {
+        uname: 'lisi',
+        age: 12,
+        gender: 'male'
+    }
+    // for in 的方式最好只用来遍历对象
+    for(var key in obj) {
+        console.log(key, obj[key])
+    }
+
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            obj: {
+                uname: 'zhangsan',
+                age: 13,
+                gender: 'female'
+            }
+        }
+    });
+</script>
+</html>

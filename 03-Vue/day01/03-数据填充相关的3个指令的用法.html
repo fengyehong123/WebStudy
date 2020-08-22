@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>{{msgText}}</div>
+        <!-- v-text指令用于将数据填充到标签中，作用于插值表达式类似，但是没有闪动问题 -->
+        <div v-text='msgText'>我们使用v-text指令,div标签里面的文本不会显示</div>
+        <!-- v-html指令用于将HTML片段填充到标签中，但是可能有安全问题
+             网站内部的数据可以使用,但是第三方的数据不可以使用
+             不能在用户提交的数据的标签中使用v-html
+        -->
+        <div v-html='msgHtml'>我用到了v-html指令</div>
+        <!-- v-pre用于显示原始信息,跳过编译过程 -->
+        <div v-pre>{{msg}}</div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            msgText: 'Hello Vue',
+            // 文本中包含html片段
+            msgHtml: '<h1>HTML</h1>'
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <form action="">
+            <div>
+                用户名：
+                <!-- Vue自带的按键修饰符 -->
+                <!-- v-model是双向事件绑定 -->
+                <input type="text" v-on:keyup.delete='clearContent' v-model='uname'>
+            </div>
+            <div>
+                密码：
+                <!-- f1是我们自定义的按键修饰符(相当于键盘按下Delete键) -->
+                <input type="text" v-on:keyup.f1='clearPassWord' v-model='pwd'><br>
+                <!-- .enter 回车键,按下回车键清空密码 -->
+                <!-- <input type="text" v-on:keyup.enter='clearPassWord' v-model='pwd'> -->
+                <!-- 按下回车键提交整个表单 -->
+                <input type="text" v-on:keyup.enter='handleSubmit' v-model='pwd'>
+                
+            </div>
+            <div>
+                <input type="button" v-on:click='handleSubmit' value="提交">
+            </div>
+            <div>
+                按下键盘按键查看按键所对应的数字
+                <!-- @keyup按键的简写 -->
+                <input type="text" @keyup="showNum"><br>
+                <!-- 通过双向绑定来展示键盘按下时,按键所对应的数字 -->
+                <input type="text" v-model='keyboardNum'>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    
+    // 我们可以自定义按键修饰符,Vue给我们提供了config.keyCodes对象
+    Vue.config.keyCodes.f1 = 113  // 键盘上的delete键所对应的ascii值为46
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            uname: '',
+            pwd: '',
+            age: 0,
+            keyboardNum: '',
+        },
+        methods: {
+            clearContent: function(){
+                // 按delete键的时候，清空用户名
+                this.uname = '';
+            },
+            clearPassWord: function() {
+                // 按delete键的时候，清空密码
+                this.pwd = '';
+            },
+            handleSubmit: function(){
+                console.log(this.uname,this.pwd)
+            },
+            showNum: function(event) {
+                // 把键盘按键所对应的按钮赋值给我们自定义的变量
+                this.keyboardNum = event.keyCode
+            }
+        }
+    });
+</script>
+</html>

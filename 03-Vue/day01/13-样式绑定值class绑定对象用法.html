@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .active {
+      border: 1px solid red;
+      width: 100px;
+      height: 100px;
+    }
+    .error {
+      background-color: orange;
+    }
+</style>
+<body>
+    <div id="app">
+        <!-- 
+            我们给div标签添加了两个class,当isActive和isError的值为true的时候,对应的
+            样式才会加载到标签上
+         -->
+        <div v-bind:class="{active: isActive, error: isError}">测试样式</div>
+        <button v-on:click='handle'>切换div标签class样式</button>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isActive: true,
+            isError: true
+        },
+        methods: {
+            handle: function() {
+                // 控制isActive的值在true和false之间进行切换
+                this.isActive = !this.isActive;
+                this.isError = !this.isError;
+            }
+        },
+    })
+</script>
+</html>

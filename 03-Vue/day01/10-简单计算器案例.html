@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>简单计算器</h1>
+        <div>
+            <span>数值A:</span>
+            <span>
+                <input type="text" v-model='a'>
+            </span>
+        </div>
+        <div>
+            <span>数值B:</span>
+            <span>
+                <input type="text" v-model='b'>
+            </span>
+        </div>
+        <div>
+            <button v-on:click='handle'>计算</button>
+        </div>
+        <div>
+            <span>计算两个数字相加:</span>
+            <span v-text='result'></span>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            a: '',
+            b: '',
+            result: ''
+        },
+        methods: {
+            handle: function(){
+                // 我们输入的相当于是字符串.我们将字符串转换为数字
+                this.result = parseInt(this.a) + parseInt(this.b);
+            }
+        }
+    });
+</script>
+</html>
