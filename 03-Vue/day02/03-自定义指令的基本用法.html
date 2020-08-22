@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text"><br>
+        <!-- 我们自定义的指令 -->
+        <input type="text" v-focus>
+    </div>
+</body>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+    // 自定义指令,当我们打开页面的时候,我们放置指令的文本输入框自动获取焦点,光标在输入框内闪烁.用户体验更好
+    Vue.directive('focus', {
+        inserted: function(el){
+            // el表示指令所绑定的元素
+            el.focus();  // focus 获取焦点
+        }
+    });
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+        
+        },
+        methods: {
+
+        }
+    });
+</script>
+</html>

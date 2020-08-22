@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 我们通过自定义的指令传递了参数,设置输入框的背景颜色为蓝色 -->
+        <input type="text" v-color='msg'>
+    </div>
+</body>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+    // 此定义方法定义的指令是作用于整个Vue的,如果我们下面new了好几个Vue,那么这几个Vue都可以使用
+    // 下面自定义的指令
+    // 自定义指令,带参数
+    Vue.directive('color', {
+        bind: function(el, binding){
+            // 根据指令的参数设置背景色
+            console.log(binding.value.color)  // blue
+            el.style.backgroundColor = binding.value.color;
+        }
+    });
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: {
+                color: 'blue'
+            }
+        },
+    });
+</script>
+</html>

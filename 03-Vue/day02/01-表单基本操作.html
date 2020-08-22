@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style type="text/css">
+    form div {
+        height: 40px;
+        line-height: 40px;
+    }
+    /* 我们给form下的第4个div设置高度为0 */
+    form div:nth-child(4) {
+        height: auto;
+    }
+    form div span:first-child {
+        display: inline-block;
+        width: 100px;
+    }
+</style>
+<body>
+    <div id="app">
+        <form action="http://itcast.cn">
+            <div>
+                <span>姓名：</span>
+                <span>
+                    <!-- 单行输入框,和我们定义的数据双向绑定 -->
+                    <input type="text" v-model='uname'>
+                </span>
+            </div>
+            <div>
+                <span>性别：</span>
+                <span>
+                    <!-- 
+                        多个单选框所双向绑定的是同一个值
+                        这样可以保证只能选择一个值
+                     -->
+                    <input type="radio" id="male" value="1" v-model='gender'>
+                    <label for="male">男</label>
+                    <input type="radio" id="female" value="2" v-model='gender'>
+                    <label for="female">女</label>
+                </span>
+            </div>
+            <div>
+                <!-- 
+                    多选框绑定的是一个列表,列表中存放着我们多选的数据
+                 -->
+                <span>爱好：</span>
+                <input type="checkbox" id="ball" value="1" v-model='hobby'>
+                <label for="ball">篮球</label>
+                <input type="checkbox" id="sing" value="2" v-model='hobby'>
+                <label for="sing">唱歌</label>
+                <input type="checkbox" id="code" value="3" v-model='hobby'>
+                <label for="code">写代码</label>
+            </div>
+            <div>
+                <span>职业：</span>
+                <!-- 
+                    如果我们要选择多个下拉框的话,需要在标签后面添加 multiple='true'
+                    下拉列表
+                        如果只允许选择一个值,就绑定普通的变量就行
+                        如果可以选择多个值,就绑定一个数组,数组中存放着我们多选的数据
+                 -->
+                <select v-model='occupation'>
+                    <option value="0">请选择职业...</option>
+                    <option value="1">教师</option>
+                    <option value="2">软件工程师</option>
+                    <option value="3">律师</option>
+                </select>
+            </div>
+            <div>
+                <span>个人简介：</span>
+                <textarea v-model='desc'></textarea>
+            </div>
+            <div>
+                <!-- 
+                    我们在提交表单数据的时候,一般不使用form标签默认自带的提交行为
+                    我们一般使用ajax手动提交
+                    但是我们点击提交的时候会触发默认的提交行为
+                    所以我们使用Vue自带的阻止默认行为的方式
+                -->
+                <input type="submit" value="提交" @click.prevent='handle'>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            uname: 'lisi',
+            gender: 2,
+            hobby: ['2','3'],
+            occupation: '0',
+            // 如果我们使用多选的话,需要改为数组
+            // occupation: ['0'],
+            desc: 'nihao'
+        },
+        methods: {
+            handle: function(){
+                console.log(this.uname)
+                console.log(this.gender)
+                console.log(this.hobby.toString())
+                console.log(this.occupation.toString())
+                console.log(this.desc)
+            }
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            采用原生js的方式对字符串进行反转
+            表达式的计算逻辑比较复杂,我们使用计算属性可以使模板内容更加简洁
+         -->
+        <div>{{msg.split('').reverse().join('')}}</div>
+        <!-- 
+            使用计算属性之后,模板的内容更加简洁了
+         -->
+        <div>{{reversedString}}</div>
+        <div>{{reversedString}}</div>
+        <hr>
+        <!-- 使用方法获取操作之后的字符串 -->
+        <div>{{reversedMessage()}}</div>
+        <div>{{reversedMessage()}}</div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            msg: 'Nihao',
+        },
+        methods: {
+            // 方法返回的结果不进行缓存,调用几次就执行几次
+            reversedMessage: function() {
+                console.log("reversedMessage执行了");
+                return this.msg.split('').reverse().join('');
+            }
+        },
+        // 使用计算属性
+        computed: {
+            reversedString: function() {
+                /*
+                    我们虽然用到了两次 reversedString,按理来说会执行两次下面的打印语句
+                    计算属性是基于依赖进行缓存的,只要data中的数据没有发生变化
+                    虽然用到了两次reversedString,但只走一次reversedString,剩下的几次都直接走缓存
+                */
+                console.log("reversedString执行了"); // reversedString执行了
+                // 由于计算属性用到了data中的值,如果data中的值发生了变化,计算属性的结果也会发生变化
+                return this.msg.split('').reverse().join('');
+            }
+        }
+    })
+</script>
+</html>

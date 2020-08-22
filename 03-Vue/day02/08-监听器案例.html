@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <span>用户名：</span>
+            <span>
+                <!-- .lazy当我们回车或者失去焦点的时候才完成数据的双向绑定 -->
+                <input type="text" v-model.lazy='uname'>
+            </span>
+            <span>{{tip}}</span>
+        </div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            uname: '',
+            tip: ''
+        },
+        methods: {
+            checkName: function(uname) {
+                // 调用接口，但是可以使用定时任务的方式模拟接口调用
+
+                // 不能在setTimeout函数中直接使用this,如果直接使用this,此时的this指向的是setTimeout函数,而不是Vue对象
+                let that = this;
+                setTimeout(function(){
+                    // 模拟接口的使用
+                    if(uname == 'admin') {
+                        that.tip = '用户名已经存在，请更换一个';
+                    } else {
+                        that.tip = '用户名可以使用';
+                    }
+                }, 2000)
+            }
+        },
+        computed: {
+
+        },
+        watch: {
+            uname: function(value) {
+                // 当uname中的数值发生变化的时候,调用后台接口验证用户名的合法性
+                this.checkName(value);
+                // 因为调用后台接口需要花费时间,我们在后台验证用户名的时候,可以给用户正在验证的提示
+                this.tip = '正在验证...';
+            }
+        },
+    })
+</script>
+</html>

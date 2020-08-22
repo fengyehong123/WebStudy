@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <span>名：</span>
+            <span>
+                <input type="text" v-model='firstName'>
+            </span>
+        </div>
+            <div>
+            <span>姓：</span>
+            <span>
+                <input type="text" v-model='lastName'>
+            </span>
+        </div>
+        <div>监听器的方式</div>
+        <div>{{fullName}}</div>
+        <hr>
+        <!-- 采用计算属性的方式来完成名字的拼接 -->
+        <div>计算属性的方式</div>
+        <div>{{perfectName}}</div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    /*
+        监听器的应用场景
+            数据变化时执行异步或者开销较大的操作
+    */
+    new Vue({
+        el: '#app',
+        data: {
+            firstName: 'Jim',
+            lastName: 'Green',
+            fullName: 'Jim Green'
+        },
+        methods: {
+
+        },
+        computed: {
+            perfectName: function() {
+                return this.firstName + ' ' + this.lastName; 
+            }
+        },
+        // watch中的属性一定是data中已经存在的数据 
+        watch: {
+            // 监听firstName属性值的变化,一旦发生变化就进行去全名的拼接
+            firstName: function(val) {
+                this.fullName = val + ' ' + this.lastName;
+            },
+            // 监听lastName属性值的变化,一旦发生变化就进行去全名的拼接
+            lastName: function(val) {
+                this.fullName = this.firstName + ' ' + val;
+            }
+        },
+    })
+</script>
+</html>

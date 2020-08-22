@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model='msg'><br>
+        <!-- 
+            过滤器
+                1、可以用与插值表达式和属性绑定
+                2、支持级联操作
+         -->
+        <div>{{msg | upper}}</div>
+        <!-- 
+            将msg进行过滤,先走upper过滤器,将首字母变为大写,然后走lower过滤器,将首字母变回小写
+         -->
+        <div>{{msg | upper | lower}}</div>
+        <!-- 过滤器和属性进行了绑定 -->
+        <div :abc='msg | upper'>测试数据</div>
+        <hr>
+        <div>过滤器传递参数</div>
+        <!-- 
+            传递两个参数
+            参数1: 字符串'arg1'
+            参数2: 字符串'arg2'
+         -->
+        <div>{{message | message('arg1', 'arg2')}}</div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    // 全局的过滤器lower,将首字母小写
+    /*
+        全局过滤器是 filter,没有那个s
+    */
+    Vue.filter('lower', function(val) {
+        return val.charAt(0).toLowerCase() + val.slice(1);
+    });
+    new Vue({
+        el: '#app',
+        data: {
+            msg: '',
+            message: '哈哈哈哈哈哈哈哈哈哈哈哈哈哈',
+        },
+        methods: {
+
+        },
+        computed: {
+
+        },
+        watch: {
+            
+        },
+        /*
+            局部属性过滤器是filters,多了一个s
+        */
+        filters: {
+            upper: function(val) {
+                return val.charAt(0).toUpperCase() + val.slice(1);
+            },
+            // 过滤器带参数
+            /*
+                在过滤器中 第一个参数对应的是 管道符前面的数据 n 此时对应 message
+                第2个参数  a 对应 实参  arg1 字符串
+                第3个参数  b 对应 实参  arg2 字符串
+            */
+            message: function(n, a, b) {
+                // 根据字符串的长度来判断到底和那个参数进行字符串拼接
+                if(n.length < 10) {
+                    return n + a;
+                } else {
+                    return n + b;
+                }
+            }
+        }
+    })
+</script>
+</html>
