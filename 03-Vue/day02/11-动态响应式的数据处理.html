@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for='item in list'>{{item}}</li>
+        </ul>
+        <div>
+            <div>{{info.name}}</div>
+            <div>{{info.age}}</div>
+            <div>{{info.gender}}</div>
+        </div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    /*
+        数组响应式变化
+            Vue.set(vm.items, indexOfltem, newValue);
+            Vue.$set(vm.items, indexOfltem, newValue);
+        参数1: 要处理的数组名称
+        参数2: 要处理的数组的索引
+        参数3: 要处理的数组的值
+    */
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            list: ['apple', 'orange', 'banana'],
+            info: {
+                name: 'lisi',
+                age: 12
+            }
+        },
+    });
+
+    // 这种修改方式虽然能成功,但是不是响应式修改
+    // vm.list[1] = 'lemon';
+
+    // 下面两种方式都可以实现响应式的修改数组
+    // Vue.set(vm.list, 2, 'lemon');
+    vm.$set(vm.list, 1, 'lemon');
+
+    // 这种方式虽然能修改对象中的内容,但不是响应式修改
+    // vm.info.gender = 'male';
+    // 响应式的实现对象中属性值的修改
+    vm.$set(vm.info, 'gender', 'female');
+</script>
+</html>
