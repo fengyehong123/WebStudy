@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            自定义的3个局部组件
+         -->
+        <hello-world></hello-world>
+        <hello-tom></hello-tom>
+        <hello-jerry></hello-jerry>
+        <!-- 自定义的全局组件 -->
+        <test-com></test-com>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    // 我们自定义一个全局组件
+    Vue.component('test-com',{
+        template: `
+            <div>
+                Test
+                <!--
+                    在全局组件中使用局部组件的这种做法是错误的,局部组件只能在Vue实例对象中使用
+                    <hello-world></hello-world>
+                -->
+            </div>
+        `
+    });
+    // 我们自定义了3个局部组件
+    var HelloWorld = {
+        data: function(){
+            return {
+                msg: 'HelloWorld'
+            }
+        },
+        template: '<div>{{msg}}</div>'
+    };
+    var HelloTom = {
+        data: function(){
+            return {
+                msg: 'HelloTom'
+            }
+        },
+        template: '<div>{{msg}}</div>'
+    };
+    var HelloJerry = {
+        data: function(){
+            return {
+                msg: 'HelloJerry'
+            }
+        },
+        template: '<div>{{msg}}</div>'
+    };
+
+    let vm = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        // 将我们自定义的3个局部组件放入Vue实例对象中,这3个实例组件只能在vm这个Vue实例对象中使用
+        components: {
+            'hello-world': HelloWorld,
+            'hello-tom': HelloTom,
+            'hello-jerry': HelloJerry
+        },
+    })
+</script>
+</html>

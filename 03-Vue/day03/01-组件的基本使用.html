@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用我们自定义的组件来完成统计按钮点击次数的功能 -->
+        <button-counter></button-counter><br>
+        <button-counter></button-counter><br>
+        <button-counter></button-counter><br>
+
+        <!-- 
+            驼峰式命名法的组件只能在字符串模板中使用
+            普通的模板要以短横线的方式使用组件
+        -->
+        <!-- <HelloWorld></HelloWorld> -->
+        <Hello-World></Hello-World>
+
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    // 全局组件注册,第一个参数是组件的名称
+    Vue.component('button-counter', {
+        // 组件的数据
+        // data 必须是一个函数,这样可以保证每一个组件的数据是相互独立的
+        data: function() {
+            // 必须添加返回值,返回一个数据对象
+            return {
+                count: 0,
+            }
+        },
+        // 组件的模板内容,模板内容可以是模板字符串(ES6语法)
+        /*
+            组件的模板内容必须是单个根元素
+            以前的组件模板写法是错误的,因为这两个button是兄弟关系,模板没有单个根元素
+            如果就是想要两个button标签并列的话,可以在最外面添加一个div标签吧两个button标签包含起来
+            <button @click="handle">
+                点击了{{count}}次
+            </button>
+            <button>
+                我是一个按钮
+            </button>
+        */
+        template: `
+            <div>
+                <button @click="handle">
+                    点击了{{count}}次
+                </button>
+                <!-- 
+                    我们在一个组件中的模板中使用另一个组件
+                    如果使用驼峰式命名组件，那么在使用组件的时候，只能在字符串模板中用驼峰的方式使用组件，
+                    但是在普通的标签模板中，必须使用短横线的方式使用组件
+                 -->
+                <HelloWorld></HelloWorld>
+            </div>
+        `,
+        // 组件中的方法
+        methods: {
+            handle: function() {
+                this.count += 2;
+            }
+        },
+    }),
+    // 驼峰式命名法注册一个组件
+    Vue.component('HelloWorld', {
+        data: function(){
+            return {
+                msg: 'HelloWorld'
+            }
+        },
+        template: `
+            <div>{{msg}}</div>
+        `
+    })
+    new Vue({
+        el: '#app',
+        data: {
+
+        }
+    })
+</script>
+</html>

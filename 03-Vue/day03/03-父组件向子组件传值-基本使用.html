@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Vue的实例对象本身就是一个父组件,也可以叫做根组件 -->
+    <div id="app">
+        <div>{{pmsg}}</div>
+        <!-- 
+            父组件向子组件传值,通过属性名=属性值的方式传递,下面的情况属性值是写死的
+            由于这个子组件并没有 content属性,所以 值会是 undefined
+         -->
+        <menu-item title='来自父组件的值'></menu-item>
+        <!-- 
+            父组件向子组件传值,通过属性名=属性值的方式传递,属性值和我们自定义的数据绑定
+         -->
+        <menu-item :title='ptitle' content='hello'></menu-item>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    // 我们定义一个组件
+    Vue.component('menu-item', {
+        // 子组件通过props属性接收父组件传递的数据,props属性值是一个数组
+        props: ['title', 'content'],
+        data: function() {
+            return {
+                msg: '子组件本身的数据'
+            }
+        },
+        template: '<div>{{msg + "----" + title + "-----" + content}}</div>'
+    });
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            pmsg: '父组件中内容',
+            ptitle: '动态绑定属性'
+        }
+    });
+</script>
+</html>
