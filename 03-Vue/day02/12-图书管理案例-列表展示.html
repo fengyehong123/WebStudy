@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    .grid {
+        margin: auto;
+        width: 500px;
+        text-align: center;
+    }
+    .grid table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .grid th,td {
+        padding: 10;
+        border: 1px dashed orange;
+        height: 35px;
+        line-height: 35px;
+    }
+    .grid th {
+        background-color: orange;
+    }
+  </style>
+<body>
+    <div id="app">
+        <div class="grid">
+            <table>
+                <thead>
+                    <tr>
+                    <th>编号</th>
+                    <th>名称</th>
+                    <th>时间</th>
+                    <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr :key='item.id' v-for='item in books'>
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.date}}</td>
+                        <td>
+                            <!-- 
+                                @click.prevent: 事件绑定的时候,可以只添加修饰符,而不绑定事件函数
+                             -->
+                            <a href="" @click.prevent>修改</a>
+                            <span>|</span>
+                            <a href="" @click.prevent>删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/vue.js"></script>
+  <script type="text/javascript">
+    // 图书列表展示功能
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            books: [{
+                id: 1,
+                name: '三国演义',
+                date: ''
+            },{
+                id: 2,
+                name: '水浒传',
+                date: ''
+            },{
+                id: 3,
+                name: '红楼梦',
+                date: ''
+            },{
+                id: 4,
+                name: '西游记',
+                date: ''
+            }]
+        }
+    });
+  </script>
+</html>
