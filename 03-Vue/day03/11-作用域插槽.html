@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    .current {
+        color: orange;
+    }
+</style>
+<body>
+    <div id="app">
+        <!-- 父组件向子组件中传递 data中的list数据, -->
+        <fruit-list :list='list'>
+            <!-- 在父组件中决定对子组件的哪一个条目要高亮显示,这就是作用域插槽的作用 -->
+            <!-- 
+                template 是Vue提供的特殊的标签,用来进行数据的填充
+                slot-scope是一个特殊的属性,用来获取子组件插槽绑定的属性(例如info)
+                slot-scope的属性值是我们自定义的,可以随便写
+                我们通过slot-scope的属性值就可以获取子组件与插槽绑定的属性
+             -->
+             <!-- 下面的代码块体现了父组件对子组件的内容进行加工处理,决定子组件中的某条数据的高亮显示 -->
+            <template slot-scope='slotPropsHaHa'>
+                <!-- 
+                    通过slotPropsHaHa.info.id来判断到底哪条数据需要添加 相应的样式
+                 -->
+                <strong v-if='slotPropsHaHa.info.id==3' class="current">{{slotPropsHaHa.info.name}}</strong>
+                <span v-else>{{slotPropsHaHa.info.name}}</span>
+            </template>
+        </fruit-list>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    /*
+        作用域插槽: 父组件获取子组件中的数据,并且对子组件的内容进行加工处理
+    */
+    Vue.component('fruit-list', {
+        // 子组件获取父组件传递的数据
+        props: ['list'],
+        template: `
+        <div>
+            <li :key='item.id' v-for='item in list'>
+                <!-- 作用域插槽需要绑定一个属性,这个属性是我们自定义的,例如下面的info -->
+                <slot :info='item'>{{item.name}}</slot>
+            </li>
+        </div>
+        `
+    });
+    let vm = new Vue({
+        el: '#app',
+        // 子组件中的数据一般是通过父组件传递过来的
+        // 我们在父组件中准备数据
+        data: {
+            list: [{
+                id: 1,
+                name: 'apple'
+            },{
+                id: 2,
+                name: 'orange'
+            },{
+                id: 3,
+                name: 'banana'
+            }]
+        }
+    });
+</script>
+</html>

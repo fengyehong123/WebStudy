@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div :style='{fontSize: fontSize + "px"}'>{{pmsg}}</div>
+        <!-- 子组件通过 $event 来向父组件传递参数, -->
+        <menu-item :parr='parr' @enlarge-text='handle($event)'></menu-item>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    Vue.component('menu-item', {
+        props: ['parr'],
+        template: `
+            <div>
+                <ul>
+                <li :key='index' v-for='(item,index) in parr'>{{item}}</li>
+                </ul>
+                <!--子组件向父组件传递参数-->
+                <button @click='$emit("enlarge-text", 5)'>扩大父组件中字体大小</button>
+                <button @click='$emit("enlarge-text", 10)'>扩大父组件中字体大小</button>
+            </div>
+        `
+    });
+    new Vue({
+        el: '#app',
+        data: {
+            pmsg: '父组件中内容',
+            parr: ['apple','orange','banana'],
+            // 初始化的字体大小
+            fontSize: 10
+        },
+        methods: {
+            handle: function(val){
+                // 扩大字体大小
+                this.fontSize += val;
+            }
+        },
+    })
+</script>
+</html>

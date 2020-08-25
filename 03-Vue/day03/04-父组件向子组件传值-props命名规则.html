@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>{{pmsg}}</div>
+        <!-- 在props中使用驼峰形式,在模板中需要使用短横线的这种形式 -->
+        <menu-item :menu-title='ptitle'></menu-item>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+
+    Vue.component('third-com', {
+        props: ['testTile'],
+        template: '<div>{{testTile}}</div>'
+    });
+    Vue.component('menu-item', {
+        // 在props中使用驼峰形式,在模板中需要使用短横线的这种形式
+        props: ['menuTitle'],
+        template: `
+            <div>
+                {{menuTitle}}
+                <!-- 
+                    虽然在props中使用了驼峰式,但是在字符串模板中完全没有这个限制
+                    在一个组件中使用了自定义的另一个组件
+                -->
+                <third-com testTile="hello"></third-com>
+            </div>
+        `
+    });
+    new Vue({
+        el: '#app',
+        data: {
+            pmsg: '父组件中内容',
+            ptitle: '动态绑定属性'
+        }
+    })
+</script>
+</html>

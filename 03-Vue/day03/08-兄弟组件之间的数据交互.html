@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>父组件</div>
+        <div>
+            <button @click='handle'>销毁事件</button>
+        </div>
+        <test-tom></test-tom>
+        <test-jerry></test-jerry>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+
+    /*
+        1. 事件中心
+        2. $emit() 触发
+        3. $on() 监听
+        4. $off() 销毁
+    */
+
+    // 兄弟组件之间的通信需要有一个事件中心来起到交互作用
+    let hub = new Vue();
+
+    // 构建一个兄弟组件1
+    Vue.component('test-tom', {
+        data: function() {
+            return {
+                num: 0
+            }
+        },
+        template: `
+            <div>
+                <div>TOM:{{num}}</div>
+                <div>
+                    <button @click='handle'>点击</button>
+                </div>
+            </div>
+        `,
+        methods: {
+            handle: function() {
+                // 通过事件中心触发 兄弟组件 jerry-event 的事件
+                hub.$emit('jerry-event', 2);
+            }
+        },
+        mounted: function() {
+            // 通过事件中心监听 tom-event,一旦监听到就触发下面的事件
+            hub.$on('tom-event', (val) => {
+                this.num += val;
+            })
+        }
+    });
+    Vue.component('test-jerry', {
+        data: function(){
+            return {
+                num: 0
+            }
+        },
+        template: `
+            <div>
+                <div>JERRY:{{num}}</div>
+                <div>
+                    <button @click='handle'>点击</button>
+                </div>
+            </div>
+        `,
+        methods: {
+            handle: function(){
+            // 触发兄弟组件的事件
+            hub.$emit('tom-event', 1);
+            }
+        },
+        mounted: function() {
+            // 监听事件
+            hub.$on('jerry-event', (val) => {
+                this.num += val;
+            });
+        }
+    });
+
+    // 我们自定义的Vue实例
+    new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+            handle: function() {
+                // 通过$off(事件名称) 来销毁事件
+                hub.$off('tom-event');
+                hub.$off('jerry-event');
+            }
+        },
+    })
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 这个div是父组件的一部分 -->
+        <div :style='{fontSize: fontSize + "px"}'>{{pmsg}}</div>
+        <!-- 
+            我们自定义的子组件,我们点击子组件中的按钮,然后子组件中的按钮向父组件传递字体的大小
+            从而改变父组件字体的大小
+            enlarge-text是我们自定义的事件,绑定了handle函数,当我们点击子组件的时候,就会触发这个函数
+        -->
+        <menu-item :parr='parr' @enlarge-text='handle'></menu-item>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    Vue.component('menu-item', {
+        props: ['parr'],
+        template: `
+            <div>
+                <ul>
+                    <li :key='index' v-for='(item,index) in parr'>{{item}}</li>
+                </ul>
+                <!--
+                    $emit(事件名称): 子组件向父组件传值会用到
+                -->
+                <button @click='$emit("enlarge-text")'>扩大父组件中字体大小</button>
+            </div>
+        `
+    });
+    new Vue({
+        el: '#app',
+        data: {
+            pmsg: '父组件中内容',
+            parr: ['apple','orange','banana'],
+            fontSize: 10
+        },
+        methods: {
+            handle: function(){
+                // 扩大字体大小
+                this.fontSize += 5;
+            }
+        },
+    })
+</script>
+</html>
