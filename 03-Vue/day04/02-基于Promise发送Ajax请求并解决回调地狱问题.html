@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 基于Promise发送Ajax请求
+    function queryData(url) {
+        var p = new Promise(function(resolve, reject){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState != 4) return;
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                    // 处理正常的情况
+                    resolve(xhr.responseText);
+                } else {
+                    // 处理异常情况
+                    reject('服务器错误');
+                }
+            };
+            xhr.open('get', url);
+            xhr.send(null);
+        });
+        return p;
+    }
+    
+    // 发送Ajax请求,Ajax请求成功和失败的处理
+    queryData('http://localhost:3000/data')
+    // 因为queryData函数的返回对象是一个Promise对象,所以可以直接.then()使用.
+    // then里面两个参数,第1个参数是ajax执行成功的处理,第2个参数是执行失败的处理
+    .then(function(data) {
+        console.log(data);
+    },function(info) {
+        console.log(info)
+    });
+
+
+    // 发送多个ajax请求并且保证顺序
+    queryData('http://localhost:3000/data')
+      .then(function(data) {
+        console.log(data);
+        // 当第一个Ajax请求成功的时候,会调用下面的方法,发送第二个请求
+        return queryData('http://localhost:3000/data1');
+      })
+      .then(function(data) {
+        console.log(data);
+        return queryData('http://localhost:3000/data2');
+      })
+      .then(function(data) {
+        console.log(data);
+      });
+</script>
+</html>
