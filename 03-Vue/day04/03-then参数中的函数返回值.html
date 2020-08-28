@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 基于Promise发送Ajax请求
+    function queryData(url) {
+        return new Promise(function(resolve, reject){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState != 4) return;
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                    // 处理正常的情况
+                    resolve(xhr.responseText);
+                } else {
+                    // 处理异常情况
+                    reject('服务器错误');
+                }
+            };
+            xhr.open('get', url);
+            xhr.send(null);
+        });
+    }
+    
+    /*
+        then参数中的函数的返回值
+            1. 返回Promise实例对象
+                返回的该实例对象会调用下一个then
+            2. 返回普通值
+                返回的普通值会直接传递给下一个then,通过then参数中函数的参数接收该值
+    */
+    queryData('http://localhost:3000/data')
+        .then(function(data) {
+            return queryData('http://localhost:3000/data1');
+        })
+        .then(function(data) {
+            console.dir(data);  // Hello TOM!
+            return new Promise(function(resolve, reject){
+                setTimeout(function() {
+                    resolve(123);
+                }, 1000);
+            });
+        })
+        .then(function(data) {
+            console.log(data);  // 123
+            return 'hello';
+        })
+        .then(function(data) {
+            console.log(data);  // hello
+        });
+</script>
+</html>

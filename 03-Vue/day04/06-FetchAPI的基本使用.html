@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Fetch API是新的ajax解决方案 Fetch会返回Promise
+    // fetch不是ajax的进一步封装，而是原生js，没有使用XMLHttpRequest对象。
+
+    fetch('http://localhost:3000/fdata').then(function(data) {
+        // text()方法属于fetchAPI的一部分，它返回一个Promise实例对象，用于获取后台返回的数据
+        return data.text();
+    }).then(function(data) {
+        // 得到后台返回的数据
+        console.log(data);
+    })
+</script>
+</html>

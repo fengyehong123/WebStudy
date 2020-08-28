@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="./js/axios.js"></script>
+<script>
+    // axios get请求,传统的方式传参
+    axios.get('http://localhost:3000/axios?id=123').then(function(ret){
+        console.log(ret.data);
+    });
+    // restful方式传参
+    axios.get('http://localhost:3000/axios/123').then(function(ret){
+        console.log(ret.data);
+    });
+    // 通过对象的方式传参,axios会把对象给格式化为?key=value&key=value的方式
+    // 当要传递多个参数的时候,这种get方式发送请求会比较好
+    axios.get('http://localhost:3000/axios', {
+        params: {
+            id: 789
+        }
+    }).then(function(ret){
+        console.log(ret.data);
+    });
+
+    // axios delete 请求传参,delete和get传参的方式类似
+    axios.delete('http://localhost:3000/axios', {
+        params: {
+            id: 111
+        }
+    }).then(function(ret){
+        console.log(ret.data);
+    });
+
+    // post方式传参
+    // 会自动把对象数据格式化为json字符串的方式传到后端
+    axios.post('http://localhost:3000/axios', {
+        uname: 'lisi',
+        pwd: 123
+    }).then(function(ret){
+        console.log(ret.data)
+    });
+
+    /*
+        new URLSearchParams()
+        用来构建 key=value&key=value格式的数据
+    */
+    var params = new URLSearchParams();
+    params.append('uname', 'zhangsan');
+    params.append('pwd', '111');
+
+    axios.post('http://localhost:3000/axios', params).then(function(ret){
+        console.log(ret.data);
+    });
+</script>
+</html>

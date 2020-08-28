@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 需要在在myapi项目下,运行nodemon index.js启动项目
+
+    function queryData(url) {
+        return new Promise(function(resolve, reject){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState != 4) return;
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                // 处理正常的情况
+                resolve(xhr.responseText);
+                }else {
+                // 处理异常情况
+                reject('服务器错误');
+                }
+            };
+            xhr.open('get', url);
+            xhr.send(null);
+        });
+    }
+    
+    // 发送3个请求
+    var p1 = queryData('http://localhost:3000/a1');
+    var p2 = queryData('http://localhost:3000/a2');
+    var p3 = queryData('http://localhost:3000/a3');
+
+    // 并发处理多个异步任务,所有的任务都执行完成后才能得到结果
+    Promise.all([p1,p2,p3]).then(function(result){
+        console.log(`我是Promise.all,我的执行结果是${result}`);
+    });
+    
+    // 并发处理多个异步任务,只要有一个任务完成就能得到结果
+    Promise.race([p1,p2,p3]).then(function(result){
+        console.log(`我是Promise.race,我的执行结果是${result}`);
+    });
+
+</script>
+</html>

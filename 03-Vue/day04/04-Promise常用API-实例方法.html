@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function foo() {
+        return new Promise(function(resolve, reject){
+            setTimeout(function(){
+                // 模拟正常相应
+                // resolve(123);
+
+                // 模拟相应的时候,发生错误
+                reject('error');
+            }, 1000);
+        })
+    }
+    
+    // 调用函数之,then()和catch()分开写
+    foo()
+    .then(function(data){
+        console.log(data);
+    })
+    // 发生异常的时候会执行
+    .catch(function(data){
+        console.log(data);  // error
+    })
+    // 不管是否有异常都会执行
+    .finally(function(){
+        console.log('finished');  // finished
+    });
+
+// ----------- 这两种写法是等效的 -----------
+
+    // 调用函数之,catch()写到then()里面,当做第二个参数
+    foo()
+    .then(function(data) {
+        console.log(data);
+    }, function(data) {
+        console.log(data);
+    })
+    .finally(function(){
+        console.log('finished');
+    });
+
+</script>
+</html>

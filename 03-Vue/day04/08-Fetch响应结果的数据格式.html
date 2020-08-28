@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+      Fetch响应结果的数据格式
+    */
+    fetch('http://localhost:3000/json').then(function(data){
+        // text(): 将返回体处理成字符串类型
+        return data.text();
+    }).then(function(data){
+        console.log(data);  // {"uname":"lisi","age":13,"gender":"male"} (返回的是字符串json格式的数据)
+        console.log(typeof data);  // string
+        // 把字符串json解析为json格式的数据
+        var obj = JSON.parse(data);
+        console.log(obj.uname,obj.age,obj.gender);  // lisi 13 male
+    });
+
+    console.log("-----------------------------------------------");
+
+    setTimeout(function() {
+        fetch('http://localhost:3000/json').then(function(data){
+            // json(): 返回结果和JSON.parse()一样
+            return data.json();
+        }).then(function(data){
+            console.log(data.uname);  // lisi
+            console.log(typeof data);  // object
+            console.log(data.uname,data.age,data.gender);  // lisi 13 male
+        });
+    },2000);
+</script>
+</html>
