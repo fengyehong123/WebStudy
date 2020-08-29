@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="./js/axios.js"></script>
+<script>
+    // axios请求拦截器,在请求发送出去之前进行拦截,并对请求添加一些信息
+    axios.interceptors.request.use(function(config) {
+        console.log(config.url);
+        // 给请求添加请求头
+        config.headers.mytoken = 'nihao';
+        // 配置完成之后一定要返回 config配置对象
+        return config;
+    }, function(err) {
+        console.log(err);
+    });
+
+    // axios响应拦截器,在收到响应之前进行拦截,并对响应添加一些信息
+    axios.interceptors.response.use(function(res) {
+        // 我们在相应拦截器中先通过.data属性来获取后台返回的真正信息
+        // 这样我们发送的axios请求的相应就可以直接使用 .data来获取数据了
+        var data = res.data;
+        return data;
+    }, function(err){
+        console.log(err);
+    });
+
+    axios.get('http://localhost:3000/adata').then(function(data) {
+        // 因为我们在响应拦截器中配置了配置,所以直接可以获取到后端返回的信息
+        console.log(data);
+    });
+</script>
+</html>

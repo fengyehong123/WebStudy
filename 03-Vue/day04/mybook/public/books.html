@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+    <div id="app">
+        <div class="grid">
+            <div>
+                <h1>图书管理</h1>
+                <div class="book">
+                    <div>
+                        <label for="id">
+                            编号：
+                        </label>
+                        <input type="text" id="id" v-model='id' disabled="false" v-focus>
+                        <label for="name">
+                            名称：
+                        </label>
+                        <input type="text" id="name" v-model='name'>
+                        <button @click='handle' :disabled="submitFlag">提交</button>
+                    </div>
+                </div>
+            </div>
+            <div class="total">
+                <span>图书总数：</span>
+                <span>{{total}}</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>名称</th>
+                        <th>时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr :key='item.id' v-for='item in books'>
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.date | format('yyyy-MM-dd hh:mm:ss')}}</td>
+                        <td>
+                            <a href="" @click.prevent='toEdit(item.id)'>修改</a>
+                            <span>|</span>
+                            <a href="" @click.prevent='deleteBook(item.id)'>删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/axios.js"></script>
+<script type="text/javascript">
+    // 添加访问基准URL
+    axios.defaults.baseURL = 'http://localhost:3000/';
+    // 添加响应拦截器,用来把后端返回的数据直接响应给前端
+    axios.interceptors.response.use(function(res){
+      return res.data;
+    }, function(error){
+      console.log(error)
+    });
+    Vue.directive('focus', {
+        inserted: function (el) {
+            el.focus();
+        }
+    });
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            flag: false,
+            submitFlag: false,
+            id: '',
+            name: '',
+            // 从后端获取到的数据就放置到 books列表中
+            books: []
+        },
+        methods: {
+            // async 和 await 配合使用
+            handle: async function() {
+                if(this.flag) {
+                    // 编辑图书
+                    let ret = await axios.put('books/' + this.id, {
+                        name: this.name,
+                    });
+                    if(ret.status == 200) {
+                        // 重新加载列表的数据
+                        this.queryData();
+                    }
+                    this.flag = false;
+                } else {
+                    // 添加图书(添加图书的时候只添加名字,图书编号后台自动生成)
+                    let ret = await axios.post('books', {
+                        name: this.name,
+                    });
+                    if(ret.status == 200) {
+                        // 重新加载列表,刷新数据
+                        this.queryData();
+                    }
+                }
+                // 清空表单
+                this.id = '';
+                this.name = '';
+            },
+            toEdit: async function(id) {
+                // flag 用来区分是编辑还是添加操作
+                this.flag = true;
+                // 根据id查询出对应图书的信息
+                let ret = await axios.get('books/' + id);
+                // 把后台的响应结果填充到前端
+                this.id = ret.id;
+                this.name = ret.name;
+            },
+            deleteBook: async function(id){
+                // 调用方法删除图书
+                let ret = await axios.delete('books/' + id);
+                if(ret.status == 200) {
+                    // 重新加载列表的数据
+                    this.queryData();
+                }
+            },
+            queryData: async function() {
+              // 调用后台接口俩获取图书列表的数据
+              let ret = await axios.get('books');
+              // 因为我们添加了响应拦截器,所以axios获取到的数据,直接就是可用的json数据
+              this.books = ret;
+            }
+        },
+        computed: {
+            total: function(){
+                // 计算图书的总数
+                return this.books.length;
+            }
+        },
+        watch: {
+            // 监听器来监听name值,一旦name值发生变化就验证name的值是否存在
+            name: async function(val) {
+                // 验证图书名称是否已经存在
+                let ret = await axios.get('/books/book/' + this.name);
+                // 我们通过这个flag来控制页面按钮的可用性
+                if(ret.status == 1) {
+                    // 图书名称存在
+                    this.submitFlag = true;
+                } else {
+                    // 图书名称不存在
+                    this.submitFlag = false;
+                }
+            }
+        },
+        mounted: function(){
+            // 该生命周期钩子函数被触发的时候，模板已经可以使用
+            // 一般此时用于获取后台数据，然后把数据填充到模板
+            
+            /*let that = this;
+            axios.get('books').then(function(ret) {
+
+                // 把从后端获取到的数据赋值给我们自定义的对象
+                // 如果直接在回调函数中使用this,此时的this指向的是axios对象而不是Vue实例
+                // 所以如果直接使用this.books是无法给Vue的books填充数据的
+                // 我们可以在axios外侧把this赋值给that,然后把后端获取到的数据赋值给that
+                // 进而间接的赋值给this
+                that.books = ret.data;
+            });*/
+
+            // 我们可以把上面的逻辑封装成一个查询函数,然后在此处调用
+            this.queryData();
+        }
+    });
+</script>
+</html>

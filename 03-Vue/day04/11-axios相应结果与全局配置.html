@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="./js/axios.js"></script>
+<script>
+    /*
+        axios相应结果与全局配置
+    */
+
+    // 相应结果
+    axios.get('http://localhost:3000/axios-json').then(function(ret) {
+
+        /*
+            ret相应对象是axios包装的一层对象,只有通过该对象 .属性名的方式才能获取后台返回的数据
+        */
+
+        // 后台实际相应回来的数据,一般来说 ret.data 返回来的都是json格式数据
+        console.log(ret.data);  // {uname: "lisi", age: 12}
+        // 响应头信息
+        console.log(ret.headers);  // {content-length: "25", content-type: "application/json; charset=utf-8"}
+        // 相应状态码
+        console.log(ret.status);  // 200
+        // 相应状态信息
+        console.log(ret.statusText); // OK
+
+    });
+
+    // 全局配置
+    // 配置请求的基准URL地址,以后我们在发送请求的时候,不需要写全局的路径,只需要写部分路径,axios会自动完成路径的拼接
+    axios.defaults.baseURL = 'http://localhost:3000/';
+    // 配置请求头信息
+    axios.defaults.headers['mytoken'] = 'hello';
+    // 配置超时时间,一旦超过这个时间,前端还没有得到后端的相应,就会出错
+    // axios.defaults.timeout = 3000;
+
+    // 因为我们已经配置了基准URL,所以我们发送请求的时候,只写路径就可以了
+    axios.get('axios-json').then(function(ret){
+        console.log("自动拼接:" + ret.data.uname);  // 自动拼接:lisi
+    });
+</script>
+</html>

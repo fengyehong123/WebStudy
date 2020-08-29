@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="./js/axios.js"></script>
+<script>
+    // 传统的方法
+    axios.defaults.baseURL = 'http:localhost:3000';
+    axios.get('adata').then(function(ret){
+        console.log(ret.data);  // Hello axios!
+    });
+
+    /*
+      async/await 处理异步操作：
+      1. 是ES7引入的新语法,可以更加方便的进行异步的操作
+      2. async函数返回一个Promise实例对象
+      3. await后面可以直接跟一个 Promise实例对象
+    */
+    async function queryData() {
+        // await后面一定跟的是一个Promise对象
+        let ret = await axios.get('adata');
+        return ret.data;
+    }
+    queryData().then(function(data) {
+        // 获取到异步执行的结果
+        console.log(data);  // Hello axios!
+    });
+
+    async function queryData1() {
+        // await后面一定跟的是一个Promise对象
+        var ret = await new Promise(function(resolve, reject){
+            setTimeout(function(){
+                resolve('nihao')
+            },1000);
+        })
+        return ret;
+    }
+    queryData1().then(function(data){
+      console.log(data);  // nihao
+    })
+</script>
+</html>
