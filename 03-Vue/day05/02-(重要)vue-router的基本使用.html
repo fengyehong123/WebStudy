@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            2. 添加路由链接
+            router-link是 Vue中提供的标签,默认会被渲染为 a标签
+            to属性默认会被渲染为 href属性
+            to属性的值默认会被渲染为 #开头的hash地址
+         -->
+        <router-link to="/user">User</router-link>
+        <router-link to="/register">Register</router-link>
+
+        <!-- 
+            3. 添加路由填充位
+            路由占位符(路由填充位)
+            将来通过路由规则匹配到的组件,将会被渲染到 router-view所在的位置
+         -->
+        <router-view></router-view>
+    </div>
+</body>
+<!-- 
+    导入 vue 文件
+    注意: 需要先引入Vue,然后再引入vue-router
+          因为vue-router内部依赖于Vue
+ -->
+<script src="./lib/vue_2.5.22.js"></script>
+<script src="./lib/vue-router_3.0.2.js"></script>
+<script>
+
+    /*
+        路由的基本使用步骤
+            1. 引入相关库文件
+            2. 添加路由链接
+            3. 添加路由填充位
+            4. 定义路由组件
+            5. 配置路由规则并创建路由实例
+            6. 把路由挂载到Vue根实例中
+    */
+
+    // 4. 创建两个路由组件
+    const User = {
+        template: '<h1>User 组件</h1>'
+    }
+    const Register = {
+        template: '<h1>Register 组件</h1>'
+    }
+
+    // 5. 创建路由实例对象
+    const router = new VueRouter({
+        routes: [
+            /*
+                每个路由规则都是一个配置对象,其中至少包含 path 和 component 两个属性
+                1. path表示当前路由规则匹配的hash地址
+                2. component 表示当前路由规则对应的要展示的组件
+            */
+            // router-link标签的to属性好的值要和 path的值对应
+            // component 的值是 组件对象,不能是字符串
+            { path: '/user', component: User },
+            { path: '/register', component: Register }
+        ]
+    })
+    const vm = new Vue({
+        // 指定控制的区域
+        el: '#app',
+        data: {},
+        // 挂载路由实例对象到Vue实例中
+        router: router,
+    })
+</script>
+</html>

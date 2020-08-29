@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            我们定义了3个User路由,路由的规则很相像
+            这个时候可以通过动态路由进行匹配
+         -->
+        <router-link to="/user/1">User1</router-link>
+        <hr>
+        <router-link to="/user/2">User2</router-link>
+        <hr>
+        <!-- 
+            使用命名路由的方式进行跳转
+            name属性的值为 要跳转的路由的名称
+            params的值为 要传递的参数
+         -->
+        <router-link :to="{ name: 'user', params: {uid: 3} }">User3</router-link>
+        <hr>
+        <router-link to="/register">Register</router-link>
+
+        <router-view></router-view>
+    </div>
+</body>
+<script src="./lib/vue_2.5.22.js"></script>
+<script src="./lib/vue-router_3.0.2.js"></script>
+<script>
+    // 两个路由组件
+    const User = {
+        // 我们可以在此处接收动态路由参数(此时的动态参数是一个对象)
+        // 因为我们通过箭头函数传参,我们在箭头函数中指定了uid的值,所以此处能获取到
+        props: ['uid', 'uname', 'age'],
+        template: `
+        <h1>
+            User 组件
+            用户id为: {{uid}}
+            姓名为: {{uname}}
+            年龄为: {{age}}
+        </h1>
+        `,
+    }
+    const Register = {
+        template: '<h1>Register 组件</h1>'
+    }
+
+    // 5. 创建路由实例对象
+    const router = new VueRouter({
+        routes: [
+            { path: '/', redirect: '/user' },
+            { 
+              // 路由命名,我们给这个路由起一个名字,可以用名字来指代这个路由
+              name: 'user',
+              path: '/user/:uid', 
+              component: User, 
+              props: route => ({
+                uname: 'zs',
+                age: 18,
+                uid: route.params.uid,
+              }) 
+            },
+            { path: '/register', component: Register }
+        ]
+    })
+    const vm = new Vue({
+        // 指定控制的区域
+        el: '#app',
+        data: {},
+        // 挂载路由实例对象到Vue实例中
+        router: router,
+    })
+</script>
+</html>

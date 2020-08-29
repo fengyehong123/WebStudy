@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            我们定义了3个User路由,路由的规则很相像
+            这个时候可以通过动态路由进行匹配
+         -->
+        <router-link to="/user/1">User1</router-link>
+        <hr>
+        <router-link to="/user/2">User2</router-link>
+        <hr>
+        <router-link to="/user/3">User3</router-link>
+        <hr>
+        <router-link to="/register">Register</router-link>
+
+        <router-view></router-view>
+    </div>
+</body>
+<script src="./lib/vue_2.5.22.js"></script>
+<script src="./lib/vue-router_3.0.2.js"></script>
+<script>
+    // 两个路由组件
+    const User = {
+        // 路由组件中通过 $route.params 来获取参数
+        // 但是这种方式会造成 $route与对应的路由形成高度耦合,不够灵活,一般来使用props将组件和路由解耦
+        // 详情参考 06-动态路由匹配2.html
+        template: '<h1>User 组件 --- 用户id为: {{$route.params.uid}}</h1>'
+    }
+    const Register = {
+        template: '<h1>Register 组件</h1>'
+    }
+
+    // 5. 创建路由实例对象
+    const router = new VueRouter({
+        routes: [
+            { path: '/', redirect: '/user' },
+            // 动态路由路劲的参数,以冒号(:)开头
+            { path: '/user/:uid', component: User },
+            { path: '/register', component: Register }
+        ]
+    })
+    const vm = new Vue({
+        // 指定控制的区域
+        el: '#app',
+        data: {},
+        // 挂载路由实例对象到Vue实例中
+        router: router,
+    })
+</script>
+</html>
