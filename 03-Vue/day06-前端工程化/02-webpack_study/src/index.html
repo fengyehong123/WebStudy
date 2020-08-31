@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>这个是第1个li</li>
+        <li>这个是第2个li</li>
+        <li>这个是第3个li</li>
+        <li>这个是第4个li</li>
+        <li>这个是第5个li</li>
+        <li>这个是第6个li</li>
+        <li>这个是第7个li</li>
+        <li>这个是第8个li</li>
+        <li>这个是第9个li</li>
+    </ul>
+</body>
+<!-- 
+    我们自己写的js代码有浏览器兼容性的问题,因此不能直接引入
+    因此我们引入webpack给我们打包好的dist目录下的main.js文件
+-->
+<!-- <script src="./index.js"></script> -->
+<!-- <script src="../dist/main.js"></script> -->
+<!-- 
+    webpack默认生成的打包文件名称叫做main.js
+    但是我们可以在配置文件中手动指定生成的文件名称
+ -->
+<!-- <script src="../dist/bundle.js"></script> -->
+<!-- 
+    我们使用了自动打包,自动打包生成的js文件不在我们的物理磁盘上
+    而是在内存中,webpack规定在项目的根路径下可以访问到生成的js文件
+    虽然这个文件并不实际的存在于根目录下
+ -->
+<script src="/bundle.js"></script>
+</html>
