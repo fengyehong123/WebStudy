@@ -1,5 +1,7 @@
 // 先导入jquery
 import $ from 'jquery'
+// 引入我们写的css
+import './css/cssStyle.css'
 
 // 使用jquery来实现各行变色
 $(function() {
