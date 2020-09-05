@@ -2,6 +2,10 @@
 import $ from 'jquery'
 // 引入我们写的css
 import './css/cssStyle.css'
+// 引入我们写的less样式文件
+import './css/lessStyle.less'
+// 引入我们写的scss样式文件
+import './css/scssStyle.scss'
 
 // 使用jquery来实现各行变色
 $(function() {

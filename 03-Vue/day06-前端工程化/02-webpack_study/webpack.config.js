@@ -27,7 +27,11 @@ module.exports = {
         rules: [
             // test 后面对应着正则表达式
             // use 后面表示要使用的打包模块
-            { test: /\.css$/,use:['style-loader', 'css-loader'] }
+            { test: /\.css$/,use:['style-loader', 'css-loader'] },
+            // 添加 .less文件的打包规则
+            { test: /\.less$/,use:['style-loader', 'css-loader', 'less-loader'] },
+            // 添加 .scss文件的打包规则
+            { test: /\.scss$/,use:['style-loader', 'css-loader', 'sass-loader'] }
         ]
     }
 }
