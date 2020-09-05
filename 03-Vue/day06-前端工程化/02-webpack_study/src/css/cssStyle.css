@@ -6,3 +6,10 @@ li {
 ::placeholder {
     color: red;
 }
+
+#box {
+    width: 580px;
+    height: 340px;
+    background-color: pink;
+    background: url('../images/1.jpg');
+}

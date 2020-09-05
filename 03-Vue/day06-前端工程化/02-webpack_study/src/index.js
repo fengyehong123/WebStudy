@@ -13,3 +13,9 @@ $(function() {
     $('li:odd').css('backgroundColor', 'pink');
     $('li:even').css('backgroundColor', 'blue');
 })
+
+// 定义一个js高级语法
+class Person {
+    static info = "infoMessage";
+}
+console.log(Person.info);

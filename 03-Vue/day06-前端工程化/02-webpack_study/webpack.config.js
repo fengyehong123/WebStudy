@@ -27,11 +27,20 @@ module.exports = {
         rules: [
             // test 后面对应着正则表达式
             // use 后面表示要使用的打包模块
-            { test: /\.css$/,use:['style-loader', 'css-loader'] },
+            // { test: /\.css$/,use:['style-loader', 'css-loader'] },
+
+            // postcss-loader 是用来处理css兼容性的加载器插件
+            { test: /\.css$/,use:['style-loader', 'css-loader', 'postcss-loader'] },
             // 添加 .less文件的打包规则
             { test: /\.less$/,use:['style-loader', 'css-loader', 'less-loader'] },
             // 添加 .scss文件的打包规则
-            { test: /\.scss$/,use:['style-loader', 'css-loader', 'sass-loader'] }
+            { test: /\.scss$/,use:['style-loader', 'css-loader', 'sass-loader'] },
+            { 
+                // 指定要打包的文件的类型
+                test: /\.jpg|png|gif|bmp|ttf|eot|svg|woff|woff2$/,
+                // 指定加载器和文件的大小
+                use: 'url-loader?limit=16940'
+            }
         ]
     }
 }
