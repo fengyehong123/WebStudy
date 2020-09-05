@@ -1,3 +1,8 @@
 li {
     list-style: none;
 }
+
+/* 添加伪类选择器,这个选择器IE浏览器并不支持 */
+::placeholder {
+    color: red;
+}
