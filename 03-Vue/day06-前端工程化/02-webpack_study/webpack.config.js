@@ -9,6 +9,9 @@ const htmlPlugin = new HtmlWebpackPlugin({
     filename: 'index.html'
 })
 
+// 引入vue单文件组件打包器
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 module.exports = {
     // 指定编译模式
     mode: 'development',
@@ -21,7 +24,7 @@ module.exports = {
         filename: 'bundle.js'
     },
     // 添加生成预览页面的插件
-    plugins: [htmlPlugin],
+    plugins: [htmlPlugin, new VueLoaderPlugin()],
     // 打包
     module: {
         rules: [
@@ -41,7 +44,9 @@ module.exports = {
                 // 指定加载器和文件的大小
                 use: 'url-loader?limit=16940'
             },
-            { test: /\.js$/,use: 'babel-loader', exclude: /node_modules/ }
+            { test: /\.js$/,use: 'babel-loader', exclude: /node_modules/ },
+            // 添加单文件组价加载器
+            { test: /\.vue$/,use: 'vue-loader' }
         ]
     }
 }
