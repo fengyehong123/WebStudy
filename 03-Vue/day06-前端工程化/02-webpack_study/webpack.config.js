@@ -40,7 +40,8 @@ module.exports = {
                 test: /\.jpg|png|gif|bmp|ttf|eot|svg|woff|woff2$/,
                 // 指定加载器和文件的大小
                 use: 'url-loader?limit=16940'
-            }
+            },
+            { test: /\.js$/,use: 'babel-loader', exclude: /node_modules/ }
         ]
     }
 }
