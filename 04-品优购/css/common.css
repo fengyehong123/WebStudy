@@ -1,0 +1,53 @@
+/* 公共样式 */
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+/* 声明字体图标的样式 */
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?7kkyc2');
+    src:  url('../fonts/icomoon.eot?7kkyc2#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?7kkyc2') format('truetype'),
+    url('../fonts/icomoon.woff?7kkyc2') format('woff'),
+    url('../fonts/icomoon.svg?7kkyc2#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 添加字体图标的样式 */
+.fr .icomoon {
+    font-family: 'icomoon';
+    font-size: 16px;
+    /* 行高小于高度,文字向上移动 */
+    line-height: 26px;
+}
+/* 版心 */
+.w {
+    /* 版心盒子的宽度 */
+    width: 1200px;
+    /* 版心盒子居中对齐 */
+    margin: 0 auto;
+}
+.style-red {
+    color: #c81632;
+}
+/* 顶部导航栏小竖线的样式 */
+.spacer {
+    width: 1px;
+    height: 12px;
+    background-color: #666;
+    /* 小竖线本身就是一个盒子,盒子添加外边距撑开 */
+    margin: 9px 12px 0;
+}
+/* 顶部快捷导航栏 */
+.shortcut {
+    height: 31px;
+    background-color: #f1f1f1;
+    /* 行高和高度相等,内容居中对齐 */
+    line-height: 31px;
+}
+.shortcut li {
+    float: left;
+}
