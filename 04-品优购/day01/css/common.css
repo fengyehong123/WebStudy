@@ -1,0 +1,197 @@
+/* 公共样式 */
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+/* 声明字体图标的样式 */
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?7kkyc2');
+    src:  url('../fonts/icomoon.eot?7kkyc2#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?7kkyc2') format('truetype'),
+    url('../fonts/icomoon.woff?7kkyc2') format('woff'),
+    url('../fonts/icomoon.svg?7kkyc2#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 添加字体图标的样式 */
+.fr .icomoon {
+    font-family: 'icomoon';
+    font-size: 16px;
+    /* 行高小于高度,文字向上移动 */
+    line-height: 26px;
+}
+/* 版心 */
+.w {
+    /* 版心盒子的宽度 */
+    width: 1200px;
+    /* 版心盒子居中对齐 */
+    margin: 0 auto;
+}
+.style-red {
+    color: #c81632;
+}
+/* 顶部导航栏小竖线的样式 */
+.spacer {
+    width: 1px;
+    height: 12px;
+    background-color: #666;
+    /* 小竖线本身就是一个盒子,盒子添加外边距撑开 */
+    margin: 9px 12px 0;
+}
+/* 顶部快捷导航栏 */
+.shortcut {
+    height: 31px;
+    background-color: #f1f1f1;
+    /* 行高和高度相等,内容居中对齐 */
+    line-height: 31px;
+}
+.shortcut li {
+    float: left;
+}
+/* header区域 */
+.header {
+    /* 父元素相对定位 */
+    position: relative;
+    height: 105px;
+}
+.logo {
+    /* 子元素绝对定位 */
+    position: absolute;
+    top: 25px;
+    left: 0;
+    width: 175px;
+    height: 56px;
+}
+.logo a {
+    /* 行内元素转为快级元素 */
+    display: block;
+    width: 175px;
+    height: 56px;
+    background: url(../img/logo.png) no-repeat;
+    /* 把a标签中的字体大小设置为0来隐藏a标签中的文字 */
+    font-size: 0;
+}
+.search {
+    position: absolute;
+    top: 25px;
+    left: 348px;
+}
+/* 通过添加浮动的方法消除搜索框和搜索按钮之间的空隙 */
+.search .text {
+    float: left;
+    width: 445px;
+    height: 32px;
+    border: 2px solid #b1191a;
+    /* 搜索框设置左边宽度,保证提示文字和搜索框之间有范围 */
+    padding-left: 10px;
+    color: #ccc;
+}
+.search .btn {
+    float: left;
+    width: 82px;
+    height: 36px;
+    background-color: #b1191a;
+    /* 去除按钮的边框 */
+    border: 0;
+    font-size: 16px;
+    color: #fff;
+}
+.hotwords {
+    position: absolute;
+    top: 65px;
+    left: 348px;
+}
+.hotwords a {
+    /* a标签上下0 左右边距为12 */
+    margin: 0 12px;
+}
+.shopcar {
+    position: absolute;
+    top: 25px;
+    right: 64px;
+    width: 138px;
+    height: 34px;
+    border: 1px solid #dfdfdf;
+    background-color: #f7f7f7;
+    /* 购物车文字上下居中对齐 */
+    line-height: 34px;
+    /* 左右居中对齐 */
+    text-align: center;
+}
+.shopcar .car {
+    font-family: 'icomoon';
+    color: #da5555;
+}
+.shopcar .arrow {
+    font-family: 'icomoon';
+    margin-left: 5px;
+}
+.shopcar .count {
+    /* 定位的盒子转换为了行内块元素 */
+    position: absolute;
+    top: -5px;
+    /* 应该是左侧对齐,当购物车中的数据增多的时候才能向右走显示 */
+    left: 100px;
+    background-color: #e60012;
+    height: 14px;
+    /* 指定行高,不指定的话会继承父元素的行高 */
+    line-height: 14px;
+    padding: 0 3px;
+    color: #fff;
+    /* 小圆角的显示效果 */
+    border-radius: 7px 7px 7px 0;
+}
+.nav {
+    height: 45px;
+    border-bottom: 2px solid #b1191a;
+}
+.dropdown {
+    width: 209px;
+    height: 45px;
+    background-color: pink;
+}
+.dropdown .dt {
+    /* dt盒子的宽度,高度和父盒子一样 */
+    width: 100%;
+    height: 100%;
+    background-color: #b1191a;
+    font-size: 16px;
+    color: #fff;
+    /* 正中间居中显示 */
+    text-align: center;
+    line-height: 45px;
+}
+.dropdown .dd {
+    height: 465px;
+    background-color: #c81623;
+    margin-top: 2px;
+}
+.menu_item {
+    height: 31px;
+    line-height: 31px;
+    margin-left: 2px;
+    /* 因为li没有设置宽度,所以不会撑开盒子 */
+    padding: 0 10px;
+}
+.menu_item:hover {
+    background-color: #fff;
+}
+/* 鼠标经过li的时候,里面的a变颜色 */
+.menu_item:hover a {
+    color: #c81623;
+}
+/* li标签里面的a标签 */
+.menu_item a {
+    font-size: 14px;
+    color: #fff;
+}
+.menu_item i {
+    /* 浮动,靠右对齐 */
+    float: right;
+    font-family: 'icomoon';
+    font-size: 18px;
+    color: #fff;
+}
