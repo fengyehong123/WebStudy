@@ -1,0 +1,81 @@
+.main {
+    width: 980px;
+    height: 455px;
+    margin-left: 219px;
+    margin-top: 10px;
+}
+.focus {
+    position: relative;
+    width: 720px;
+    height: 455px;
+}
+.arrow-l,
+.arrow-r {
+    /* 箭头绝对定位 */
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    width: 24px;
+    height: 40px;
+    background: rgba(0, 0, 0, .3);
+    /* 按钮中的图标垂直居中 */
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    font-family: 'icomoon';
+    font-size: 18px;
+}
+.arrow-r {
+    right: 0;
+}
+.circle {
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+}
+.circle li {
+    float: left;
+    width: 8px;
+    height: 8px;
+    /* background-color: #fff; */
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    margin: 0 3px;
+    /* 让方块变为小圆圈 */
+    border-radius: 50%;
+    /* 鼠标经过的时候变为小手 */
+    cursor: pointer;
+}
+.current {
+    background-color: #fff;
+}
+.newsflash {
+    width: 250px;
+    height: 455px;
+}
+.newsflash .news {
+    height: 163px;
+    border: 1px solid #ccc;
+}
+.news-hd {
+    height: 32px;
+    border-bottom: 1px dotted #ccc;
+    /* 不用担心会撑开盒子,因为没有设置宽度 */
+    padding:0 15px;
+    font-size: 14px;
+    line-height: 32px;
+}
+.news-hd a {
+    float: right;
+    font-size: 12px;
+    font-family: 'icomoon';
+}
+.lifeservice {
+    height: 208px;
+    background-color: purple;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.bargain {
+    height: 75px;
+    margin-top: 5px;
+}

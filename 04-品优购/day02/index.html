@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="./css/base.css">
     <!-- 引入公共样式 -->
     <link rel="stylesheet" href="./css/common.css">
+    <!-- 引入首页自己的样式 -->
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
     <!-- 顶部快捷导航栏start -->
@@ -100,6 +102,7 @@
     <!-- nav start -->
     <div class="nav">
         <div class="w">
+            <!-- 左侧盒子 -->
             <div class="dropdown fl">
                 <div class="dt"> 全部商品分类 </div>
                 <div class="dd">
@@ -127,9 +130,179 @@
 					</ul>
                 </div>
             </div>
-            <div class="navitem fl">abc</div>
+            <!-- 右侧导航 -->
+            <div class="navitem fl">
+                <ul>
+                    <li><a href="#">服装城</a></li>
+                    <li><a href="#">美妆馆</a></li>
+                    <li><a href="#">传智超市</a></li>
+                    <li><a href="#">全球购</a></li>
+                    <li><a href="#">闪购</a></li>
+                    <li><a href="#">团购</a></li>
+                    <li><a href="#">拍卖</a></li>
+                    <li><a href="#">有趣</a></li>
+                </ul>
+            </div>
         </div>  
     </div>
     <!-- nav end -->
+
+    <div class="w">
+        <div class="main">
+            <!-- 轮播图的写法 li 包含a,a里面包含img -->
+            <div class="focus fl">
+                <!-- 轮播图的按钮 -->
+                <a href="" class="arrow-l"> < </a>
+                <ul>
+                    <li><a href=""><img src="./upload/focus.jpg" alt=""></a></li>
+                </ul>
+                <a href="" class="arrow-r">  </a>
+                <!-- 轮播图中间的按钮 -->
+                <ol class="circle">
+                    <li></li>
+                    <li class="current"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+            </div>
+            <!-- 右侧的盒子 -->
+            <div class="newsflash fr">
+                <!-- 新闻模块 -->
+                <div class="news">
+                    <div class="news-hd">
+                        品优购快报
+                        <a href="#">更多<i></i></a>
+                    </div>
+                    <div class="news-bd">
+
+                    </div>
+                </div>
+                <!-- 生活服务模块 -->
+                <div class="lifeservice">
+                    456
+                </div>
+                <!-- 特价商品模块 -->
+                <div class="bargain">
+                    <img src="./upload/bargain.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部footer开始 -->
+    <div class="footer">
+        <div class="w">
+            <!-- 服务模块 -->
+            <div class="mod_service">
+                <ul>
+                    <li>
+                        <i class="mod_service_icon mod_service_zheng"></i>
+                        <div class="mod_service_tit">
+                            <h5>正品保障</h5>
+                            <p>正品保障,提供发票</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="mod_service_icon mod_service_kuai"></i>
+                        <div class="mod_service_tit">
+                            <h5>正品保障</h5>
+                            <p>正品保障,提供发票</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="mod_service_icon mod_service_bao"></i>
+                        <div class="mod_service_tit">
+                            <h5>正品保障</h5>
+                            <p>正品保障,提供发票</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="mod_service_icon mod_service_bao"></i>
+                        <div class="mod_service_tit">
+                            <h5>正品保障</h5>
+                            <p>正品保障,提供发票</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="mod_service_icon mod_service_bao"></i>
+                        <div class="mod_service_tit">
+                            <h5>正品保障</h5>
+                            <p>正品保障,提供发票</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- 帮助模块 -->
+            <div class="mod-help">
+                <dl class="mod-help-item">
+                    <dt>购物指南</dt>
+                    <dd><a href="#">购物流程</a></dd>
+                    <dd><a href="#">会员介绍</a></dd>
+                    <dd><a href="#">生活旅行/团购</a></dd>
+                    <dd><a href="#">常见问题</a></dd>
+                    <dd><a href="#">大家电</a></dd>
+                    <dd><a href="#">联系客服</a></dd>
+                </dl>
+                <dl class="mod-help-item">
+                    <dt>购物指南</dt>
+                    <dd><a href="#">购物流程</a></dd>
+                    <dd><a href="#">会员介绍</a></dd>
+                    <dd><a href="#">生活旅行/团购</a></dd>
+                    <dd><a href="#">常见问题</a></dd>
+                    <dd><a href="#">大家电</a></dd>
+                    <dd><a href="#">联系客服</a></dd>
+                </dl>
+                <dl class="mod-help-item">
+                    <dt>购物指南</dt>
+                    <dd><a href="#">购物流程</a></dd>
+                    <dd><a href="#">会员介绍</a></dd>
+                    <dd><a href="#">生活旅行/团购</a></dd>
+                    <dd><a href="#">常见问题</a></dd>
+                    <dd><a href="#">大家电</a></dd>
+                    <dd><a href="#">联系客服</a></dd>
+                </dl>
+                <dl class="mod-help-item">
+                    <dt>购物指南</dt>
+                    <dd><a href="#">购物流程</a></dd>
+                    <dd><a href="#">会员介绍</a></dd>
+                    <dd><a href="#">生活旅行/团购</a></dd>
+                    <dd><a href="#">常见问题</a></dd>
+                    <dd><a href="#">大家电</a></dd>
+                    <dd><a href="#">联系客服</a></dd>
+                </dl>
+                <dl class="mod-help-item">
+                    <dt>购物指南</dt>
+                    <dd><a href="#">购物流程</a></dd>
+                    <dd><a href="#">会员介绍</a></dd>
+                    <dd><a href="#">生活旅行/团购</a></dd>
+                    <dd><a href="#">常见问题</a></dd>
+                    <dd><a href="#">大家电</a></dd>
+                    <dd><a href="#">联系客服</a></dd>
+                </dl>
+                <dl class="mod-help-item mod-help-app">
+                    <dt>帮助中心</dt>
+                    <dd>
+                        <img src="./upload/erweima.png" alt="">
+                        <p>品优购客户端</p>
+                    </dd>
+                </dl>
+            </div>
+            <!-- 版权模块 -->
+            <div class="mod_copyright">
+                <p class="mod_copyright_links">
+                    关于我们  |  联系我们  |  联系客服  |  商家入驻  |  营销中心  |  手机品优购  |  友情链接  |  销售联盟  |  品优购社区  |  品优购公益  |  English Site  |  Contact U
+                </p>
+                <p class="mod_copyright_info">
+                    地址：北京市昌平区建材城西路金燕龙办公楼一层 邮编：100096 电话：400-618-4000 传真：010-82935100 邮箱: zhanghj+itcast.cn  <br>
+                    京ICP备08001421号京公网安备110108007702
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- 底部footer结束 -->
 </body>
 </html>

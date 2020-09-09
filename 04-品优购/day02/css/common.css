@@ -195,3 +195,91 @@
     font-size: 18px;
     color: #fff;
 }
+/* 导航栏部分 */
+.navitem {
+    margin-left: 10px;
+}
+.navitem li {
+    float: left;
+}
+.navitem li a {
+    /* a标签转换为块级元素 */
+    display: block;
+    /* 高度和父亲一样高,因为字数不一样,所以不能指定宽度 */
+    height: 45px;
+    padding: 0 25px;
+    line-height: 45px;
+    font-size: 16px;
+}
+/* 底部footer */
+.footer {
+    height: 386px;
+    background-color: #f5f5f5;
+    padding-top: 30px;
+}
+.mod_service {
+    height: 79px;
+    border-bottom: 1px solid #ccc;
+}
+.mod_service li {
+    float: left;
+    width: 240px;
+    height: 79px;
+}
+.mod_service_icon {
+    /* 这个i元素添加了浮动,浮动可以给大小,不需要转换 */
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin-left: 35px;
+    background: url(../img/icons.png) no-repeat;
+}
+.mod_service_zheng {
+    background-position: -253px -3px;
+}
+.mod_service_kuai {
+    background-position: -255px -54px;
+}
+.mod_service_bao {
+    background-position: -257px -105px;
+}
+.mod_service_tit {
+    float: left;
+    margin-left: 5px;
+}
+.mod_service_tit h5 {
+    margin: 5px 0;
+}
+.mod-help {
+    height: 187px;
+    border-bottom: 1px solid #ccc;
+}
+.mod-help-item {
+    float: left;
+    width: 150px;
+    padding: 20px 0 0 50px;
+}
+.mod-help-item dt {
+    height: 25px;
+    font-size: 16px;
+}
+.mod-help-item dd {
+    height: 22px;
+}
+.mod-help-app dt,
+.mod-help-app p {
+    padding-left: 15px;
+}
+.mod-help-app img {
+    margin: 7px 0;
+}
+.mod_copyright {
+    text-align: center;
+}
+.mod_copyright_links {
+    margin: 20px 0 15px 0;
+}
+.mod_copyright_info {
+    /* 控制行和行之间的距离 */
+    line-height: 18px;
+}
