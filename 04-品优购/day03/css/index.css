@@ -225,3 +225,38 @@
     text-align: center;
     border-bottom: 1px solid #ccc;
 }
+/* CSS3的过渡效果 */
+.box-bd img {
+    /* 过渡写到本身上,谁做动画就给谁添加 */
+    transition: all 0.5s;
+}
+/* 鼠标经过图片的时候,向右走8px */
+.box-bd img:hover {
+    margin-left: 8px;
+}
+/* 保证图片移动超出边框的话,超出的部分给切除 */
+.box-bd li {
+    overflow: hidden;
+}
+/* 电梯导航 */
+.fixedtool {
+    width: 66px;
+    /* 电梯导航使用固定定位 */
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    margin-left: -676px;
+    background-color: #fff;
+}
+.fixedtool li {
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 12px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+.fixedtool .current {
+    background-color: #c81623;
+    color: #fff;
+}

@@ -175,9 +175,12 @@
     margin-left: 2px;
     /* 因为li没有设置宽度,所以不会撑开盒子 */
     padding: 0 10px;
+    /* 添加过渡动画,鼠标经过的时候向左移动20px */
+    transition: padding-left 0.5s;
 }
 .menu_item:hover {
     background-color: #fff;
+    padding-left: 20px;
 }
 /* 鼠标经过li的时候,里面的a变颜色 */
 .menu_item:hover a {
