@@ -1,0 +1,262 @@
+.main {
+    width: 980px;
+    height: 455px;
+    margin-left: 219px;
+    margin-top: 10px;
+}
+.focus {
+    position: relative;
+    width: 720px;
+    height: 455px;
+}
+.arrow-l,
+.arrow-r {
+    /* 箭头绝对定位 */
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    width: 24px;
+    height: 40px;
+    background: rgba(0, 0, 0, .3);
+    /* 按钮中的图标垂直居中 */
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    font-family: 'icomoon';
+    font-size: 18px;
+}
+.arrow-r {
+    right: 0;
+}
+.circle {
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+}
+.circle li {
+    float: left;
+    width: 8px;
+    height: 8px;
+    /* background-color: #fff; */
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    margin: 0 3px;
+    /* 让方块变为小圆圈 */
+    border-radius: 50%;
+    /* 鼠标经过的时候变为小手 */
+    cursor: pointer;
+}
+.current {
+    background-color: #fff;
+}
+.newsflash {
+    width: 250px;
+    height: 455px;
+}
+.newsflash .news {
+    height: 163px;
+    border: 1px solid #ccc;
+}
+.news-hd {
+    height: 32px;
+    border-bottom: 1px dotted #ccc;
+    /* 不用担心会撑开盒子,因为没有设置宽度 */
+    padding:0 15px;
+    font-size: 14px;
+    line-height: 32px;
+}
+.news-hd a {
+    float: right;
+    font-size: 12px;
+    font-family: 'icomoon';
+}
+.news-bd {
+    padding: 10px 0 0 15px;
+}
+.news-bd li {
+    height: 23px;
+}
+.lifeservice {
+    /* li盒子在一行显示的时候会超出显示边框,我们把超出的部分隐藏,然后用父亲的边框代替超出的li的边框 */
+    overflow: hidden;
+    height: 208px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.lifeservice ul {
+    /* 给li的父亲ul指定宽度,宽度只要超出一排小li的宽度,li就能在一排上显示 */
+    width: 252px;
+}
+.lifeservice li {
+    /* li盒子浮动然后就能一行行的显示了 */
+    float: left;
+    width: 62px;
+    height: 70px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+.lifeservice li a {
+    display: block;
+    /* 解决i引起的外边距塌陷合并的问题 */
+    overflow: hidden;
+    height: 100%;
+}
+.lifeservice li p {
+    text-align: center;
+}
+.hot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 15px;
+    background: url(../img/jian.jpg) no-repeat;
+}
+.service_ico {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url(../img/icons.png) no-repeat;
+    margin: 10px auto;
+}
+.service_ico_huafei {
+    background-position: -17px -16px;
+}
+.service_ico_feiji {
+    width: 26px;
+    background-position: -78px -16px;
+}
+.bargain {
+    height: 75px;
+    margin-top: 5px;
+}
+/* 推荐模块 */
+.recommend {
+    height: 163px;
+    margin-top: 10px;
+}
+.recom-hd {
+    width: 200px;
+    height: 163px;
+    background-color: #5c5251;
+    text-align: center;
+}
+.recom-hd img {
+    margin: 30px 0 10px 0;
+}
+.recom-hd h3 {
+    font-size: 18px;
+    /* 正常的字体,不加粗 */
+    font-weight: normal;
+    color: #fff;
+}
+.recom-bd {
+    width: 1000px;
+    height: 163px;
+    background-color: #ebebeb;
+}
+.recom-bd li {
+    width: 249px;
+    height: 145px;
+    margin-top: 10px;
+    float: left;
+    border-right: 1px solid #ccc;
+}
+.recom-bd .last {
+    border-right: 0;
+}
+/* 楼层区域 */
+.box-hd {
+    height: 30px;
+    margin-top: 25px;
+    border-bottom: 2px solid #c81623;
+}
+.box-hd h3 {
+    float: left;
+    font-size: 18px;
+    color: #c81623;
+}
+.box-hd .tab-list {
+    float: right;
+    line-height: 30px;
+}
+.tab-list li {
+    float: left;
+}
+.tab-list li a {
+    margin: 0 15px;
+}
+.box-bd {
+    height: 360px;
+}
+.w209 {
+    width: 209px;
+    background-color: #f9f9f9;
+}
+.w329 {
+    width: 329px;
+}
+.w219 {
+    width: 219px;
+    border-right: 1px solid #ccc;
+}
+.w220 {
+    width: 220px;
+    border-right: 1px solid #ccc;
+}
+.tab-con li {
+    /* li标签都添加了浮动 */
+    float: left;
+    height: 360px;
+}
+.tab-con-item {
+    border-bottom: 1px solid #ccc;
+}
+.tab-con-list {
+    /* 清除浮动 */
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.tab-con-list li {
+    width: 86px;
+    height: 32px;
+    margin-left: 10px;
+    line-height: 32px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+/* CSS3的过渡效果 */
+.box-bd img {
+    /* 过渡写到本身上,谁做动画就给谁添加 */
+    transition: all 0.5s;
+}
+/* 鼠标经过图片的时候,向右走8px */
+.box-bd img:hover {
+    margin-left: 8px;
+}
+/* 保证图片移动超出边框的话,超出的部分给切除 */
+.box-bd li {
+    overflow: hidden;
+}
+/* 电梯导航 */
+.fixedtool {
+    width: 66px;
+    /* 电梯导航使用固定定位 */
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    margin-left: -676px;
+    background-color: #fff;
+}
+.fixedtool li {
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 12px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+.fixedtool .current {
+    background-color: #c81623;
+    color: #fff;
+}

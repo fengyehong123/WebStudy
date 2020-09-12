@@ -1,0 +1,145 @@
+.de_container {
+    margin-top: 20px;
+}
+.crumb_wrap {
+    height: 25px;
+}
+.crumb_wrap a {
+    margin-right: 10px;
+}
+.preview_wrap {
+    width: 400px;
+    height: 590px;
+}
+.preview_img {
+    height: 398px;
+    border: 1px solid #ccc;
+}
+.preview_list {
+    position: relative;
+    height: 60px;
+    margin-top: 60px;
+}
+.list_item {
+    width: 320px;
+    height: 60px;
+    /* 居中对齐 */
+    margin: 0 auto;
+}
+.list_item li {
+    float: left;
+    width: 56px;
+    height: 56px;
+    margin: 0 2px;
+    border: 2px solid transparent;
+}
+.list_item li.current {
+    border-color: #c81623;
+}
+.arrow_prev,
+.arrow_next {
+    position: absolute;
+    top: 15px;
+    width: 22px;
+    height: 32px;
+}
+.arrow_prev {
+    left: 0;
+    background: url(../img/arrow-prev.png) no-repeat;
+}
+.arrow_next {
+    right: 0;
+    background: url(../img/arrow-next.png) no-repeat;
+}
+.itemInfo_wrap {
+    width: 718px;
+}
+.sku_name {
+    height: 30px;
+    font-size: 16px;
+    font-weight: 700;
+}
+.news {
+    /* 为这个新闻盒子指定高度,这样下面的盒子就不用指定margin-top了 */
+    height: 32px;
+    color: #e12228;
+}
+/* 父盒子清除浮动 */
+.summary dl {
+    overflow: hidden;
+}
+.summary dt,
+.summary dd {
+    float: left;
+}
+.summary dt {
+    width: 60px;
+    line-height: 36px;
+    padding-left: 10px;
+}
+.summary_price,
+.summary_promotion {
+    position: relative;
+    padding: 10px 0;
+    background-color: #fee9eb;
+}
+.summary_price a {
+    color: #c81623;
+}
+.price {
+    font-size: 24px;
+    color: #e12228;
+}
+.remark {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+}
+.summary_promotion {
+    padding: 0;
+}
+.summary_promotion dd {
+    width: 450px;
+    line-height: 36px;
+}
+.summary_promotion em {
+    /* 行内元素转换为行内块元素 */
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    background-color: #c81623;
+    color: #fff;
+    text-align: center;
+    line-height: 22px;
+}
+.summary_support dd {
+    line-height: 36px;
+}
+.choose_color dd {
+    line-height: 36px;
+}
+.choose_color a {
+    display: inline-block;
+    width: 80px;
+    height: 41px;
+    text-align: center;
+    line-height: 41px;
+    background-color: #f7f7f7;
+    border: 1px solid #ededed;
+}
+.summary a.current {
+    border-color: #c81623;
+}
+.choose_version {
+    margin: 10px 0;
+}
+.choose_version a,
+.choose_type a {
+    display: inline-block;
+    height: 32px;
+    padding: 0 12px;
+    text-align: center;
+    line-height: 32px;
+    background-color: #f7f7f7;
+    border: 1px solid #ededed;
+}
