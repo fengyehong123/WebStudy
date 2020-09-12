@@ -143,3 +143,145 @@
     background-color: #f7f7f7;
     border: 1px solid #ededed;
 }
+.choose_btns {
+    margin-top: 20px;
+}
+.choose_amount {
+    position: relative;
+    float: left;
+    width: 50px;
+    height: 46px;
+    background-color: pink;
+}
+.choose_amount input {
+    width: 33px;
+    height: 44px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+/* 购物车的加减按钮 */
+.add,
+.reduce {
+    position: absolute;
+    right: 0;
+    width: 15px;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+.add {
+    top: 0;
+}
+.reduce {
+    bottom: 0;
+    /* 当商品只有一件的时候,鼠标变为禁止标志 */
+    cursor: not-allowed;
+}
+.addCar {
+    float: left;
+    width: 142px;
+    height: 46px;
+    margin-left: 10px;
+    text-align: center;
+    line-height: 46px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #c81623;
+}
+/* 产品的详情部分 */
+.product_detail {
+    margin-bottom: 50px;
+}
+.aside {
+    width: 208px;
+    border: 1px solid #ccc;
+}
+.tab_list {
+    height: 34px;
+}
+.tab_list li {
+    float: left;
+    height: 33px;   
+    text-align: center;
+    line-height: 33px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ccc;
+}
+.tab_list .current {
+    background-color: #fff;
+    border-bottom: 0;
+    color: #e12228;
+}
+.first_tab {
+    width: 104px;
+}
+.second_tab {
+    width: 103px;
+    border-left: 1px solid #ccc;
+}
+.tab_con {
+    padding: 0 10px;   
+}
+.tab_con li {
+    border-bottom: 1px solid #ccc;
+}
+.tab_con li h5 {
+    /* 保证文字必须要一行显示 */
+    white-space: nowrap;
+    /* 多余溢出的部分隐藏 */
+    overflow: hidden;
+    /* 多出来的部分省略号显示 */
+    text-overflow: ellipsis;
+    /* 文字加粗 */
+    font-weight: normal;
+}
+.aside_price {
+    font-weight: 700;
+    margin: 10px 0;
+}
+.as_addcar {
+    display: block;
+    width: 88px;
+    height: 26px;
+    margin: 10px auto;
+    text-align: center;
+    line-height: 26px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+}
+.detail {
+    width: 978px;
+}
+/* 手机详情部分 */
+.detail_tab_list {
+    height: 39px;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+.detail_tab_list li {
+    float: left;
+    height: 39px;
+    line-height: 39px;
+    padding: 0 20px;
+    text-align: center;
+    /* 鼠标变为小手 */
+    cursor: pointer;
+}
+.detail_tab_list li.current {
+    background-color: #c81623;
+    color: #fff;
+}
+.item_info {
+    padding: 20px 0 0 20px;
+}
+.item_info li {
+    line-height: 22px;
+}
+.more {
+    float: right;
+    font-weight: 700;
+    font-family: 'icomoon';
+}

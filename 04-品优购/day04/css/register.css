@@ -1,0 +1,125 @@
+.w {
+    width: 1200px;
+    margin: 0 auto;
+}
+.header {
+    height: 82px;
+    border-bottom: 2px solid #b1191a;
+}
+.logo {
+    padding-top: 10px;
+}
+.registerarea {
+    height: 520px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+}
+.registerarea h3 {
+    height: 40px;
+    padding: 0 10px;
+    line-height: 40px;
+    font-weight: 400;
+    border-bottom: 1px solid #ccc;
+    background-color: #ececec;
+    font-size: 18px;
+}
+.registerarea h3 em {
+    float: right;
+    font-size: 14px;
+}
+.registerarea a {
+    color: #c81623;
+}
+.reg_form {
+    width: 600px;
+    height: 400px;
+    margin: 40px auto 0;
+}
+.reg_form li {
+    margin-bottom: 15px;
+}
+.reg_form label {
+    display: inline-block;
+    width: 100px;
+    height: 36px;
+    line-height: 36px;
+    text-align: right;
+}
+.inp {
+    width: 238px;
+    height: 34px;
+    border: 1px solid #ccc;
+    margin-left: 10px;
+}
+.error {
+    margin-left: 10px;
+    color: #df3033;
+}
+.error_icon,
+.success_icon {
+    /* i标签是行内元素,没有大小,我们把行内元素转换为行内块元素 */
+    display: inline-block;
+    /* 行内块对齐 */
+    vertical-align: middle;
+    margin-top: -2px;
+    width: 20px;
+    height: 20px;
+    background: url(../img/error.png) no-repeat;
+}
+.success {
+    margin-left: 10px;
+    color: #40b83f;
+}
+.success_icon {
+    background: url(../img/success.png) no-repeat;
+}
+.safe {
+    padding-left: 187px;
+    color: #b2b2b2;
+}
+.safe em {
+    padding: 0 12px;
+    color: #fff;
+}
+.ruo {
+    background-color: #de1111;
+}
+.zhong {
+    background-color: #408b3f;
+}
+.qiang {
+    background-color: #f79100;
+}
+.agree {
+    padding-top: 20px;
+    padding-left: 100px;
+}
+.agree input {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.agree a {
+    color: #1ba1e6;
+}
+.over {
+    width: 200px;
+    height: 34px;
+    margin: 30px 0 0 130px  ;
+    background-color: #c81623;
+    /* 去除按钮的边框 */
+    border: none;
+    color: #fff;
+    font-size: 14px;
+}
+/* 底部版权信息部分 */
+.footer {
+    height: 120px;
+    text-align: center;
+}
+.links {
+    margin-top: 20px;
+    height: 30px;
+}
+.copyright {
+    line-height: 20px;
+}
