@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            我们有一个50*50的盒子,这个盒子需要有背景图片,
+            根据分析,我们需要准备一个100*100的背景图片,
+            然后缩放到50*50,才能保证不会失真
+        */
+        div {
+            width: 50px;
+            height: 50px;
+            border: 1px solid red;
+            background: url(./images/apple100.jpg) no-repeat;
+            background-size: 50px 50px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+</html>

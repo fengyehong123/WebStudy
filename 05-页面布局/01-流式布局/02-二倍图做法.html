@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 把100*100的图片给缩放成50*50的图片 */
+        img:nth-child(2) {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        现状:
+            lRetina(视网膜屏幕)是一种显示技术,可以将把更多的物理像素点压缩至一块屏幕里,从而达到更高的分辨率,并提高屏幕显示的细腻程度。
+            对于一张50px*50px的图片,在手机屏中打开,按照刚才的物理像素比会放大倍数,这样会造成图片模糊 
+        存在的问题:
+            项目中我们需要一个50*50像素(css像素)的图片,但是直接放到我们的iphone8里面会放大2倍
+            原本50*50的图片会放大到100* 100,由于我们的图片不是矢量图,所以会失真
+        解决办法:
+            准备一张100*100的图片,然后手动的把这个图片缩小为50*50(css像素)
+            我们准备的图片比我们实际需要的大小要大2倍,这就方式就是2倍图
+     -->
+
+     <!-- 模糊的图片 -->
+     <img src="./images/apple50(1).jpg" alt="">
+     <!-- 两倍图的方式 -->
+     <img src="./images/apple100.jpg" alt="">
+</body>
+</html>

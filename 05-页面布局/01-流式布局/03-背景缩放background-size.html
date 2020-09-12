@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            border: 2px solid red;
+            /* 我们准备的图片的原始尺寸是 300*200的 */
+            background: url(./images/dog.jpg) no-repeat;
+            /* 
+                CSS3提供的背景图片缩放的样式
+                background-size: 图片的宽度 图片的高度
+                如果我们只写一个参数肯定是宽度,高度省略了,会等比例进行缩放
+                里面的单位可以是 %(百分比),这个百分比是相对于父盒子而言的
+                例如父盒子是 500*500的,背景图片若设置为 background-size: 50%
+                则会缩放为250*250
+            */
+            /* background-size: 500px 200px; */
+            /* cover:把背景图像扩展至足够大,以使背景图像完全覆盖背景区域 */
+            /* background-size: cover; */
+            /* contain把图像扩展至最大尺寸,以使其宽度和高度完全适应内容区域,可能会存在空白区域 */
+            background-size: contain;
+            
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+</html>
