@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            下面的这些特性只有在移动端才会有
+        */
+
+        /* 
+            移动端的超链接,点击的时候会有一个高亮效果(PC端没有)
+            我们可以通过下面的代码来去除高亮效果
+        */
+        a {
+            -webkit-tap-highlight-color: transparent;
+            /* 禁用长按页面时的弹出菜单 */
+            -webkit-touch-callout: none;
+        }
+        input {
+            /* 
+                在移动端浏览器默认的外观在ios上加上这个属性才能给按钮和输入框自定义样式
+            */
+            -webkit-appearance: none;
+        }
+    </style>
+</head>
+<body>
+    <a href="#">黑马程序员</a>
+    <input type="button" value="按钮">
+</body>
+</html>

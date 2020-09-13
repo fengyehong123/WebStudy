@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            传统的盒子模型 = width + border + padding
+                我们想要一个宽高为200*200的盒子,但是因为我们添加了padding和border
+                导致盒子被撑大,最终变为240*240的盒子
+         */
+        div:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            padding: 10px;
+            border: 10px solid red;
+        }
+        /* 
+            CSS3的盒子模型
+                padding和border不会再撑大盒子
+        */
+        div:nth-child(2) {
+            /* 有了这句话,这个盒子就变为了CSS3的盒子模型 */
+            box-sizing: border-box;
+            /* 
+                传统的盒子模型
+                box-sizing: content-box;
+            */
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+            /* 因为我们使用了CSS3的盒子模型,虽然我们添加了padding和border,但是却不会撑开盒子 */
+            padding: 10px;
+            border: 10px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+    <div>
+
+    </div>
+</body>
+</html>
