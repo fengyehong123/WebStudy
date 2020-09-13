@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,
+    maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <!-- 引入移动端css初始化文件 -->
+    <link rel="stylesheet" href="./css/normalize.css">
+    <!-- 引入我们自定义的首页文件 -->
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <!-- 顶部 -->
+    <header class="app">
+        <ul>
+            <li>
+                <img src="./images/close.png" alt="">
+            </li>
+            <li>
+                <img src="./images/logo.png" alt="">
+            </li>
+            <li>打开京东App，购物更轻松</li>
+            <li>立即打开</li>
+        </ul>
+    </header>
+    <!-- 搜索 -->
+    <div class="search-wrap">
+        <!-- 左边的盒子定位,右边的盒子也是定位,中间的盒子是标准流,指定高度,没有指定宽度 -->
+        <div class="search_btn"></div>
+        <!-- 标准流的盒子,我们只给了高度,没有给宽度 -->
+        <div class="search">
+            <!-- 搜索框中的京东的图标 -->
+            <div class="jd_icon"></div>
+            <!-- 
+                放大镜图标
+                用到了二倍精灵图缩放的技巧
+            -->
+            <div class="sou"></div>
+        </div>
+        <div class="search_login">登录</div>
+    </div>
+    <!-- 主体内容部分 -->
+    <div class="main_content">
+        <!-- 滑动图 -->
+        <div class="slider">
+            <!-- .dbg是京东自己创建的图片格式,保证色彩的情况下所占用空间更小 -->
+            <img src="./upload/banner.dpg" alt="">
+        </div>
+        <!-- 小家电品牌日 -->
+        <div class="brand">
+            <div>
+                <a href="#">
+                    <img src="./upload/pic11.dpg" alt="">
+                </a>
+            </div>
+            <div>
+                <a href="#">
+                    <img src="./upload/pic22.dpg" alt="">
+                </a>
+            </div>
+            <div>
+                <a href="#">
+                    <img src="./upload/pic33.dpg" alt="">
+                </a>
+            </div>
+        </div>
+        <!-- 导航栏部分 -->
+        <nav>
+            <a href="#">
+                <!-- webp是谷歌开发的一种图片的格式 -->
+                <img src="./upload/nav1.webp" alt="">
+                <!-- 图片下面的文字 -->
+                <span>京东超市</span>
+            </a>
+            <a href="#">
+                <img src="./upload/nav2.webp" alt="">
+                <span>京东超市</span>
+            </a>
+            <a href="#">
+                <img src="./upload/nav3.webp" alt="">
+                <span>京东超市</span>
+            </a>
+            <a href="#">
+                <img src="./upload/nav1.webp" alt="">
+                <span>京东超市</span>
+            </a>
+            <a href="#">
+                <img src="./upload/nav2.webp" alt="">
+                <span>京东超市</span>
+            </a>
+            <a href="#">
+                <img src="./upload/nav3.webp" alt="">
+                <span>京东超市</span>
+            </a>
+            <a href="#">
+                <img src="./upload/nav1.webp" alt="">
+                <span>京东超市</span>
+            </a>
+            <a href="#">
+                <img src="./upload/nav2.webp" alt="">
+                <span>京东超市</span>
+            </a>
+            <a href="#">
+                <img src="./upload/nav3.webp" alt="">
+                <span>京东超市</span>
+            </a>
+            <a href="#">
+                <img src="./upload/nav1.webp" alt="">
+                <span>京东超市</span>
+            </a>
+        </nav>
+        <!-- 新闻部分 -->
+        <div class="news">
+            <a href="#">
+                <img src="./upload/new1.dpg" alt="">
+            </a>
+            <a href="#">
+                <img src="./upload/new2.dpg" alt="">
+            </a>
+            <a href="#">
+                <img src="./upload/new3.dpg" alt="">
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,219 @@
+/* 整个首页所共同的样式 */
+body {
+    width: 100%;
+    /* 屏幕缩放,最小320px */
+    min-width: 320px;
+    /* 最大是640px */
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 14px;
+    font-family: -apple-system, Helvetica, sans-serif;
+    color: #666;
+    line-height: 1.5;
+}
+/* 点击高亮我们需要清除清除  设置为transparent 完成透明 */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+/* 在移动端浏览器默认的外观在iOS上加上这个属性才能给按钮和输入框自定义样式 */
+input {
+    -webkit-appearance: none;
+}
+/* 禁用长按页面时的弹出菜单 */
+img,
+a {
+    -webkit-touch-callout: none;
+}
+a {
+    color: #666;
+    text-decoration: none;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    /* 去除li标签的小圆点 */
+    list-style: none;
+}
+/* 去除图片底部的空隙 */
+img {
+    vertical-align: middle;
+}
+.app {
+    height: 45px;
+}
+.app ul li {
+    float: left;
+    height: 45px;
+    background-color: #333333;
+    /* 水平居中 */
+    text-align: center;
+    /* 垂直居中 */
+    line-height: 45px;
+    color: #fff;
+}
+/* 关闭图片盒子的百分比 */
+.app ul li:nth-child(1) {
+    width: 8%;
+}
+/* 设置图片的宽度 */
+.app ul li:nth-child(1) img {
+    width: 10px;
+}
+.app ul li:nth-child(2) {
+    width: 10%;
+}
+.app ul li:nth-child(2) img {
+    width: 30px;
+    /* 图片属于行内块元素,当图片和文字要居中对齐的时候,用下面的属性 */
+    vertical-align: middle;
+}
+.app ul li:nth-child(3) {
+    width: 57%;
+}
+.app ul li:nth-child(4) {
+    width: 25%;
+    background-color: #F63515;
+}
+/* -----------------搜索-------------------- */
+.search-wrap {
+    /* 搜索盒子需要用到固定定位 */
+    position: fixed;
+    /* 清除浮动 */
+    overflow: hidden;
+    height: 44px;
+    /* 固定定位的盒子一定要给一个宽度 */
+    width: 100%;
+    /* 最大和最小的宽度 */
+    min-width: 320px;
+    max-width: 640px;
+}
+.search_btn {
+    /* 子盒子绝对定位 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 44px;
+}
+.search_login {
+    /* 子盒子绝对定位 */
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 44px;
+    color: #fff;
+    line-height: 44px;
+}
+.search {
+    position: relative;
+    height: 30px;
+    background-color: #fff;
+    margin: 0 50px;
+    margin-top: 7px;
+    border-radius: 15px;
+}
+.search_btn::before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 18px;
+    background: url(../images/s-btn.png) no-repeat;
+    background-size: 20px 18px;
+    margin: 14px 0 0 15px;
+}
+.jd_icon {
+    position: absolute;
+    width: 20px;
+    height: 15px;
+    top: 8px;
+    left: 13px;
+    background: url(../images/jd.png) no-repeat;
+    background-size: 20px 15px;
+}
+/* 直接在京东图标后面添加一个小小的竖线 */
+.jd_icon::after {
+    position: absolute;
+    right: -8px;
+    content: "";
+    display: block;
+    width: 1px;
+    height: 15px;
+    background-color: #ccc;
+}
+.sou {
+    position: absolute;
+    top: 8px;
+    left: 50px;
+    width: 18px;
+    height: 15px;
+    /* 放大镜图标所在的精灵图 */
+    background: url(../images/jd-sprites.png) no-repeat;
+    /* 二倍精灵图的做法 */
+    /* 
+        1. 在firework中,把精灵图等比例缩放为原来的一半
+        然后根据缩放之后的大小进行测量
+        注意代码里面background-size也要写: 精灵图原来宽度的一半
+    */
+    background-position: -81px 0;
+    /* 精灵图原来的一半 */
+    background-size: 200px auto;
+}
+.slider img {
+    width: 100%;
+}
+/* ----------------------品牌日---------------------------- */
+.brand {
+    overflow: hidden;
+    /* 
+        我们此处弯曲的是盒子的边框,不是图片的边框
+        然后用overflow: hidden 属性来把图片多余的部分去除就只显示图片被裁减的部分
+    */
+    border-radius: 10px 10px 0 0;
+}
+.brand div {
+    float: left;
+    width: 33.33%;
+}
+/* 图片的宽度要和父盒子保持一致 */
+.brand div img {
+    width: 100%;
+}
+/* ----------------------导航栏---------------------------- */
+nav {
+    overflow: hidden;
+    padding-top: 5px;
+}
+nav a {
+    float: left;
+    /* 导航栏中的每一个图标都占20%的宽度 */
+    width: 20%;
+    text-align: center;
+}
+nav a img {
+    width: 40px;
+    margin: 10px 0;
+}
+nav a span {
+    display: block;
+}
+/* ----------------------新闻部分---------------------------- */
+.news {
+    margin-top: 20px;
+}
+.news img {
+    width: 100%;
+}
+.news a {
+    float: left;
+    /* CSS3中的盒子模型,添加padding和border也不会被撑开 */
+    box-sizing: border-box;
+}
+.news a:nth-child(1) {
+    width: 50%;
+}
+.news a:nth-child(2),
+.news a:nth-child(3) {
+    width: 25%;
+    border-left: 1px solid #ccc;
+}
