@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: flex;
+            width: 800px;
+            height: 400px;
+            background-color: pink;
+            /* 默认的主轴是x轴,可以省略不写 */
+            /* flex-direction: row; */
+            /* 沿着主轴居中对齐 */
+            justify-content: center;
+            /* 
+                align-items 设置侧轴上的子元素排列方式(单行)
+                    - flex-start 从头部开始
+                    - flex-end 从尾部开始
+                    - center 居中显示
+                    - stretch 拉伸(如果要使用拉伸,子元素不能设置高度)
+            */
+            align-items: center;
+        }
+        
+        div span {
+            width: 150px;
+            height: 100px;
+            background-color: purple;
+            color: #fff;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: flex;
+            width: 80%;
+            height: 300px;
+            background-color: pink;
+            /* 
+                这种写法是让3个子盒子沿着侧轴底部对齐 
+                align-items: flex-end;
+            */
+            /* 
+                我们只想让3号盒子下来和底侧对齐
+                这个时候可以给3号盒子单独添加属性align-self
+            */
+
+        }
+        
+        div span {
+            width: 150px;
+            height: 100px;
+            background-color: purple;
+            margin-right: 5px;
+        }
+        div > span:nth-child(3) {
+            /* 
+                align-self控制子项自己在侧轴上的排列方式
+                align-self 属性允许单个项目有与其他项目不一样的对齐方式,可覆盖 align-items 属性.
+                默认值为 auto,表示继承父元素的 align-items 属性,如果没有父元素,则等同于 stretch。
+            */
+            align-self: flex-end;
+        }
+        /* 
+            order 属性定义项目的排列顺序
+            数值越小,排列越靠前,默认为0
+            注意：和 z-index 不一样(z-index控制的是罗列的顺序)
+        */
+        div > span:nth-child(2) {
+            /* 
+                在结构中盒子的顺序是 1 2 3 号的排列方式
+                但是我们通过css来修改了盒子的排列方式
+                排列顺序默认为0,但是我们给2号盒子指定了负数,由于越小越靠前,因此2号盒子在所有盒子的最前面
+            */
+            order: -1;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+</body>
+</html>

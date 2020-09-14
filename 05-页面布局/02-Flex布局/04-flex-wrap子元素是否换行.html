@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: flex;
+            width: 600px;
+            height: 400px;
+            background-color: pink;
+            /* 
+                在flex布局中默认是不换行的
+                如果子盒子的宽度加起来超过父盒子的话,flex布局会对子盒子进行缩小,让所有的项目在一条线上
+                我们可以通过设置flex-wrap来设置子元素是否换行
+                    nowrap: 默认值,不换行
+                    wrap: 换行
+            */
+            flex-wrap: wrap;
+        }
+        
+        div span {
+            width: 150px;
+            height: 100px;
+            background-color: purple;
+            color: #fff;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            /* 声明div盒子使用flex布局 */
+            /* 
+                使用了flex布局,也就不需要浮动
+            */
+            display: flex;
+            width: 80%;
+            height: 300px;
+            background-color: pink;
+            /* 
+                justify-content 设置主轴上的子元素排列方式
+                space-around: 平分剩余空间
+            */
+            justify-content: space-around;
+        }
+        div span {
+            width: 150px;
+            height: 100px;
+            background-color: purple;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        flex布局
+            任何一个容器都可以指定为flex布局
+        当我们为父盒子设定为flex布局以后,子元素的float,clear,vertical-align属性将会失效
+        伸缩布局=弹性布局=伸缩盒布局=弹性盒布局=flex布局
+
+        采用flex布局的元素,称为Flex容器,它所有的子元素自动成为容器成员,称为flex项目,简称项目
+        下面的div就是flex父容器
+        div中的span就是子容器flex项目
+        子容器可以横向排列也可以纵向排列
+
+        flex布局原理
+            通过给父盒子添加flex属性,来控制子盒子的位置和排列方式
+    -->
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+</body>
+</html>

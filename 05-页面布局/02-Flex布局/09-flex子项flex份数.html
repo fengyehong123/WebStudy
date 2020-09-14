@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display: flex;
+            width: 60%;
+            height: 150px;
+            /* 居中对齐 */
+            margin: 0 auto;
+        }
+        section div:nth-child(1) {
+            width: 100px;
+            height: 150px;
+            background-color: red;
+        }
+        section div:nth-child(2) {
+            /* 
+                flex 属性定义子项目分配剩余空间，用flex来表示占多少份数.
+                第1个和第3个div盒子都指定了宽度和高度,剩下来的宽度都留给了第2个div盒子
+                我们指定 flex: 1 也就是指定第2个div盒子占据了所有的剩下的空间 
+            */
+            flex: 1;
+            margin-left: 10px;
+            margin-right: 10px;
+            background-color: green;
+        }
+        section div:nth-child(3) {
+            width: 100px;
+            height: 150px;
+            background-color: blue;
+        }
+        /* --------------------------------------------------- */
+        p {
+            display: flex;
+            width: 60%;
+            height: 150px;
+            /* 居中对齐 */
+            margin: 100px auto;
+            background-color: pink;
+        }
+        p span {
+            /* 
+                由于3个子盒子span都没有指定宽度,站在父盒子的角度看的话,父盒子全部的空间都剩下来了
+                父盒子里面有3个子盒子,这3个子盒子平均分配剩下的100%的空间,每个盒子都占据3/1的空间
+            */
+            flex: 1;
+        }
+        /* 我们给第2个盒子特殊指定了大小,占据两份 */
+        p span:nth-child(2) {
+            flex: 2;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        做一个效果
+        左侧固定,右侧固定,中间自适应
+    -->
+    <section>
+        <div></div>
+        <div></div>
+        <div></div>
+    </section>
+    <hr>
+    <p>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </p>
+</body>
+</html>
