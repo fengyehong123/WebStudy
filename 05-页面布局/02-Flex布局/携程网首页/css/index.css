@@ -1,0 +1,144 @@
+body {
+    max-width: 540px;
+    min-width: 320px;
+    margin: 0 auto;
+    font: normal 14px/1.5 Tahoma, "Lucida Grande", Verdana, "Microsoft Yahei", STXihei, hei;
+    color: #000;
+    background: #f2f2f2;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+/* 所有的a超链接都去除下划线 */
+a {
+    text-decoration: none;
+    color: #222;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+/* CSS3中的盒子模型 */
+div {
+    box-sizing: border-box;
+}
+/* 搜索模块 */
+.search_index {
+    /* 父元素使用flex布局 */
+    display: flex;
+    /* 固定定位和父元素没有关系,以屏幕为准 */
+    position: fixed;
+    top: 0;
+    left: 50%;
+    /* 固定的盒子必须要有宽度 */
+    width: 100%;
+    /* CSS3中的属性,盒子自身宽度的一半(为了居中对齐使用),因为使用了绝对定位,因为 margin: 0 auto不起作用 */
+    transform: translateX(-50%);
+    /* 为了兼容老版本的浏览器 */
+    -webkit-transform: translateX(-50%);
+    /* 固定定位和父元素没有关系,以屏幕为准 */
+    max-width: 540px;
+    min-width: 320px;
+    height: 44px;
+    background-color: #F6F6F6;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+.search {
+    position: relative;
+    height: 26px;
+    /* 由于我们使用的是CSS3盒子模型,C3中border是不算额外的高度的,因为行高等于高不会居中对齐,需要 行高 = 高 - 边框的距离 */
+    line-height: 24px;
+    border: 1px solid #ccc;
+    flex: 1;
+    font-size: 12px;
+    color: #666;
+    margin: 6px 10px;
+    padding-left: 25px;
+    /* 小圆角 */
+    border-radius: 5px;
+    /* 盒子的阴影 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+/* 伪元素,搜索框的后面加一个搜索的小图片 */
+.search::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 15px;
+    height: 15px;
+    background: url(../images/sprite.png) no-repeat;
+    background-position: -59px -279px;
+    background-size: 104px auto;
+}
+.user {
+    width: 44px;
+    height: 44px;
+    font-size: 12px;
+    /* 居中对齐 */
+    text-align: center;
+    color: #2eaae0;
+}
+/* 伪元素,在a标签的前面添加一个小图片 */
+.user::before {
+    content: "";
+    /* a标签转换为块级元素 */
+    display: block;
+    width: 23px;
+    height: 23px;
+    background: url(../images/sprite.png) no-repeat;
+    /* 二倍精灵图的位置 */
+    background-position: -59px -194px;
+    /* 精灵图进行缩放 */
+    background-size: 104px auto;
+    margin: 4px auto -2px;
+}
+/* 焦点图模块 */
+.focus { 
+    padding-top: 44px;
+}
+.focus img {
+    width: 100%;
+}
+/* 局部导航栏 */
+.local_nav {
+    display: flex;
+    height: 64px;
+    background-color: #fff;
+    margin: 3px 4px;
+    border-radius: 8px;
+}
+.local_nav li {
+    flex: 1;
+}
+.local_nav a {
+    display: flex;
+    /* 主轴设置为y轴 */
+    flex-direction: column;
+    /* 侧轴设置为居中对齐(因为是单行) */
+    align-items: center;
+    font-size: 12px;
+}
+
+/* 使用了属性选择器 */
+.local_nav li [class^="local_nav_icon"] {
+    width: 32px;
+    height: 32px;
+    margin-top: 8px;
+    background: url(../images/localnav_bg.png) no-repeat;
+    background-position: 0 0;
+    background-size: 32px auto;
+}
+.local_nav li .local_nav_icon_icon2 {
+    background-position: 0 -32px;
+}
+.local_nav li .local_nav_icon_icon3 {
+    background-position: 0 -64px;
+}
+.local_nav li .local_nav_icon_icon4 {
+    background-position: 0 -96px;
+}
+.local_nav li .local_nav_icon_icon5 {
+    background-position: 0 -128px;
+}
