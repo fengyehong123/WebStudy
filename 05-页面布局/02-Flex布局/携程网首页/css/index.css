@@ -142,3 +142,152 @@ div {
 .local_nav li .local_nav_icon_icon5 {
     background-position: 0 -128px;
 }
+nav {
+    /* 切去多余的部分,露出小圆角 */
+    overflow: hidden;
+    border-radius: 8px;
+    margin: 0 4px 3px;
+}
+.nav_common {
+    display: flex;
+    height: 88px;
+    background-color: pink;
+}
+.nav_common:nth-child(2) {
+    margin: 3px 0;
+}
+.nav_items {
+    /* 这两个属性写在一起不会冲突 */
+    flex: 1;
+    display: flex;
+    /* 主轴设置为y轴,两个盒子上下排列 */
+    flex-direction: column;
+}
+.nav_items a {
+    flex: 1;
+    text-align: center;
+    line-height: 44px;
+    color: #fff;
+    font-size: 14px;
+    /* 添加文字阴影效果 */
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+}
+/* 给上下盒子的第一个盒子设置一个底边框 */
+.nav_items a:nth-child(1) {
+    border-bottom: 1px solid #fff;
+}
+/* 第一列下面的a是不需要下边框的 */
+.nav_items:nth-child(1) a {
+    border: 0;
+    background: url(../images/hotel.png) no-repeat;
+    /* 背景图片的位置 */
+    background-position: bottom center;
+    background-size: 121px auto;
+}
+/* 给前两个盒子添加边框 -n + 2 代表前面两个 */
+.nav_items:nth-child(-n + 2) {
+    border-right: 1px solid #fff;
+}
+/* 给第一个盒子添加背景线性渐变 */
+.nav_common:nth-child(1) {
+    background: -webkit-linear-gradient(left, #FA5A55, #FA994D);
+}
+.nav_common:nth-child(2) {
+    background: -webkit-linear-gradient(left, #4B90ED, #53BCED);
+}
+.nav_common:nth-child(3) {
+    background: -webkit-linear-gradient(left, #34C2A9, #6CD559);
+}
+/* 侧导航栏部分 */
+.subnav_entry {
+    display: flex;
+    border-radius: 8px;
+    background: #fff;
+    margin: 0 4px;
+    /* 给父级添加强制换行 */
+    flex-wrap: wrap;
+    padding: 5px 0;
+}
+.subnav_entry li {
+    /* 子盒子可以写百分比,百分比的数值是相对于父级元素来说的 */
+    flex: 20%;
+}
+.subnav_entry a {
+    display: flex;
+    /* 设置主轴为y轴 */
+    flex-direction: column;
+    /* 侧轴居中 */
+    align-items: center;
+}
+.subnav_entry_icon {
+    width: 28px;
+    height: 28px;
+    background-color: pink;
+    margin-top: 4px;
+    background: url(../images/subnav-bg.png) no-repeat;
+    background-size: 28px auto;
+}
+/* 销售模块 */
+.sales_box {
+    border-top: 1px solid #bbb;
+    background-color: #fff;
+    margin: 4px;
+}
+.sales_hd {
+    position: relative;
+    height: 44px;
+    border-bottom: 1px solid #ccc;
+}
+.sales_hd h2 {
+    position: relative;
+    text-indent: -999px;
+    overflow: hidden;
+}
+.sales_hd h2::after {
+    position: absolute;
+    top: 8px;
+    left: 20px;
+    content: "";
+    width: 79px;
+    height: 15px;
+    background: url(../images/hot.png) no-repeat;
+    background-position: 0 -20px;
+    background-size: 79px auto;
+}
+.more {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    /* 背景渐变 */
+    background: -webkit-linear-gradient(left, #FF506C, #FF6BC6);
+    /* 小圆角 */
+    border-radius: 15px;
+    padding: 3px 20px 3px 10px;
+    color: #fff;
+}
+.more::after {
+    content: "";
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    width: 7px;
+    height: 7px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    /* 旋转,形成一个小三角 */
+    /* CSS3的样式,旋转 */
+    transform: rotate(45deg);
+}
+.row {
+    display: flex;
+}
+.row a {
+    flex: 1;
+    border-bottom: 1px solid #eee;
+}
+.row a:nth-child(1) {
+    border-right: 1px solid #eee;
+}
+.row a img {
+    width: 100%;
+}

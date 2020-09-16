@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.div1 {
+            width: 600px;
+            height: 200px;
+            /* 
+                CSS3的语法:背景颜色线性渐变
+                background: -webkit-linear-gradient(起始位置, 起始颜色, 结束颜色);
+                第一个参数,其实前缀可以省略,默认值是top
+                -webkit- 是浏览器私有前缀,为了解决部分浏览器兼容性的问题
+            */
+            background: -webkit-linear-gradient(left, red, blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">第一个盒子</div>
+</body>
+</html>
