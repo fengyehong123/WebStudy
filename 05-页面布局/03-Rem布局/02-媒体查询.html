@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            在我们的屏幕上,并且最大的宽度是800像素,设置我们想要的样式
+
+            下面的样式
+                只有在屏幕尺寸 <= 800px 的时候背景颜色才是粉红色,否则是不变色的
+        */
+        @media screen and (max-width: 800px) {
+            body {
+                background-color: pink;
+            }
+        }
+        /* 
+            屏幕尺寸 <= 500px 的时候,背景颜色会变成紫色
+            500px <= 屏幕尺寸 <= 800px 的时候是粉红色
+            屏幕尺寸 > 800px的时候背景无颜色
+        */
+        @media screen and (max-width: 500px) {
+            body {
+                background-color: purple;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        媒体查询（Media Query）是CSS3新语法。
+            使用 @media查询，可以针对不同的媒体类型定义不同的样式
+            @media 可以针对不同的屏幕尺寸设置不同的样式
+            当你重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面 
+            目前针对很多苹果手机、Android手机，平板等设备都用得到多媒体查询
+        
+        语法
+            @media mediatype and|not|only (media feature) {
+                CSS-Code;
+            }
+                用 @media开头 注意@符号
+                mediatype  媒体类型(all:用于所有的设备 print:用于打印机和打印预览 screen:用于电脑屏幕,平板电脑,智能手机等)
+                关键字 and  not  only
+                media feature 媒体特性必须有小括号包含
+
+    -->
+</body>
+</html>

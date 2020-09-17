@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            em是相对于父元素来说的,div是p标签的父元素,我们给div标签设置字体大小为12px
+            给p标签设置宽高度为10em,那么p标签生成的盒子的大小就是12X10=120*120的盒子大小
+        */
+        div.div1 {
+            font-size: 12px;
+        }
+        div.div1 p {
+            height: 10em;
+            width: 10em;
+            background-color: pink;
+        }
+        /* --------------------------- */
+
+        /* 
+            rem (root em)是一个相对单位,类似于em,em是父元素字体大小。
+            不同的是rem的基准是相对于html元素的字体大小。
+            比如,根元素(html)设置font-size=12px; 非根元素设置width:2rem; 则换成px表示就是24px.
+
+            rem的优点
+                可以通过修改html里面的文字的大小来改变页面中元素的大小(例如盒子的宽度和高度),
+                从而可以实现整体的控制
+            
+            问题
+                这个时候会引申出一个问题,如何根据不同设备的屏幕尺寸来动态的修改html元素的文件大小呢?    
+            解决方案
+                使用媒体查询
+        */
+        html {
+            /* 我们设置html元素的字体大小为15px */
+            font-size: 15px;
+        }
+        div.div2 {
+            font-size: 12px;
+        }
+        div.div2 p {
+            /* 
+                用到rem布局,rem布局的字体是相对于html元素的字体大小
+                因为盒子的宽度为 15X10=150*150
+            */
+            height: 10rem;
+            width: 10rem;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <p></p>
+    </div>
+
+    <hr>
+
+    <div class="div2">
+        <p></p>
+    </div>
+</body>
+</html>

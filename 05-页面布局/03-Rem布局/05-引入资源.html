@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            当屏幕尺寸 >= 640px的时候,我们让div一行显示2个
+            当我们屏幕 < 640px的时候,我们让div一行显示一个
+
+            建议: 我们媒体查询最后的方法是从小到大的写法
+        */
+    </style>
+    <!-- 
+        媒体查询引入资源
+            引入资源就是针对不同的屏幕尺寸来调用不同的CSS文件
+    -->
+    <!-- 
+        小屏幕调用这个css样式
+        大屏幕调用下面的这个css样式
+     -->
+    <link rel="stylesheet" href="./css/style320.css" media="screen and (min-width: 320px)">
+    <link rel="stylesheet" href="./css/style640.css" media="screen and (min-width: 640px)">
+</head>
+<body>
+    <!-- 
+        引入资源
+            当样式比较多的时候,我们可以针对不同的媒体使用不同的stylesheets(样式表)
+            原理,就是直接在link中判断设备的尺寸,然后根据设备的尺寸引用不同的css文件
+    -->
+    <div>1</div>
+    <div>2</div>
+</body>
+</html>
