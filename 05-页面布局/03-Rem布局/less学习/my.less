@@ -1,0 +1,19 @@
+// 定义一个粉色的变量
+// 变量名区分大小写,变量名不能用数字开头
+@color: pink;
+
+// 定义了一个字体大小为14px的变量
+@font14 : 14px;
+
+body {
+    // 引用我们定义的颜色变量
+    background-color: @color;
+}
+div {
+    background-color: @color;
+    // 字体大小使用我们定义的字体变量
+    font-size: @font14;
+}
+
+// 我们给 vs code 安装了一个插件 Easy Less,当我们书写完less样式的时候, Ctrl + S 一保存,就会把less文件编译,
+// 在less文件所在的目录自动生成一个同名的css文件
