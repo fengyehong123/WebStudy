@@ -1,0 +1,27 @@
+.header {
+    width: 200px;
+    height: 200px;
+    background-color: pink;
+    /*
+        less中的样式嵌套
+        由于a标签是被包含在div标签中的
+        所以在less中,a标签的样式可以嵌套在div标签的样式中
+    */
+    a {
+        color: red;
+        // 伪类选择器的less写法,注意要多添加一个'&'号表示:hover是属于a标签的,而不是a标签的后代
+        &:hover {
+            color: blue;
+        }
+    }
+}
+
+.nav {
+    .logo {
+        color: green;
+    }
+    // 给nav添加一个before伪类选择器
+    &::before {
+        content: "";
+    }
+}

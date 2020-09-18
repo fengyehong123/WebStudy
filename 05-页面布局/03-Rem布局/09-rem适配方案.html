@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            ①假设设计稿是750px
+            ②假设我们把整个屏幕划分为15等份（划分标准不一可以是20份也可以是10等份）
+            ③每一份作为html字体大小，这里就是50px
+            ④那么在320px设备的时候，字体大小为320/15就是  21.33px
+            ⑤用我们页面元素的大小除以不同的 html字体大小会发现他们比例还是相同的
+            ⑥比如我们以750为标准设计稿
+            ⑦一个100*100像素的页面元素在750屏幕下,就是 100/ 50  转换为rem是 2rem * 2rem ,比例是1比1
+            ⑧320屏幕下,html字体大小为21.33  则 2rem=  42.66px  此时宽和高都是 42.66  但是宽和高的比例还是 1比1
+            ⑨但是已经能实现不同屏幕下  页面元素盒子等比例缩放的效果
+            总结：
+            ①最后的公式：页面元素的rem值 =  页面元素值（px） /  （屏幕宽度  /  划分的份数）
+            ②屏幕宽度/划分的份数就是 htmlfont-size 的大小
+            ③或者：页面元素的rem值 =  页面元素值（px） /  html font-size 字体大小
+
+        */
+        @media screen and (min-width: 320px) {
+            html {
+                font-size: 21.33px;
+            }
+        }
+        @media screen and (min-width: 750px) {
+            html {
+                font-size: 50px;
+            }
+        }
+
+        div {
+            width: 2rem;
+            height: 2rem;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+</html>
