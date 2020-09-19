@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- 引入bootstrap样式文件 -->
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <!-- 引入我们自己定义的首页样式文件 -->
+    <link rel="stylesheet" href="./css/index.css">
+    <title>阿里百秀首页</title>
+</head>
+<body>
+    <!-- 
+        效果图使用的是1208px的宽度,但是bootstrap中container的宽度最大为1170px
+        因此我们需要手动的修改下container的宽度
+    -->
+    <div class="container">
+        <div class="row">
+            <header class="col-md-2">
+                <div class="logo">
+                    <a href="#">
+                        <img src="./images/logo.png" alt="">
+                    </a>
+                </div>
+                <div class="nav"></div>
+            </header>
+            <article class="col-md-7">中间</article>
+            <aside class="col-md-3">右侧</aside>
+        </div>
+    </div>
+</body>
+</html>

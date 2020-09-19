@@ -1,0 +1,19 @@
+/* 修改container的最大宽度为1280px */
+@media screen and (min-width: 1280px) {
+    .container {
+        width: 1280px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+/* header */
+header {
+    /* 添加权重,重叠掉框架的默认样式 */
+    padding-left: 0 !important;
+}
+.logo {
+    background-color: #429ad9;
+}
+.logo img {
+    width: 100%;
+}
