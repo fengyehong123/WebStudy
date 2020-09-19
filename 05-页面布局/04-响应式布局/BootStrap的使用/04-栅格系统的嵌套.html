@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 要求当前网页使用IE浏览器最高版本的内核来渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 引入bootstrap的样式文件 -->
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <style>
+        .row > div {
+            height: 50px;
+            background-color: pink;
+        }
+    </style>
+    <title>栅格系统的嵌套</title>
+</head>
+<body>
+    <!-- 创建一个容器 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- 
+                    我们进行列嵌套的时候,最好添加一个行row,这样可以取消父元素的padding值
+                    而且高度自动和父级一样高
+                -->
+                <div class="row">
+                    <!-- 每一个小盒子又可以分为12等份 -->
+                    <div class="col-md-4">a</div>
+                    <div class="col-md-8">b</div>
+                </div>
+            </div>
+            <div class="col-md-4">2</div>
+            <div class="col-md-4">3</div>
+        </div>
+    </div>
+</body>
+</html>

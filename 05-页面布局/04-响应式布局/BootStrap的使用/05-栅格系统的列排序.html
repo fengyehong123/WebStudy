@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 要求当前网页使用IE浏览器最高版本的内核来渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 引入bootstrap的样式文件 -->
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <style>
+        .row {
+            height: 50px;
+            background-color: pink;
+        }
+    </style>
+    <title>栅格系统的列排序</title>
+</head>
+<body>
+    <!-- 创建一个容器 -->
+    <div class="container">
+        <div class="row">
+            <!-- 
+                col-md-push-8: 因为右侧的盒子占了8份,我们将左侧盒子推8份
+            -->
+            <div class="col-md-4 col-md-push-8">左侧</div>
+            <!-- 
+                col-md-pull-4: 因为左侧的盒子占了4份,我们将右侧盒子拉4份
+            -->
+            <div class="col-md-8 col-md-pull-4">右侧</div>
+
+            <!-- 通过左右盒子的推拉份数,从而实现盒子的顺序进行调换 -->
+        </div>
+    </div>
+</body>
+</html>

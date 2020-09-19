@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 要求当前网页使用IE浏览器最高版本的内核来渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- 
+        1. 解决ie9一下浏览器对html5新增标签的不识别,并导致css不起作用的问题
+        2. 解决ie9一下浏览器对css3媒体查询不识别的问题
+     -->
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- 引入bootstrap的样式文件 -->
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+
+    <style>
+        /* 利用我们自己写的样式覆盖了bootstrap中默认的样式 */
+        .login {
+            width: 80px;
+            height: 45px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 添加bootstrap中的按钮 -->
+    <button type="button" class="btn btn-success">按钮</button>
+    <!-- 使用了bootstrap的样式之后,又添加自己定义的样式 -->
+    <div class="btn btn-success login">登录</div>
+    <div class="btn btn-danger">失败</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 清除默认的内外边距 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+        .container {
+            width: 750px;
+            margin: 0 auto;
+        }
+        .container ul li {
+            /* 
+                我们设置父容器的宽度为750px,一共有8个导航栏模块,每一个导航栏分到的宽度为 750 / 8 = 93.75px
+             */
+            width: 93.75px;
+            height: 30px;
+            float: left;
+            line-height: 30px;
+            text-align: center;
+            background-color: green;
+        }
+
+        /* 媒体查询,当屏幕宽度 <= 767px的时候,改变父容器的宽度为100% */
+        @media screen and (max-width: 767px) {
+            .container {
+                width: 100%;
+            }
+            .container ul li {
+                width: 33.33%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 要求当前网页使用IE浏览器最高版本的内核来渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 引入bootstrap的样式文件 -->
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <style>
+        .row div {
+            height: 50px;
+            background-color: pink;
+        }
+    </style>
+    <title>栅格系统的列偏移</title>
+</head>
+<body>
+    <!-- 创建一个容器 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">左侧</div>
+            <!-- 
+                col-md-offset-4:右侧的盒子向右偏移4份
+                偏移的份数: 12 - 两个盒子的份数
+            -->
+            <div class="col-md-4 col-md-offset-4">右侧</div>
+        </div>
+        <hr>
+        <div class="row">
+            <!-- 
+                只有一个盒子,这个盒子自己占了8份,偏移了2份,居中对齐
+                一个盒子居中对齐时要偏移份数 = (12 - 盒子的份数) / 2
+            -->
+            <div class="col-md-8 col-md-offset-2">中间盒子</div>
+        </div>
+    </div>
+</body>
+</html>

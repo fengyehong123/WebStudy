@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 要求当前网页使用IE浏览器最高版本的内核来渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 引入bootstrap的样式文件 -->
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <style>
+        .row div {
+            height: 300px;
+            background-color: purple;
+        }
+        
+        .row div:nth-child(3) {
+            background-color: pink;
+        }
+        
+        span {
+            font-size: 50px;
+            color: #fff;
+        }
+    </style>
+    <title>栅格系统响应式工具</title>
+</head>
+<body>
+    <!-- 创建一个容器 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3">
+                <!-- 
+                    visible-lg: 只有在大屏幕的设备上这span才会显示
+                -->
+                <span class="visible-lg">我会显示</span>
+            </div>
+            <div class="col-xs-3">2</div>
+            <!-- 
+                hidden-md: 中等屏幕下,这一列会隐藏
+                hidden-xs: 在超小屏幕下,这一列也会隐藏
+            -->
+            <div class="col-xs-3 hidden-md hidden-xs">中等屏幕下会隐藏</div>
+            <div class="col-xs-3">4</div>
+        </div>
+    </div>
+</body>
+</html>
