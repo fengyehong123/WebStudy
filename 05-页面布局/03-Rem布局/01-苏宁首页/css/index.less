@@ -1,0 +1,119 @@
+/*
+    @import 可以把一个less文件导入另外一个less文件
+    index.less文件中也需要用到common.less中的文件样式,我们可以直接导入
+*/ 
+@import "common.less";
+
+body {
+    min-width: 320px;
+    // 默认的750像素屏幕,字体大小为50px,所以宽度应该设置为15rem,因为15*50=750
+    width: 15rem;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-family: Arial,Helvetica;
+    background-color: #f2f2f2;
+}
+// 默认字体大小是50
+@baseFont: 50;
+// 搜索框模块
+.search_content {
+    // 父级元素指定flex布局
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    // 自己宽度的一半
+    transform: translateX(-50%);
+    width: 15rem;
+    height: 88rem / @baseFont;
+    background-color: #FFC001;
+
+    // less中的样式布局
+    .classify {
+        width: 44rem / @baseFont;
+        height: 70rem / @baseFont;
+        // 分类盒子周围还有边距
+        margin: 11rem / @baseFont 25rem / @baseFont 7rem / @baseFont 24rem / @baseFont;
+        background: url(../images/classify.png) no-repeat;
+        // 背景缩放的宽高度和父盒子保持一致
+        background-size: 44rem / @baseFont 70rem / @baseFont;
+    }
+
+    // 前后两个盒子占用位置,search盒子使用剩下的空间来完成自适应
+    .search {
+        flex: 1;
+        input {
+            // 去除input搜索框的边框
+            border: 0;
+            // 去除搜索框外边的蓝色边框
+            outline: none;
+            width: 100%;
+            height: 66rem / @baseFont;
+            margin-top: 12rem / @baseFont;
+            // 搜索框的小圆角
+            border-radius: 33rem / @baseFont;
+            background-color: #FFF2CC;
+            // 搜索框中的字体大小
+            font-size: 25rem / @baseFont;
+            padding-left: 55rem / @baseFont;
+            color: #757575;
+        }
+    }
+
+    .login {
+        width: 75rem / @baseFont;
+        height: 70rem / @baseFont;
+        margin: 10rem / @baseFont;
+        // 登录文字的字体大小
+        font-size: 25rem / @baseFont;
+        text-align: center;
+        line-height: 70rem / @baseFont;
+        color: #fff;
+    }
+}
+
+// banner部分
+.banner {
+    width: 750rem / @baseFont;
+    height: 368rem / @baseFont;
+    img {
+        // 宽度和高度都和父亲一样宽
+        width: 100%;
+        height: 100%;
+    }
+}
+
+// 广告部分
+.ad {
+    display: flex;
+    a {
+        flex: 1;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+// 导航栏部分
+nav {
+    width: 750rem / @baseFont;
+
+    a {
+        float: left;
+        width: 150rem / @baseFont;
+        height: 140rem / @baseFont;
+        text-align: center;
+
+        img {
+            // 行内元素转换为块级元素
+            display: block;
+            width: 82rem / @baseFont;
+            height: 82rem / @baseFont;
+            margin: 10rem / @baseFont auto 0;
+        }
+        span {
+            font-size: 25rem / @baseFont;
+            color: #333;
+        }
+    }
+}

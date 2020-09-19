@@ -1,0 +1,96 @@
+/*
+    新建common.less 设置好最常见的屏幕尺寸,利用媒体查询设置不同的html字体大小,因为除了首页其他页面也需要
+    我们关心的尺寸有 320px、360px、375px、384px、400px、414px、424px、480px、540px、720px、750px
+    划分的份数我们定为 15等份
+    因为我们pc端也可以打开我们苏宁移动端首页.我们默认html字体大小为 50px,注意这句话写到最上面
+*/
+
+/*
+    如果我们用pc端打开苏宁首页的话,使用限定死的字体大小
+    这句代码要写在less样式的最上面,因为代码是从上到下执行的
+    如果屏幕尺寸发生变化例如小于750px,就会触发下面的媒体查询,修改html元素中font-size的大小
+*/
+html {
+    font-size: 50px;
+}
+a {
+    text-decoration: none;
+}
+// 我们定义此次划分的份数,方便以后对划分的份数进行修改
+@no: 15;
+// 设置常见的屏幕尺寸,修改里面的html文字大小
+@media screen and (min-width: 320px) {
+    html {
+        /*
+            字体大小 = 屏幕尺寸 / 划分的份数
+            注意: 因为我们给定义的变量@no没有加单位,所以要给320加上单位px,这样两个数相除得到的结果才有单位
+        */
+        font-size: 320px / @no;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    html {
+        font-size: 360px / @no;
+    }
+}
+
+// iPhone6/7/8手机的宽度都是375px
+@media screen and (min-width: 375px) {
+    html {
+        font-size: 375px / @no;
+    }
+}
+
+// 384
+@media screen and (min-width: 384px) {
+    html {
+        font-size: 384px / @no;
+    }
+}
+
+// 400
+@media screen and (min-width: 400px) {
+    html {
+        font-size: 400px / @no;
+    }
+}
+// 414
+@media screen and (min-width: 414px) {
+    html {
+        font-size: 414px / @no;
+    }
+}
+// 424
+@media screen and (min-width: 424px) {
+    html {
+        font-size: 424px / @no;
+    }
+}
+
+// 480
+@media screen and (min-width: 480px) {
+    html {
+        font-size: 480px / @no;
+    }
+}
+
+// 540
+@media screen and (min-width: 540px) {
+    html {
+        font-size: 540px / @no;
+    }
+}
+// 720
+@media screen and (min-width: 720px) {
+    html {
+        font-size: 720px / @no;
+    }
+}
+
+// 750
+@media screen and (min-width: 750px) {
+    html {
+        font-size: 750px / @no;
+    }
+}
