@@ -21,16 +21,169 @@
     -->
     <div class="container">
         <div class="row">
+            <!-- 占据2份 -->
             <header class="col-md-2">
                 <div class="logo">
                     <a href="#">
-                        <img src="./images/logo.png" alt="">
+                        <!-- hidden-xs: 我们如果进入了超小屏幕,logo里面的图片就隐藏起来 -->
+                        <img src="./images/logo.png" class="hidden-xs" alt="">
+                        <!-- 我们事先准备好一个盒子,在logo里面,平时它是隐藏起来的,只有在超小屏幕下才会显示 -->
+                        <span class="visible-xs">阿里百秀</span>
                     </a>
                 </div>
-                <div class="nav"></div>
+                <div class="nav">
+                    <ul>
+                        <!-- 使用BootStrap自带的图标 -->
+                        <li><a href="#" class="glyphicon glyphicon-camera">生活馆</a></li>
+                        <li><a href="#" class="glyphicon glyphicon-picture">自然汇</a></li>
+                        <li><a href="#" class="glyphicon glyphicon-phone">科技潮</a></li>
+                        <li><a href="#" class="glyphicon glyphicon-gift">奇趣事</a></li>
+                        <li><a href="#" class="glyphicon glyphicon-glass">美食杰</a></li>
+                    </ul>
+                </div>
             </header>
-            <article class="col-md-7">中间</article>
-            <aside class="col-md-3">右侧</aside>
+            <!-- 占据7份 -->
+            <article class="col-md-7">
+                <!-- 新闻模块 -->
+                <!-- 
+                    clearfix 时候bootstrap框架自带的清除浮动的样式
+                 -->
+                <div class="news clearfix">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <img src="./upload/lg.png" alt="">
+                                <p>阿里百秀</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="./upload/1.jpg" alt="">
+                                <p>奇了 成都一小区护卫长得像马云 市民纷纷求合影</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="./upload/2.jpg" alt="">
+                                <p>奇了 成都一小区护卫长得像马云 市民纷纷求合影</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="./upload/3.jpg" alt="">
+                                <p>奇了 成都一小区护卫长得像马云 市民纷纷求合影</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="./upload/4.jpg" alt="">
+                                <p>奇了 成都一小区护卫长得像马云 市民纷纷求合影</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 发表模块 -->
+                <div class="publish">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <!-- bootstrap已经给h3标签的文字设置为字体大小为24px -->
+                            <h3>生活馆 关于指甲的10个健康知识 你知道几个?</h3>
+                            <!-- text-muted: bootstrap提供的修改字体颜色类(灰色) -->
+                            <p class="text-muted hidden-xs">jiamingwei 发布于 2020-07-24</p>
+                            <p class="hidden-xs hidden-xs">指甲是经常容易被人们忽略的身体部位， 事实上从指甲的健康状况可以看出一个人的身体健康状况， 快来看看10个暗藏在指甲里知识吧！</p>
+                            <p class="text-muted">
+                                阅读(2417)评论(1)赞 (18) 
+                                <span class="hidden-xs">标签：健康 / 感染 / 指甲 / 疾病 / 皮肤 / 营养 / 趣味生活</span>
+                            </p>
+                        </div>
+                        <!-- 超小屏幕下,文章的图片隐藏 -->
+                        <div class="col-sm-3 pic hidden-xs">
+                            <img src="./upload/3.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <!-- bootstrap已经给h3标签的文字设置为字体大小为24px -->
+                            <h3>生活馆 关于指甲的10个健康知识 你知道几个?</h3>
+                            <!-- text-muted: bootstrap提供的修改字体颜色类(灰色) -->
+                            <p class="text-muted hidden-xs">jiamingwei 发布于 2020-07-24</p>
+                            <p class="hidden-xs hidden-xs">指甲是经常容易被人们忽略的身体部位， 事实上从指甲的健康状况可以看出一个人的身体健康状况， 快来看看10个暗藏在指甲里知识吧！</p>
+                            <p class="text-muted">
+                                阅读(2417)评论(1)赞 (18) 
+                                <span class="hidden-xs">标签：健康 / 感染 / 指甲 / 疾病 / 皮肤 / 营养 / 趣味生活</span>
+                            </p>
+                        </div>
+                        <!-- 超小屏幕下,文章的图片隐藏 -->
+                        <div class="col-sm-3 pic hidden-xs">
+                            <img src="./upload/3.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <!-- bootstrap已经给h3标签的文字设置为字体大小为24px -->
+                            <h3>生活馆 关于指甲的10个健康知识 你知道几个?</h3>
+                            <!-- text-muted: bootstrap提供的修改字体颜色类(灰色) -->
+                            <p class="text-muted hidden-xs">jiamingwei 发布于 2020-07-24</p>
+                            <p class="hidden-xs hidden-xs">指甲是经常容易被人们忽略的身体部位， 事实上从指甲的健康状况可以看出一个人的身体健康状况， 快来看看10个暗藏在指甲里知识吧！</p>
+                            <p class="text-muted">
+                                阅读(2417)评论(1)赞 (18) 
+                                <span class="hidden-xs">标签：健康 / 感染 / 指甲 / 疾病 / 皮肤 / 营养 / 趣味生活</span>
+                            </p>
+                        </div>
+                        <!-- 超小屏幕下,文章的图片隐藏 -->
+                        <div class="col-sm-3 pic hidden-xs">
+                            <img src="./upload/3.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <!-- bootstrap已经给h3标签的文字设置为字体大小为24px -->
+                            <h3>生活馆 关于指甲的10个健康知识 你知道几个?</h3>
+                            <!-- text-muted: bootstrap提供的修改字体颜色类(灰色) -->
+                            <p class="text-muted hidden-xs">jiamingwei 发布于 2020-07-24</p>
+                            <p class="hidden-xs hidden-xs">指甲是经常容易被人们忽略的身体部位， 事实上从指甲的健康状况可以看出一个人的身体健康状况， 快来看看10个暗藏在指甲里知识吧！</p>
+                            <p class="text-muted">
+                                阅读(2417)评论(1)赞 (18) 
+                                <span class="hidden-xs">标签：健康 / 感染 / 指甲 / 疾病 / 皮肤 / 营养 / 趣味生活</span>
+                            </p>
+                        </div>
+                        <!-- 超小屏幕下,文章的图片隐藏 -->
+                        <div class="col-sm-3 pic hidden-xs">
+                            <img src="./upload/3.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <!-- bootstrap已经给h3标签的文字设置为字体大小为24px -->
+                            <h3>生活馆 关于指甲的10个健康知识 你知道几个?</h3>
+                            <!-- text-muted: bootstrap提供的修改字体颜色类(灰色) -->
+                            <p class="text-muted hidden-xs">jiamingwei 发布于 2020-07-24</p>
+                            <p class="hidden-xs hidden-xs">指甲是经常容易被人们忽略的身体部位， 事实上从指甲的健康状况可以看出一个人的身体健康状况， 快来看看10个暗藏在指甲里知识吧！</p>
+                            <p class="text-muted">
+                                阅读(2417)评论(1)赞 (18) 
+                                <span class="hidden-xs">标签：健康 / 感染 / 指甲 / 疾病 / 皮肤 / 营养 / 趣味生活</span>
+                            </p>
+                        </div>
+                        <!-- 超小屏幕下,文章的图片隐藏 -->
+                        <div class="col-sm-3 pic hidden-xs">
+                            <img src="./upload/3.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <!-- 占据3份 -->
+            <aside class="col-md-3">
+                <a href="#" class="banner">
+                    <img src="./upload/zgboke.jpg" alt="">
+                </a>
+                <a href="#" class="hot">
+                    <!-- 使用bootstrap自带的按钮样式 -->
+                    <span class="btn btn-primary">热搜</span>
+                    <!-- bootstrap自带的颜色 -->
+                    <h4 class="text-primary">欢迎加入中国博客联盟</h4>
+                    <p>这里收录国内各个领域的优秀博客，是一个全人工编辑的开放式博客联盟交流和展示平台......</p>
+                </a>
+            </aside>
         </div>
     </div>
 </body>

@@ -1,9 +1,29 @@
-/* 修改container的最大宽度为1280px */
-@media screen and (min-width: 1280px) {
+/* 清除默认的样式 */
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: #666;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+body {
+    background-color: #f5f5f5;
+}
+.container {
+    background-color: #fff;
+}
+
+/* 修改container的最大宽度为1213px */
+@media screen and (min-width: 1213px) {
     .container {
-        width: 1280px;
-        margin-left: 20px;
-        margin-right: 20px;
+        width: 1213px;
+        margin-left: 50px !important;
+        margin-right: 50px !important;
     }
 }
 /* header */
@@ -15,5 +35,159 @@ header {
     background-color: #429ad9;
 }
 .logo img {
+    /* 把图片转换为块级元素,然后就可以让图片居中对齐了 */
+    display: block;
+    margin: 0 auto;
+    /* width: 100%; */
+    /* 最大宽度为100%,logo图片不需要缩放 */
+    max-width: 100%;
+}
+/* 
+    我们如果进入了超小屏幕,logo里面的图片就隐藏起来
+    我们事先准备好一个盒子,在logo里面,平时它是隐藏起来的,只有在超小屏幕下才会显示
+*/
+.logo span {
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+}
+
+.nav {
+    background-color: #eee;
+    border-bottom: 1px solid #ccc;
+}
+
+.nav a {
+    /* 行内元素转换为块级元素 */
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    /* 因为没有指定宽度,所以就算添加了padding也不会撑开盒子 */
+    padding-left: 30px;
+    font-size: 16px;
+}
+
+.nav a:hover {
+    background-color: #fff;
+    /* 鼠标经过的时候,颜色会变色更深一些 */
+    color: #333;
+}
+
+.nav a::before {
+    vertical-align: middle;
+    padding-right: 5px;
+}
+
+.news li {
+    float: left;
+    width: 25%;
+    /* 先给全部的高度都指定128px,然后单独给第一个盒子指定样式 */
+    height: 128px;
+    /* 
+        给每一个li设置一个右侧内边距,由于li里面的a宽和高都设置了100%,
+        但是因此有padding-right的存在,所以不会紧贴在右边,会留出空隙
+    */
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+/* 
+    当我们进入超小屏幕和小屏幕的时候,我们nav里面的li浮动起来,并且宽度改为20%
+*/
+@media screen and (max-width: 991px) {
+    .nav li {
+        float: left;
+        width: 20%;
+    }
+    /* 只有在超小屏幕下,文章盒子才会有顶部外边距 */
+    article {
+        margin-top: 10px;
+    }
+}
+/* 当进入超小屏幕的时候,nav里面的文字会变为14px */
+@media screen and (max-width: 767px) {
+    .nav li a {
+        font-size: 14px;
+        padding-left: 3px;
+    }
+    /* 当我们处于超小屏幕的时候,news第一个li宽度为100%,剩下的小li各占50% */
+    .news li:nth-child(1) {
+        width: 100% !important;
+    }
+    .news li {
+        width: 50% !important;
+    }
+    /* 超小屏幕的情况下,标题的字体大小也要变小 */
+    .publish h3 {
+        font-size: 14px;
+    }
+
+}
+.news li a {
+    position: relative;
+    display: block;
     width: 100%;
+    height: 100%;
+}
+/* 
+    当我们处于超小屏幕的时候,第一个li宽度为100%,剩下的小li各占50%
+*/
+.news li:nth-child(1) {
+    width: 50%;
+    height: 266px;
+}
+.news li:nth-child(1) p {
+    line-height: 41px;
+    font-size: 20px;
+    padding: 0 10px;
+}
+.news li a img {
+    width: 100%;
+    height: 100%;
+}
+.news li a p {
+    position: absolute;
+    width: 100%;
+    height: 41px;
+    bottom: 0;
+    padding: 5px 10px;
+    left: 0;
+    /* bootstrap的p标签默认会有一个底侧的外边距,我们手动书写样式给去除 */
+    margin-bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    color: #fff;
+}
+.publish {
+    border-top: 1px solid #ccc;
+}
+.publish .row {
+    border-bottom: 1px solid #ccc;
+    padding: 0 10px;
+}
+.pic {
+    margin-top: 10px;
+}
+/* 图片设置为和父级一样的100%,可以实现缩放时等比例变化 */
+.pic img {
+    width: 100%;
+}
+.banner img {
+    width: 100%;
+}
+.hot {
+    display: block;
+    margin-top: 20px;
+    padding: 0 20px 20px;
+    border: 1px solid #ccc;
+}
+.hot span {
+    /* 去除框架按钮样式边框自带的圆角 */
+    border-radius: 0;
+    margin-bottom: 20px;
+}
+.hot p {
+    font-size: 12px;
 }
