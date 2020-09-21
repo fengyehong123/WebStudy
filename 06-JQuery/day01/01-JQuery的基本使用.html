@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入js -->
+    <script src="./js/jquery.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+<script>
+    // 等DOM结构完全渲染完成后就可以指定内部代码.不必等到所有外部资源加载完成,JQuery帮我们完成了封装
+    // 相当于原生js中的 DOMContentLoaded
+    // 不同于原生js中的load事件是等页面文档,外部的js文件,css文件,图片等都加载完毕后才指定内部代码
+
+    /*
+        // 方式一
+        $(document).ready(function () {
+            $('div').hide();
+        })
+    */
+
+    // 方式二
+    $(function() {
+        // jQuery中隐藏元素的方式
+        $('div').hide();
+    });
+
+    // $是jQuery的别称,其实也可以用jQuery,但为了开发方便,我们一般都使用$
+    // $是jquery的顶级对象,相当于原生js中的window.把元素利用$包装成jQuery对象,就可以调用jQuery的方法
+    jQuery(function(){
+        alert("hello JQuery!!!");
+    })
+</script>
+</html>

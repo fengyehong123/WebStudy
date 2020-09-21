@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入js -->
+    <script src="./js/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+    </ul>
+    <ol>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+    </ol>
+</body>
+<script>
+    $(function() {
+        // 获取第一个元素
+        $("ul li:first").css("color","red");
+        // 获取第3个元素(index从0开始)
+        $("ul li:eq(2)").css("color", "blue");
+        // 获取所有的奇数元素
+        $("ol li:odd").css("color", "skyblue");
+        // 获取所有的偶数元素
+        $("ol li:even").css("color", "pink");
+    });
+</script>
+</html>

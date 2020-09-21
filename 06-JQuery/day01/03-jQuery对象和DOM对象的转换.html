@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入js -->
+    <script src="./js/jquery.min.js"></script>
+    <style>
+        
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <video src="./video/mov.mp4" muted></video>
+</body>
+<script>
+    /*
+        DOM对象和jQuery对象是可以相互转换的
+        因为原生js的范围比jQuery更大,原生的一些属性和方法,jQuery并没有给我们封装
+        要想使用这些没有封装的属性和方法就需要把jQuery对象转换为DOM对象才能使用
+    */
+
+    // 1. DOM对象转换为jQuery对象
+    //    1.1 获取DOM对象
+    var myVideo = document.querySelector('video');
+    //    1.2 把获取到的DOM对象转换为jQuery对象(直接在$()中放入DOM对象就能转换为jQuery对象)
+    var myjQueryObj = $(myVideo);
+
+    // 2. 把jQuery对象转换为DOM对象 ==> jQuery对象.get(索引);
+    // 之所以要把jQuery对象转换为DOM对象,是因为jQuery对象中并没有play()方法,只有原生的JS中才有这个方法
+    // 因为我们获取到了一个video对象,所以索引是0
+
+    // 这两种方法都能把jQuery对象转换为DOM对象,并使用原生JS中的属性和方法
+    myjQueryObj[0].play();
+    myjQueryObj.get(0).play();
+</script>
+</html>

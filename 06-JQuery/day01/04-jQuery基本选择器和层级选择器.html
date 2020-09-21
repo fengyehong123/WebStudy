@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入js -->
+    <script src="./js/jquery.min.js"></script>
+    <style>
+        
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div>我是div</div>
+    <div class="nav">我是nav div</div>
+    <p>我是p</p>
+    <ol>
+        <li>我是ol 的</li>
+        <li>我是ol 的</li>
+        <li>我是ol 的</li>
+        <li>我是ol 的</li>
+    </ol>
+    <ul>
+        <li>我是ul 的</li>
+        <li>我是ul 的</li>
+        <li>我是ul 的</li>
+        <li>我是ul 的</li>
+    </ul>
+</body>
+<script>
+    // jQuery中的选择器和CSS中的选择器基本相同
+    
+    $(function() {
+        // 类选择器
+        console.log($(".nav"));
+        
+        // 后代选择器
+        console.log($("ul li"));
+    });
+</script>
+</html>

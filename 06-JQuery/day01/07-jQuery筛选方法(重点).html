@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入js -->
+    <script src="./js/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="yeye">
+        <div class="father">
+            <div class="son">儿子</div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <p>我是屁</p>
+        <div>
+            <p>我是p</p>
+        </div>
+    </div>
+</body>
+<script>
+    /*
+        parent()              $("li").parent();                  查找父级
+        children()            $("ul").children("li");            相当于$("ul > li"),查找最近的一级
+        find(selector)        $("ul").find("li");                相当于$("ul li"),后代选择器
+        siblings(selector)    $(".first").siblings("li");        查找兄弟节点,不包括自己本身
+        nextAll([expr])       $(".first").nextAll();             查找当前元素之后所有的同辈元素
+        prevtAll([expr])      $(".last").prevtAll();             查找当前元素之前所有的同辈元素
+        hasClass(class)       $(".div").hasClass("protected");   检查当前元素是否含有某个特定的类,如果有则返回true
+        eq(index)             $("li").eq(2);                     相当于$("li:eq(2)"),index从0开始
+    */ 
+
+    $(function() {
+        // 通过son选中了father
+        var parent = $(".son").parent();
+        console.log(parent);
+
+        // 选中亲儿子,相当于 .nav > p
+        console.log($(".nav").children("p").css("color", "red"));
+
+        // 选中所有的后代,包括儿子和孙子.相当于 .nav p
+        console.log($(".nav").find("p").css("color", "skyblue"));
+    })
+</script>
+</html>

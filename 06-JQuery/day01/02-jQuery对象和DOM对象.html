@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入js -->
+    <script src="./js/jquery.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+<script>
+    // 1. DOM对象: 使用原生js获取过来的对象就是DOM对象
+    var myDiv = document.querySelector("div");
+    // 此时 myDiv就是DOM对象
+    console.dir(myDiv);
+
+    // 2.jQuery对象: 用jQuery方式获取来的对象就是jQuery对象.本质上就是通过$把DOM元素进行了包装后产生的对象(伪数组的形式储存)
+    var jQueryObj = $('div');
+    // 此时 jQueryObj就是jQuery对象
+    console.dir(jQueryObj);
+
+    // 3. jQuery对象只能使用jQuery方法,而DOM对象则使用原生的JS的属性和方法
+</script>
+</html>

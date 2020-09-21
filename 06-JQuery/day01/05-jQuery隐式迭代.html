@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入js -->
+    <script src="./js/jquery.min.js"></script>
+    <style>
+        
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div>惊喜不，意外不</div>
+    <div>惊喜不，意外不</div>
+    <div>惊喜不，意外不</div>
+    <div>惊喜不，意外不</div>
+    <ul>
+        <li>相同的操作</li>
+        <li>相同的操作</li>
+        <li>相同的操作</li>
+    </ul>
+</body>
+<script>
+    // 1. 获取4个div元素
+    console.log($("div"));
+
+    // 2. 给4个div设备背景颜色为粉红(jQuery对象不能使用原生的style方法)
+    $("div").css("background", "pink");
+
+    /*
+        隐式迭代:
+            遍历内部的DOM元素(伪数组的形式储存)的过程就叫做 隐式迭代
+        简单理解:
+            给匹配到的所有的元素进行循环遍历,执行相应的方法,而不用我们再进行循环,简化操作,方便调用
+    */
+    // jQuery内部对我们用选择器选择到的对象们进行了隐式迭代
+    $("ul li").css("color", "red");
+</script>
+</html>
