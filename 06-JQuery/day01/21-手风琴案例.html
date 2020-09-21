@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        img {
+            display: block;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .king {
+            width: 852px;
+            margin: 100px auto;
+            background: url(./images/bg.png) no-repeat;
+            overflow: hidden;
+            padding: 10px;
+        }
+        
+        .king ul {
+            overflow: hidden;
+        }
+        
+        .king li {
+            position: relative;
+            float: left;
+            width: 69px;
+            height: 69px;
+            margin-right: 10px;
+        }
+        
+        .king li.current {
+            width: 224px;
+        }
+        
+        .king li.current .big {
+            display: block;
+        }
+        
+        .king li.current .small {
+            display: none;
+        }
+        
+        .big {
+            width: 224px;
+            display: none;
+        }
+        
+        .small {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 69px;
+            height: 69px;
+            border-radius: 5px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="king">
+        <ul>
+            <li class="current">
+                <a href="#">
+                    <img src="images/m1.jpg" alt="" class="small">
+                    <img src="images/m.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/l1.jpg" alt="" class="small">
+                    <img src="images/l.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/c1.jpg" alt="" class="small">
+                    <img src="images/c.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/w1.jpg" alt="" class="small">
+                    <img src="images/w.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/z1.jpg" alt="" class="small">
+                    <img src="images/z.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/h1.jpg" alt="" class="small">
+                    <img src="images/h.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/t1.jpg" alt="" class="small">
+                    <img src="images/t.png" alt="" class="big">
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    /*
+        现状分析
+        1. 每个li标签里面有两个img图片,一个大图,一个小图.
+           正常情况下大图被隐藏,小图显示出来.
+           但是添加了 .current的li则相反,小图隐藏,大图显示
+        2. 鼠标经过某个小li有两步操作
+            2.1 当前小li宽度变为224px,同时里面的小图片淡出,大图片淡入
+            2.2 其余兄弟小li宽度变为69px,小图片淡入,大图片淡出
+    */
+    $(function() {
+        $(".king li").mouseenter(function() {
+            // 当前小li宽度变为224,同时小图片淡出,大图片淡入
+            $(this).stop().animate({width: 224})
+                    // 小图片淡入
+                   .find(".small").stop().fadeOut()
+                   // 和小图片同级别的兄弟元素.big淡出
+                   .siblings(".big").stop().fadeIn();
+            
+            // 其余兄弟小li宽度变为69px,小图片淡入,大图片淡出
+            $(this).siblings("li").stop().animate({width: 69})
+                   .find(".small").stop().fadeIn()
+                   .siblings(".big").stop().fadeOut();
+        });
+    })
+</script>
+</html>

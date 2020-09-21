@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <style>
+        .one {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            transition: all .3s;
+        }
+        
+        .two {
+            border: 10px solid greenyellow;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1" class="one">123</div>
+    <hr>
+    <div id="div2" class="one">123</div>
+</body>
+<script>
+    /*
+        原生JS使用className会把原先的.one类样式删除,只留下.two样式
+    */
+    let one = document.querySelector("#div1");
+    one.className = "two";
+
+    // jQuery中的addClass相当于追加类名,不会影响以前的类名
+    $("#div2").addClass("two");
+</script>
+</html>

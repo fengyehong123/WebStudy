@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .current {
+            background-color: red;
+        }
+        .borderClass {
+            border: 5px solid skyblue;
+        }
+        .classStyle1 {
+            background-color: slateblue;
+        }
+        .classStyle2 {
+            background-color: green;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="borderClass">
+        我是一个div1
+    </div>
+    <div class="div2">
+        我是一个div2
+    </div>
+</body>
+<script>
+    /*
+        里面的类型千万不要加 . 直接写类名就可以了
+    */
+    $(function() {
+        // 1. 鼠标点击添加类 addClass()
+        $("div").click(function() {
+            // 点击div,就添加一个class样式 current
+            $(this).addClass("current");
+        });
+        // 2. 鼠标经过删除类 removeClass()
+        $("div").mouseover(function() {
+            $(this).removeClass("borderClass");
+        });
+
+        // 3. 切换类 toggleClass()
+        $(".div2").click(function() {
+            // 
+            $(this).toggleClass("classStyle1").toggleClass("classStyle2");
+        });
+    })
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        hello world
+    </div>
+</body>
+<script>
+    $(function() {
+        // 参数只写属性名,返回的是属性值
+        var width = $("div").css("width");
+        console.log(`width is: ${width}`);  // width is: 200px
+
+        // 把宽度修改为 300像素
+        $("div").css("width", "300px");
+        // 参数值如果是数字的话可以不用跟单位和引号
+        $("div").css("width", 300);
+
+        // 参数可以是对象的形式,方便设置多组样式.属性名和属性值使用冒号隔开,属性可以不用添加引号
+        let props = {
+            "color": "white",
+            "font-size": "20px",
+            // 属性并没有添加引号,因为是复合属性,所以需要使用驼峰式书写规则
+            backgroundColor: "red"  // 因为值不是数字,所以需要添加引号
+        };
+        $("div").css(props);
+    })
+</script>
+</html>

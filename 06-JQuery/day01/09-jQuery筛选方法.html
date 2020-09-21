@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <ol>
+        <li>我是ol 的li</li>
+        <li>我是ol 的li</li>
+        <li class="item">我是ol 的li</li>
+        <li>我是ol 的li</li>
+        <li>我是ol 的li</li>
+        <li>我是ol 的li</li>
+    </ol>
+    <ul>
+        <li>我是ol 的li</li>
+        <li>我是ol 的li</li>
+        <li>我是ol 的li</li>
+        <li>我是ol 的li</li>
+        <li>我是ol 的li</li>
+        <li>我是ol 的li</li>
+    </ul>
+    <div class="current">俺有current</div>
+    <div>俺木有current</div>
+</body>
+<script>
+    $(function() {
+        /*
+            1. 兄弟元素
+            选择的是同一级别的li兄弟元素
+        */ 
+        $("ol li.item").siblings("li").css("color", "red");
+
+        /*
+            2. 第n个元素
+        */
+        // 可以利用选择器的方式选择
+        $("ul li:eq(2)").css("color", "blue");
+        // 还可以利用选择方法的方式选择(推荐使用这种方法)
+        $("ul li").eq(2).css("color", "skyblue");
+        // 推荐使用选择方法的方式进行选择是因为可以向.eq()方法中放置变量
+        var index = 2;
+        $("ul li").eq(index).css("color", "green");
+
+        /*
+            3. 判断是否有某个类名
+        */
+        console.log($("div:first").hasClass("current"));  // true
+        console.log($("div:last").hasClass("current"));  // false
+    })
+</script>
+</html>
