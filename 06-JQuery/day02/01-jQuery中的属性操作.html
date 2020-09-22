@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <a href="http://www.baidu.com" title="百度搜索">百度一下</a>
+    <hr>
+    <!-- checked: 添加了此属性,单元框默认是被选中的 -->
+    <input type="checkbox" checked>
+    <hr>
+    <!-- 我们给div设置了自定义属性index -->
+    <!-- data-index 是H5给我们新添加的属性 -->
+    <div index="1" data-index="2">我是div</div>
+    <hr>
+    <span>我是一个span</span>
+</body>
+<script>
+    /*
+        jQuery中设置或获取元素的固有属性值 prop()
+        所谓元素的固有属性就是元素本身自带的属性,例如a标签中的href;比如input标签中的type
+
+        通过.attr()来获取元素的自定义属性
+
+        数据缓存 .data()方法可以在指定的元素上存取数据,并不会改变DOM元素的结构.一旦页面刷新,之间存放的缓存数据将被清空
+    */
+    $(function() {
+        // 获取a标签的href属性的属性值
+        console.log($("a").prop("href"));  // http://www.baidu.com/
+
+        // 属性值的修改
+        $("a").prop("title", "我是一个标题");
+
+        // 当单元框发生变化的时候(有人点击了单选框)
+        $("input").change(function() {
+            // 获取checked属性的属性值
+            console.log($(this).prop("checked"));  // true 或者 false
+        });
+
+        // 使用.prop()来获取自定义属性,结果为 undefined
+        console.log($("div").prop("index"));  // undefined
+
+        // 只有使用.attr()才能获取到元素的自定义属性
+        console.log($("div").attr("index"));  // 1
+
+        // 修改自定义属性
+        $("div").attr("index", 5);
+
+        // 获取H5新增的属性
+        console.log($("div").attr("data-index"));  // 2
+        // 无法使用.prop()来获取H5中的属性
+        console.log($("div").prop("data-index"));  // undefined
+
+        // 数据缓存.data(),这个里面的数据是存放在元素的内存(缓存)里面
+        $("span").data("uname", "jiafeitian");  // 将数据放入span元素中
+        // 从元素中获取存入的数据
+        console.log($("span").data("uname"));  // jiafeitian
+        // .data()还可以获取H5属性 data-index 的值
+        // 注意: 获取的是 data-index属性的值,但是.data()中只需要些"index"就可以了
+        console.log($("div").data("index"));  // 2 返回的数字型
+
+    })
+</script>
+</html>
