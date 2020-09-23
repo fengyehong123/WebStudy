@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 模拟购物车中商品的数量,最后需要把这些商品的数量加起来 -->
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</body>
+<script>
+    $(function() {
+        /*
+            隐式迭代是对同一类元素做了相同的操作.例如: $("div").css("color", "red") ==> 把所有div字体颜色都改为红色
+            如果想要给同一类元素做不同的操作,就需要用到遍历.
+
+            jQuery给封装了一个用于遍历的 .each()方法
+            $("div").each(function (index, domEle) {XXX});
+            1. each方法遍历匹配到的每一个元素.主要用作DOM处理.each每一个
+            2. index是每一个元素的索引号;demEle是每个DOM的元素对象,不是jQuery对象
+            3. 如果each出来的DOM对象要想使用jQuery方法的话,需要通过$()方法转换为jQuery对象
+        */
+
+        var sumCount = 0;
+
+        // 定义一个数组,里面存放颜色
+        let arr = ["red", "green", "blue"];
+
+        $("div").each(function(index, domEle) {
+            console.log(`元素的索引为:${index}`);
+
+            // 因为each出来的domEle是DOM对象,我们把DOM对象转换为jQuery对象后才能使用jQuery的方法
+            $(domEle).css("color", arr[index]);
+
+            // 计算不同div元素中数量的总和
+            sumCount += parseInt($(domEle).text());
+        });
+
+        console.log(`总和为:${sumCount}`);
+
+        // ------------------------------------------
+
+        /*
+            $.each() 方法遍历元素 主要用于遍历数据，处理数据
+            参数1: 选择器
+            参数2: 回调函数
+        */ 
+        $.each($("div"), function(index, element) {
+            // element是DOM元素,只有转换为jQuery才能使用jQuery的方法
+            console.log(`索引:${index}的元素所对应点颜色为:${$(element).css("color")}`);
+        })
+
+        // 遍历数组
+        $.each(arr, function(i, ele) {
+            console.log(i);
+            console.log(ele);
+        })
+
+        // 遍历对象
+        let obj = {
+            name: 'jiafeitian',
+            age: 18
+        };
+        $.each(obj, function(index, element) {
+            // index 输出属性名
+            console.log(index);  // name
+            // element 输入属性值
+            console.log(element);  // jiafeitian
+            console.log("-------");
+        });
+
+        // 一般使用 $("div").each(function(index, element) {}) 遍历DOM元素;使用$.each($("div"), function(index, element) {})遍历数据,例如数组等
+    })
+</script>
+</html>
