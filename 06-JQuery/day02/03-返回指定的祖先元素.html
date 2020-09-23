@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="one">
+        <div class="two">
+            <div class="three">
+                <div class="four">我不容易</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+    /*
+        .toFixed(2) 计算的结果保留2位小数
+    */
+
+    // 通过.four找到.one  ==> 从父级一级一级的找,很麻烦
+    console.log($(".four").parent().parent().parent());
+
+    // .parents()可以获取所有的父级元素,报错 body 和 html
+    console.log($(".four").parents());
+
+    // 获取指定的祖先级别元素
+    console.log($(".four").parents(".one"));
+</script>
+</html>
