@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>原先的li</li>
+        <span>我是一个span标签</span>
+    </ul>
+    <hr>
+    <div class="test">我是原先的div</div>
+</body>
+<script>
+    $(function() {
+        // 1. 创建元素
+        var li = $(`<li>我是后来创建的小li</li>`);
+
+        // 2. 内部添加元素 
+        /*
+            .append() : 将内容放入匹配元素内部的最后面,类似原生的appendChild
+            .prepend() : 将内容放入匹配元素内容的最前面
+        */
+        $("ul").append(li);  // 我们创建的小li放入了ul标签的内容的最后面,也就是 span标签的后面
+        var liEle = $(`<li>我是要放在第一个的li</li>`);
+        $("ul").prepend(liEle);
+
+        // 3. 外部添加 
+        /*
+            .after() : 把内容放入目标元素的后面
+            .before() : 把目标放入目标元素的前面
+        */
+       var div1 = $("<div>我要添加到现存div的后面</div>");
+       $(".test").after(div1);
+       var div2 = $("<div>我要添加到现存div的前面</div>");
+       $(".test").before(div2);
+
+       /*
+            内部添加元素,生成之后,它们是父子关系
+            外部添加元素,生成之后,它们是兄弟关系
+       */
+
+        // 4. 删除元素
+        /*
+            .remove() : 删除匹配的元素(本身)
+
+            下面这两个方法作用等价
+            .empty() : 删除匹配的元素集合中所有的子节点
+            .html("") : 清空匹配的元素内容
+        */
+        $("ul").remove();
+    })
+</script>
+</html>

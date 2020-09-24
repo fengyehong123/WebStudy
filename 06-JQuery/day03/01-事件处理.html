@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+    }
+    .current {
+        background-color: purple;
+    }
+</style>
+<body>
+    <div class="div1">div1</div>
+    <hr>
+
+    <div class="div2">div2</div>
+    <hr>
+
+    <ul>
+        <li>我们都是好孩子</li>
+        <li>我们都是好孩子</li>
+        <li>我们都是好孩子</li>
+        <li>我们都是好孩子</li>
+        <li>我们都是好孩子</li>
+    </ul>
+    <hr>
+
+    <ol>
+        <!-- 动态的给ol标签中添加小li,通过on()方法动态的给这些小li添加事件 -->
+    </ol>
+</body>
+<script>
+    $(function() {
+        // 1. 单个事件注册
+        /*
+            $("div").click(function() {
+                $(this).css("background", "purple");
+            });
+            $("div").mouseenter(function() {
+                $(this).css("background", "skyblue");
+            });
+        */
+        /*
+            我们给div添加了两个事件,一个鼠标点击事件,一个鼠标经过事件
+            div中的这两个事件需要分开依次写
+        */
+
+        // 2. 事件处理on 可以把多个事件写在一起
+        /*
+            element.on(events, [selector], fn)
+            events: 一个或者多个用空格分隔的事件类型,如 click 或者 keydown
+            selector: 元素的子元素选择器
+            fn: 回调函数,即绑定在元素身上的监听函数
+
+            on() 方法优势1: 可以绑定多个事件,多个事件处理程序
+            on() 方法优势2: 可以事件委派操作.事件委派的定义就是,把原来加给子元素身上的事件绑定在父元素身上,就是把事件委派给父元素
+            on() 方法优势3: 动态的创建元素,click()没有办法绑定事件,on可以给动态生成的元素绑定事件
+        */
+        $(".div1").on({
+            mouseenter: function() {
+                $(this).css("background", "purple");
+            },
+            click: function() {
+                $(this).css("background", "skyblue");
+            },
+            mouseleave: function() {
+                $(this).css("background", "red");
+            }
+        });
+
+        // 当鼠标经过 或 离开的时候,都会触发 .toggleClass()事件
+        $(".div2").on("mouseenter mouseleave", function() {
+            $(this).toggleClass("current");
+        });
+
+        // .on()可以实现事件委托(委派)
+        // $("ul li").click(); 这种写法是把点击事件放在一个个的小li身上的
+
+        /*
+            on的事件委派
+            下面的这种写法是把点击事件绑定在ul身上的,但是我们点击小li的时候,会把鼠标点击动作冒泡到ul身上
+            因为ul身上绑定着click事件,所以就触发了click点击事件,指定回调方法
+        */
+        $("ul").on("click", "li", function() {
+            alert("hello world");
+        })
+
+        /*
+            .on()可以给未来动态创建的元素绑定事件
+        */
+        // 之前的写法
+        /*
+            $("ol li").click(function() {
+                alert(111);
+            });
+
+            // 由于我们在 ol中的小li还没有创建的时候就给 小li绑定了.click()事件,因此点击事件不会被触发
+            var li = $("<li>我是后来创建的小li</li>");
+            $("ol").append(li);
+        */
+
+        // on的写法
+        // 我们把点击事件click绑定在ol上面,通过小li来触发(此时小li还没有被创建,要通过下面的代码创建)
+        $("ol").on("click", "li", function() {
+            alert("***####");
+        })
+        // 当小li创建好之后,就可以通过点击小li来冒泡触发ol的.click()事件了
+        var li = $("<li>我是后来创建的小li</li>");
+        $("ol").append(li);
+        
+    })
+</script>
+</html>

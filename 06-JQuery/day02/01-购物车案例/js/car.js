@@ -9,6 +9,14 @@ $(function() {
         let state = $(this).prop("checked");
         // 把全选框的状态赋值给一个个的小单选框,同时把checkall的状态也更改
         $(".j-checkbox, .checkall").prop("checked", state);
+
+        if(state) {
+            // 让所有的商品都添加上check-cart-item类名
+            $(".cart-item").addClass("check-cart-item");
+        } else {
+            // check-cart-item类名移除
+            $(".cart-item").removeClass("check-cart-item");
+        }
     });
 
     // 2. 如果小复选框被选中的个数等于3,就应该把全选按钮给选上,否则全选按钮不选中
@@ -19,6 +27,14 @@ $(function() {
             $(".checkall").prop("checked", true);
         } else {
             $(".checkall").prop("checked", false);
+        }
+
+        if($(this).prop("checked")) {
+            // 让当前商品都添加上check-cart-item类名
+            $(this).parents(".cart-item").addClass("check-cart-item");
+        } else {
+            // check-cart-item类名移除
+            $(this).parents(".cart-item").removeClass("check-cart-item");
         }
     });
 
@@ -40,6 +56,7 @@ $(function() {
         let price = (p * n).toFixed(2);
         // 计算并设定小计模块的价格
         $(this).parents(".p-num").siblings(".p-sum").html("¥ " + price);
+        getSum();
     });
     // 商品数量减少
     $(".decrement").click(function() {
@@ -58,6 +75,7 @@ $(function() {
         let price = (p * n).toFixed(2);
         // 计算并设定小计模块的价格
         $(this).parents(".p-num").siblings(".p-sum").html("¥ " + price);
+        getSum();
     });
 
     // 如果用户不点击+号或者-号按钮,直接修改文本框里面的件数,也要触发小计模块的计算
@@ -70,5 +88,63 @@ $(function() {
         p = p.substring(1);
         // 计算小计价格
         $(this).parents(".p-num").siblings(".p-sum").html("¥ " + (n * p).toFixed(2));
+        // 当用户修改数量的时候,重新计算总件数
+        getSum();
     });
+
+    // 一打开页面的时候就会调用一次计算件数和钱数的方法
+    getSum();
+
+    // 计算总计和总额模块
+    function getSum() {
+        // 计算总件数
+        let count = 0;
+        // 计算总价格
+        let monery = 0;
+
+        $(".itxt").each(function(index, element) {
+            // 累加计算总件数
+            count += parseInt($(element).val());
+        });
+        // 把总件数赋值给总件数框
+        $(".amount-sum em").text(count);
+
+        // 累加计算总钱数
+        $(".p-sum").each(function(index, element) {
+            monery += parseFloat($(element).text().substring(1));
+        });
+        // 把总钱数,赋值给总钱数框.保留两位小数
+        $(".price-sum em").text(`¥ ${monery.toFixed(2)}`);
+    }
+
+    // 删除商品模块
+    // 1. 商品后面的删除按钮
+    $(".p-action a").click(function() {
+        // 删除的是当前的商品 this代表当前点击的该商品的删除按钮,通过按钮对象找到购物车中商品一栏的对象,然后删除
+        $(this).parents(".cart-item").remove();
+        getSum();
+    });
+
+    // 2. 删除复选框选中的商品
+    $(".remove-batch").click(function() {
+        // 自己写法麻烦的写法
+        /* 
+            $(".j-checkbox").each(function(index, element) {
+                if($(element).prop("checked")) {
+                    $(element).parents(".cart-item").remove();
+                }
+            }); 
+        */
+
+        // 老师的简便写法,通过:checked选择器.里面含有隐式迭代,会把所有被选中的复选框所在的商品行删除
+        $(".j-checkbox:checked").parents(".cart-item").remove();
+        getSum();
+    });
+
+    // 3. 清空购物车,删除所有的商品
+    $(".clear-all").click(function() {
+        $(".cart-item").remove();
+        getSum();
+    })
+
 })
