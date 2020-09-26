@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <title>多库共存</title>
+</head>
+<body>
+    <div></div>
+    <span></span>
+</body>
+<script>
+    $(function() {
+        // $符号选择器一个简单的封装
+        function $(ele) {
+            return document.querySelector(ele);
+        }
+
+        console.log($("div"));
+
+        // 我们原本想使用jQuery中的$来遍历元素,但是由于我们在上面的代码中封装了一个$
+        // 此时下面代码中的$其实使用的是我们自己封装的$,而不是jQuery中的$,因此会报错
+        // $.each();
+
+        // 这个时候就需要一个解决方案,让jQuery和其他js库不存在冲突,可以同时存在,这个就叫多库共存
+
+        /*
+            jQuery中的解决方案
+                1. 把jQuery中的$符号,统一改为jQuery,例如jQuery("div")
+                2. jQuery变量重新定义新的名称: $.noConflict() 或者 jQuery.noConflict()
+                   var xx = $.noConflict();
+        */
+        // 方案1
+        jQuery.each();
+
+        // 方案2
+        let haha = jQuery.noConflict();
+        haha.each();
+        console.log(haha("span"));
+    })
+</script>
+</html>

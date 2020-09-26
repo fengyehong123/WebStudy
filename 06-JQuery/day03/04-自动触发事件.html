@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <title>自动触发事件</title>
+</head>
+<style>
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+    }
+</style>
+<body>
+    <div></div>
+    <input type="text">
+</body>
+<script>
+    $(function() {
+        $("div").on("click", function() {
+            alert("hello world");
+        });
+
+        /*
+            自动触发事件
+            1. 元素.事件();
+            2. 元素.trigger("事件");
+            // 前两种触发的方法作用相同
+            // 第三种方法自动触发事件的时候,不会触发元素的默认行为
+            3. 元素.triggerHandler("事件"); 
+        */
+        // 1. 元素.事件()
+        // $("div").click();  // 页面一打开就会click一下div元素
+
+        // 2. 元素.trigger("事件");
+        // $("div").trigger("click");
+
+        // 3. 元素.triggerHandler("事件");
+        $("div").triggerHandler("click");
+
+        // 我们给input输入框添加一个focus事件,只要输入框获得焦点的时候,就会把[你好吗]放入输入框中
+        // input输入框会有一个默认的行为 ==> 光标在输入框中闪烁
+        $("input").on("focus", function() {
+            $(this).val("你好吗");
+        });
+
+        // 如果我们使用.trigger()方法来触发的话,光标会在输入框内闪烁
+        // $("input").trigger("focus");
+
+        // 如果我们使用.triggerHandler()来触发的话,默认的光标闪烁事件不会被触发
+        $("input").triggerHandler("focus");
+    });
+</script>
+</html>

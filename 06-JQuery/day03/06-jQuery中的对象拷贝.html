@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <title>对象拷贝</title>
+</head>
+<body>
+    <!-- 
+        $.extend([deep], target, object1, [objectN]);
+
+        deep: 如果设置true,则为深拷贝;否则默认为false,为浅拷贝
+        target: 要拷贝到的目标对象
+        object1: 待拷贝到第一个对象的对象
+    -->
+</body>
+<script>
+    $(function() {
+        let targetObj = {};
+        let obj = {
+            id: 1,
+            name: "andy"
+        }
+        // 将obj对象拷贝给targetObj对象
+        $.extend(targetObj, obj);
+        console.log(targetObj.name);  // andy
+
+        // ------------浅拷贝--------------
+        let targetObj1 = {
+            id: 100,
+            age: 18,
+            /*
+                浅拷贝
+                    浅拷贝复杂数据类型的时候,如果复杂数据类型名称相同,会直接覆盖掉
+                    原有的复杂数据类型,复杂数据类型中的数据并不会进行合并
+                深拷贝
+                    深拷贝复杂数据类型的时候,如果复杂数据类型的名称相同,并不会直接
+                    覆盖掉原有的复杂数据类型,复杂数据类型中的数据会进行合并
+            */
+            msg: {
+                sex: "男"
+            }
+        };
+        let obj1 = {
+            id: 1,
+            name: "andy",
+            msg: {
+                age: 15
+            }
+        }
+        // targetObj1和obj1相同的属性名的话,属性值会使用obj1的
+        // targetObj1独有的属性名和属性值会保留
+        $.extend(targetObj1, obj1);
+        console.log(targetObj1);
+
+        // 浅拷贝是把被拷贝对象的复杂数据类型中的地址拷贝给目标对象,修改目标对象会影响被拷贝的对象
+
+        // 我们修改了被拷贝对象中复杂数据类型的属性值
+        targetObj1.msg.age = 100
+        // 修改的是targetObj1中msg的属性值,但因为是浅拷贝,所以obj1中的值也发生了变化
+        console.log(`obj1中msg的age的值为: ${obj1.msg.age}`);  // obj1中msg的age的值为: 100
+
+        // 深拷贝,前面加true,完全克隆(拷贝的是对象,而不是地址),修改目标对象不会影响到被拷贝的对象
+
+        // ------------深拷贝--------------
+        console.log("--------------------------");
+        let targetObj2 = {
+            id: 100,
+            age: 18,
+            /*
+                浅拷贝
+                    浅拷贝复杂数据类型的时候,如果复杂数据类型名称相同,会直接覆盖掉
+                    原有的复杂数据类型,复杂数据类型中的数据并不会进行合并
+                深拷贝
+                    深拷贝复杂数据类型的时候,如果复杂数据类型的名称相同,并不会直接
+                    覆盖掉原有的复杂数据类型,复杂数据类型中的数据会进行合并
+            */
+            msg: {
+                sex: "男"
+            }
+        };
+        let obj2 = {
+            id: 1,
+            name: "andy",
+            msg: {
+                age: 15
+            }
+        }
+
+        $.extend(true, targetObj2, obj2);
+        console.log(targetObj2);
+
+        targetObj2.msg.age = 100
+        console.log(`obj2中msg的age的值为: ${obj2.msg.age}`);  // obj2中msg的age的值为: 15
+    });
+</script>
+</html>

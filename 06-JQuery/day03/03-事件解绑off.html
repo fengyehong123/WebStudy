@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+    }
+</style>
+<body>
+    <div></div>
+    <ul>
+        <li>我们都是好孩子</li>
+        <li>我们都是好孩子</li>
+        <li>我们都是好孩子</li>
+    </ul>
+    <p>我是一个p标签</p>
+</body>
+<script>
+    /*
+        .off() 用于解绑事件
+        .one() 只能触发事件一次
+    */
+    $(function() {
+        // 我们给div元素绑定了两个事件.一个click,一个mouseover
+        $("div").on({
+            click: function() {
+                console.log("我点击了");
+            },
+            mouseover: function() {
+                console.log('我鼠标经过了');
+            }
+        });
+
+        // 1. 事件解绑.off()
+        // $("div").off(); // 如果.off()中不添加任何参数,会把div绑定的所有事件都解除
+        $("div").off("click");  // 把div元素中绑定的click事件给解除,但是mouseover事件还是保留的
+
+        // 添加一个事件委托
+        $("ul").on("click", "li", function() {
+            alert("hello world");
+        })
+        // 然后解除事件委托,这样就不会有弹出出现
+        $("ul").off("click", "li");
+
+        // 2. one()只能触发事件一次
+        $("p").one("click", function() {
+            alert("我只会执行一次");
+        });
+    })
+</script>
+</html>

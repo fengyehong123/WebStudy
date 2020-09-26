@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <title>jQuery中的事件对象</title>
+</head>
+<style>
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+    }
+</style>
+<body>
+    <div></div>
+</body>
+<script>
+    /*
+        事件被触发,就会有事件对象的产生
+        element.on(events, [selector], function(eventObject) {});
+        其中eventObject就是事件触发所产生的对象,简称事件对象
+            阻止默认行为: eventObject.preventDefault() 或者 return false
+            阻止冒泡: eventObject.stopPropagation()
+    */
+    $(function() {
+        $(document).on("click", function() {
+            console.log("点击了Document!");
+        });
+
+        /*
+            因为div属于Document元素,且div和Document都绑定了click事件,所以当div元素触发click事件的时候,
+            click点击事件也会冒泡到Document元素中
+            所以会先打印
+                div被点击了
+            再打印
+                点击了Document
+            因为我们通过事件对象添加了阻止冒泡事件,所以就只会打印
+                div被点击了
+        */
+        $("div").on("click", function(event) {
+            console.log("div被点击了");
+            event.stopPropagation();
+        });
+    });
+</script>
+</html>
