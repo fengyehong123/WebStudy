@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        todolist分析
+            刷新页面不会丢失数据,因此需要用到本地存储localStorage
+            核心思路:
+                按下回车或者点击复选框,都是把本地存储的数据加载到页面中,这样可以保证刷新或者关闭页面不会丢失数据
+            存储的数据格式:
+                let todolist = [{title: 'XXX', done: false},XXX];
+            注意点:
+                1. 本地存储localStorage里面只能存储字符串的格式,因此需要把对象转换为字符串JSON.stringify(data)
+                2. 获取本地存储的数据,需要把里面的字符串通过JSON.parse()转换为对象格式之后,我们才能使用里面的数据
+    -->
+</body>
+<script>
+    var todoList = [
+        {
+            title: "我今天学习语文",
+            done: false
+        },
+        {
+            title: "我今天学习数学",
+            done: true
+        }
+    ];
+
+    // 本地存储localStorage里面只能存储字符串的格式的数据  
+    // 因此我们需要把todoList这个对象数据,转为字符串数据
+    localStorage.setItem("todo", JSON.stringify(todoList));
+
+    // 从本地存储中把存入的数据再获取出来.注意:我们获取出来的数据是字符串
+    var info = localStorage.getItem("todo");
+    console.log(typeof info);  // string
+
+    // 把从本地存储获取出的字符串数据转换为对象
+    var obj = JSON.parse(info);
+    console.log(obj[0].title);  // 我今天学习语文
+</script>
+</html>

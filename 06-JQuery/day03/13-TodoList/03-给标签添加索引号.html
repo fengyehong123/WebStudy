@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+    </div>
+    <ul>
+        <li>
+            <a href="#">a</a>
+        </li>
+        <li>
+            <a href="#">b</a>
+        </li>
+        <li>
+            <a href="#">c</a>
+        </li>
+    </ul>
+</body>
+<script>
+    /*
+        如果a是亲兄弟关系的话(a标签之间紧紧靠着),可以通过.index()的方式来获取标签的索引号
+    */ 
+    $("div a").click(function() {
+        console.log($(this).index());
+    });
+
+    /*
+        如果a不是亲兄弟关系的话(ul 中的a外面还包含着一层小li,这种情况下没办法通过.index()来获取索引)
+    */
+    $("ul a").click(function() {
+        console.log($(this).index());
+    });
+</script>
+</html>
