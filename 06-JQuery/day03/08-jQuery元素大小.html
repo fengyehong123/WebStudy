@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+        padding: 10px;
+        border: 15px solid red;
+        margin: 20px;
+    }
+</style>
+<body>
+    <div></div>
+</body>
+<script>
+    /*
+        以上参数为空,则是获取相应的值,返回的是数字型
+        如果参数为数字,则是修改相应的值
+        参数可以不必写单位
+    */
+    $(function() {
+        // 1. width() / height() 获取设置元素 width和height的大小
+        // 获取div的宽度
+        console.log(`width为:${$("div").width()}`);  // width为:200
+        // 修改div的宽度,直接写数字就可以;不需要写单位
+        $("div").width(300);
+
+        // 2. innerWidth() / innerHeight() 获取设置元素width和height + padding的大小
+        console.log(`width + padding为:${$("div").innerWidth()}`);  // width + padding为:320
+
+        // 3. outerWidth() / outerHeight() 获取设置元素 width和height + padding + border的大小
+        console.log(`width + padding + border为:${$("div").outerWidth()}`);  // width + padding + border为:350
+
+        // 4. outerWidth(true) / outerHeight(true) 获取设置width和height + padding + border + margin的大小
+        console.log(`width + padding + border + margin为:${$("div").outerWidth(true)}`);  // width + padding + border + margin为:390
+    })
+</script>
+</html>
