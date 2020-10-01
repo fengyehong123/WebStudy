@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <title>链式编程</title>
+</head>
+<body>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+</body>
+<script>
+    /*
+        需求: 点击按钮的时候,让当前按钮边红色,其他按钮不变色
+    */
+    $(function() {
+        // 隐式迭代,给所有的按钮都绑定了点击事件
+        $("button").click(function() {
+            // 普通的写法
+            /*
+                $(this).css("color", "red");
+                $(this).siblings().css("color", "");
+            */
+
+            // 链式编程的思想
+            $(this).css("color", "red").siblings().css("color", "");
+
+            // 我兄弟变为红色,我本身不变颜色
+            //  $(this).siblings().css("color", "red");
+        });
+    });
+</script>
+</html>

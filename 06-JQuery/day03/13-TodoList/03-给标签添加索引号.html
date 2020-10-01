@@ -34,6 +34,7 @@
 
     /*
         如果a不是亲兄弟关系的话(ul 中的a外面还包含着一层小li,这种情况下没办法通过.index()来获取索引)
+        这种情况下我们只能手动指定各个元素的自定义属性
     */
     $("ul a").click(function() {
         console.log($(this).index());
