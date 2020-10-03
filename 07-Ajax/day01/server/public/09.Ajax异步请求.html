@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 1.创建ajax对象
+		var xhr = new XMLHttpRequest();
+		// 2.告诉Ajax对象要向哪发送请求，以什么方式发送请求
+		// 1)请求方式 2)请求地址
+		xhr.open('get', 'http://localhost:3000/first', false);
+		// 3.发送请求
+		xhr.send();
+		// 4.获取服务器端响应到客户端的数据
+		xhr.onreadystatechange = function (){
+			if (xhr.readyState == 4) {
+				console.log('2')
+				console.log(xhr.responseText)
+			}
+			
+		}
+
+		console.log('1');
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p>
+		<input type="text" id="username">
+	</p>
+	<p>
+		<input type="text" id="age">
+	</p>
+	<p>
+		<input type="button" value="提交" id="btn">
+	</p>
+	<script type="text/javascript">
+		// 获取按钮元素
+		var btn = document.getElementById('btn');
+		// 获取姓名文本框
+		var username = document.getElementById('username');
+		// 获取年龄文本框
+		var age = document.getElementById('age');
+		// 为按钮添加点击事件
+		btn.onclick = function () {
+			// 创建ajax对象
+			var xhr = new XMLHttpRequest();
+			// 获取用户在文本框中输入的值
+			var nameValue = username.value;
+			var ageValue = age.value;
+			// 拼接请求参数
+			var params = 'username='+ nameValue +'&age=' + ageValue;
+			// 配置ajax对象
+			xhr.open('post', 'http://localhost:3000/post');
+			// 设置请求参数格式的类型（post请求必须要设置）
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			// 发送请求
+			xhr.send(params);
+			// 获取服务器端响应的数据
+			xhr.onload = function () {
+				console.log(xhr.responseText)
+			}
+		}
+	</script>
+</body>
+</html>

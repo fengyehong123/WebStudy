@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 1.创建ajax对象
+		var xhr = new XMLHttpRequest();
+		// 2.告诉Ajax对象要向哪发送请求，以什么方式发送请求
+		// 1)请求方式 2)请求地址
+		xhr.open('get', 'http://localhost:3000/responseData');
+		// 3.发送请求
+		xhr.send();
+		// 4.当Ajax接收到服务端给客户端的相应之后,就会触发.onload事件
+		xhr.onload = function (){ 
+			console.log(typeof xhr.responseText);  // string
+			// 将JSON字符串转换为JSON对象
+			var responseText = JSON.parse(xhr.responseText);
+			// 打印json对象进行测试
+			console.log(responseText); // {name: "zs"}
+			// 将数据和html字符串进行拼接
+			var str = '<h2>'+ responseText.name +'</h2>';
+			// 将拼接的结果追加到页面中
+			document.body.innerHTML = str;
+		}
+	</script>
+</body>
+</html>

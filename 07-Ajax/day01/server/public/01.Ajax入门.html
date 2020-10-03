@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	// 1.创建ajax对象
+	var xhr = new XMLHttpRequest();
+	// 2.告诉Ajax对象要向哪发送请求，以什么方式发送请求
+	// 1)请求方式 2)请求地址
+	xhr.open('get', 'http://localhost:3000/first');
+	// 3.发送请求
+	xhr.send();
+	// 4.当Ajax接收到服务端给客户端的相应之后,就会触发.onload事件
+	xhr.onload = function (){ 
+		// .responseText 获取服务端响应给客户端的数据
+		console.log(xhr.responseText);
+		alert(xhr.responseText);
+	}
+</script>
+</html>
