@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 创建普通的html表单 -->
+	<form id="form">
+		<!-- 
+			表单控件一定要有name属性,因为在表单提交的时候,
+			name会作为请求参数的属性名称,而表单内容会作为请求参数的属性值,
+			最后提交到服务器端
+		 -->
+		<input type="text" name="username">
+		<input type="password" name="password">
+		<!-- 
+			我们给提交按钮设置的类型是button,而不是submit.因为submit有一些默认的行为
+			我们给提交按钮设置为button,然后通过Ajax的方式进行数据的提交
+		 -->
+		<input type="button" id="btn" value="提交">
+	</form>
+</body>
+<script type="text/javascript">
+	/*
+		目前存在的问题
+			1. 当我们需要发送ajax请求需要发送参数,而且参数比较多的时候,参数值的获取以及参数值的拼接都很繁琐
+			例如 当我们用户注册的时候,需要获取姓名,年龄,密码等信息.我们需要依次获取表单控件以及表单中的值
+			获取到了值,我们还需要按照一定的格式进行字符串拼接
+			2. 普通的Ajax请求无法发送图片等二进制信息
+		使用FormData可以解决上面的问题
+			1. 模拟HTML表单,相当于将html表单映射成表单对象,自动将表单对象中的数据拼接成请求参数的格式
+			   我们可以直接把表单对象作为请求参数传递到服务器端,这样就省去了表单控件的获取,控件值的获取
+			   以及参数格式的拼接
+			2. 可以异步上传二进制文件,比如图片和视频文件等等
+	*/
+
+	/*
+		FormData的第一个作用: 将表单转换为表单对象,然后将转换后的表单对象作为参数传递到服务器当中
+
+		// 1. 获取DOM对象
+		var form = document.getElementById('form');
+		
+		// 2. 将HTML表单转换为formData对象
+		// new FormData() 可以接受一个表单DOM对象作为参数,构造函数内部会自动将表单控件中的数据拼接成请求参数所需的格式
+		var formData = new FormData(form);
+
+		// 3. 提交表单对象
+		// 这样可以省去表单控件对象的获取,表单控件值的获取以及请求参数字符串的拼接
+		// FormData对象不能用于get请求,因为get请求的请求参数只能放到地址栏后面
+		xhr.send(formData);
+	*/
+
+	// 获取按钮
+	var btn = document.getElementById('btn');
+	// 获取表单DOM对象
+	var form = document.getElementById('form');
+
+	// 为按钮添加点击事件
+	btn.onclick = function() {
+		// 将普通的html表单对象转换为formData表单对象
+		// 省去了表单控件的获取,控件值的获取以及参数格式的拼接
+		var formData = new FormData(form);
+
+		// 创建Ajax对象
+		var xhr = new XMLHttpRequest();
+		// 对ajax对象进行配置
+		xhr.open("post", "http://localhost:3000/formData");
+		// 发送Ajax请求
+		xhr.send(formData);
+		// 监听xhr对象下面的onload事件
+		xhr.onload = function() {
+			// 对象http状态码进行判断
+			if(xhr.status == 200) {
+				console.log(xhr.responseText);
+			}
+		};
+	};
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- script的请求变为动态请求 -->
+	<button id="btn">点我发送请求</button>
+	<!-- 
+		JSONP代码优化
+		1. 客户端需要将函数名称传递到服务器端
+		2. 将script请求的发送变为动态请求
+		3. 封装JSONP函数,方便请求发送
+	 -->
+</body>
+<!-- 模拟Ajax请求,当我们点击按钮的时候会向非同源服务器发送请求 -->
+<script>
+	function fn2 (data) {
+		console.log('客户端的fn函数被调用了')
+		console.log(data);
+	}
+</script>
+<script type="text/javascript">
+	// 获取按钮
+	var btn = document.getElementById('btn');
+	// 为按钮添加点击事件
+	btn.onclick = function () {
+		// 创建script标签
+		var script = document.createElement('script');
+		/*
+			JSONP代码的优化
+			将script请求的发送变为动态请求
+			我们在请求之后添加一个参数 callback=fn2,
+			callback的值是函数的名称,这样后端只需要获取参数的名称就能动态的拼接
+			函数的名称
+		*/ 
+		
+		script.src = 'http://localhost:3001/better1?callback=fn2';
+		// 将script标签追加到页面中
+		document.body.appendChild(script);
+		// 当script标签追加到页面完成之后,把该标签删除,防止多次请求的时候,页面上生成了多个script标签
+		script.onload = function () {
+			// 将body中的script标签删除掉
+			document.body.removeChild(script);
+		};
+	}
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<!-- 要将函数的定义写在全局作用域下,要写在含有src属性的script标签上面 -->
+<script>
+	// 在客户端侧定义好了一个fn函数
+	function fn (data) {
+		console.log('客户端的fn函数被调用了');  // 客户端的fn函数被调用了
+		// 获取server2中的实参
+		console.log(data);  // {name: "张三"}
+	};
+
+</script>
+<!-- 
+	将非同源服务器端的请求地址写在script标签的src属性中
+	我们在server1中向server2发送请求,模拟了Ajax请求
+	/*
+		// 服务器端的代码
+		app.get('/test', (req, res) => {
+			const result = 'fn({name: "张三"})';
+			res.send(result);
+		});
+		// 服务器端返回了一个fn()函数的调用
+	*/
+ -->
+<script src="http://localhost:3001/test"></script>
+</html>

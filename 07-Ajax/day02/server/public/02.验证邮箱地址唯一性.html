@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>验证邮箱地址是否已经注册</title>
+	<!-- 引入BootStrap中的样式文件 -->
+	<link rel="stylesheet" href="/assets/bootstrap/dist/css/bootstrap.min.css">
+	<style type="text/css">
+		p:not(:empty) {
+			padding: 15px;
+		}
+		.container {
+			padding-top: 100px;
+		}
+	</style>
+	<!-- 引入我们自己封装的ajax方法 -->
+	<script src="./js/ajax.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="form-group">
+			<label>邮箱地址</label>
+			<!-- 执行输入框要输入的是邮件类型 -->
+			<input type="email" class="form-control" placeholder="请输入邮箱地址" id="email">
+		</div>
+		<!-- 错误 bg-danger 正确 bg-success -->
+		<p id="info"></p>
+	</div>
+</body>
+<script>
+	// 获取页面中的元素
+	let email = document.getElementById("email");
+	let info = document.getElementById("info");
+
+	// 给文本框添加焦点离开事件
+	email.onblur = function() {
+		// 获取输入框里面用户输入的邮箱地址
+		let emailInfo = this.value;
+
+		// 用来校验邮箱规则的正则表达式
+		let reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/
+		// 校验
+		if(!reg.test(emailInfo)) {
+			// 将提示信息显示出来
+			info.innerHTML = "请输入符合规则的邮箱地址!";
+			// 显示错误信息的提示样式
+			info.className = "bg-danger";
+			// 不符合邮箱正则,阻止程序运行
+			return;
+		};
+
+		// 通过校验,用我们自己封装好的Ajax方法向服务器端发送请求
+		ajax({
+			type: 'get',
+			url: 'http://localhost:3000/verifyEmailAdress',
+			data: {
+				email: emailInfo,
+			},
+			success: function(result) {
+				// 把后端的提示信息显示在页面上
+				info.innerHTML = result.message;
+				// 添加类的样式
+				info.className = "bg-success";
+			},
+			error: function(result) {
+				info.innerHTML = result.message;
+				info.className = "bg-danger";
+			}
+		});
+	}
+</script>
+</html>

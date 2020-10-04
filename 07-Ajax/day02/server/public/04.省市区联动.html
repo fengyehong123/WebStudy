@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>搜索框输入文字自动提示</title>
+	<link rel="stylesheet" href="./assets/bootstrap/dist/css/bootstrap.min.css">
+	<style type="text/css">
+		.container {
+			padding-top: 150px;
+		}
+	</style>
+
+	<script src="./js/ajax.js"></script>
+	<script src="./js/template-web.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="form-inline">
+			<div class="form-group">
+				<select class="form-control" id="province"></select>
+			</div>
+			<div class="form-group">
+				<select class="form-control" id="city">
+					<option>请选择城市</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<select class="form-control" id="area">
+					<option>请选择县城</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</body>
+<!-- 省份模板 -->
+<script type="text/html" id="provinceTpl">
+	<option>请选择省份</option>
+	{{each province}}
+		<option value="{{$value.id}}">{{$value.name}}</option>
+	{{/each}}
+</script>
+<!-- 城市模板 -->
+<script type="text/html" id="cityTpl">
+	<option>请选择城市</option>
+	{{each city}}
+		<option value="{{$value.id}}">{{$value.name}}</option>
+	{{/each}}
+</script>
+<!-- 县城模板 -->
+<script type="text/html" id="areaTpl">
+	<option>请选择县城</option>
+	{{each area}}
+		<option value="{{$value.id}}">{{$value.name}}</option>
+	{{/each}}
+</script>
+<script>
+
+	// 获取省市区下拉框对象
+	let province = document.getElementById("province");
+	let city = document.getElementById("city");
+	let area = document.getElementById("area");
+
+	// 获取省份的信息
+	ajax({
+		type: "get",
+		url: "http://localhost:3000/province",
+		success: function(result) {
+			// 模板中的 {{each province}} 指的是下面的 province
+			let html = template("provinceTpl", {province: result});
+			// 把模板+数据拼接出来的字符串添加到 province 下拉框对象中
+			province.innerHTML = html;
+		},
+	});
+
+	// 为省份的下拉框添加onchange()事件,一旦省份的下拉框被选择了就发送Ajax请求,返回省所对应的市级信息
+	province.onchange = function() {
+		// 获取省份的id
+		let pid = this.value;
+
+		// 清空县城下拉框中的数据
+		let html = template("areaTpl", {area: []});
+		area.innerHTML = html;
+
+		// 根据省份的id来获取城市的信息
+		ajax({
+			type: "get",
+			url: "/cities",
+			data: {
+				id: pid,
+			},
+			success: function(result) {
+				let html = template("cityTpl", {city: result});
+				city.innerHTML = html;
+			},
+		});
+	};
+
+	// 当用户选择城市的时候
+	city.onchange = function() {
+		// 获取城市的id
+		let cid = this.value;
+		// 根据城市的id来获取区的信息
+		ajax({
+			type: "get",
+			url: "/areas",
+			data: {
+				id: cid,
+			},
+			success: function(result) {
+				let html = template("areaTpl", {area: result});
+				area.innerHTML = html;
+			},
+		});
+	}
+</script>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>搜索框输入文字自动提示</title>
+	<link rel="stylesheet" href="./assets/bootstrap/dist/css/bootstrap.min.css">
+	<style type="text/css">
+		.container {
+			padding-top: 150px;
+		}
+		.list-group {
+			display: none;
+		}
+	</style>
+	<!-- 引入模板js和封装的ajax方法 -->
+	<script src="./js/ajax.js"></script>
+	<script src="./js/template-web.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="请输入搜索关键字" id="search">
+			<ul class="list-group" id="list-box">
+				
+			</ul>
+		</div>
+	</div>
+</body>
+<!-- 制作模板 -->
+<script type="text/html" id="tpl">
+	<!-- each result => 对传递到模板字符串中的数据进行循环遍历 -->
+	{{each result}}
+		<li class="list-group-item">{{$value}}</li>
+	{{/each}}
+</script>
+<script>
+	// 获取搜索框对象
+	let searchInp = document.getElementById("search");
+
+	// 获取提示文字的存放容器
+	let listBox = document.getElementById("list-box");
+
+	// 存储定时器的变量
+	let timer = null;
+
+	// oninput,当用户在文本框中输入文字的时候触发.输入一下就触发一次
+	searchInp.oninput = function() {
+
+		// 当用户进行输入的操作的时候,先清除上一次开启的定时器(上一次开启的定时器800毫秒之后才发送请求)
+		// 当用户连续输入的时候上一次开启的定时器会在此处被清除.直到用户最后一次输入的时候,清除了倒数第二次输入的数据
+		// 把最后一次输入的数据放入定时器中,然后800毫秒之后发送了请求
+		clearTimeout(timer);
+
+		// 获取用户输入的内容
+		let inputInfo = this.value;
+
+		// 如果用户没有在搜索框中输入内容的话
+		if(inputInfo.trim().length == 0) {
+			// 将提示下拉框隐藏掉
+			listBox.style.display = "none";
+			// 如果用户没有输入内容的话,也就没有必要发送ajax请求
+			return;
+		};
+
+		// 开启定时器,让请求延迟发送
+		timer = setTimeout(function() {
+			// 发送Ajax请求
+			ajax({
+				type: "get",
+				url: "http://localhost:3000/searchAutoPrompt",
+				data: {
+					// 把用户输入的内容当做参数,通过ajax发送给后端
+					key: inputInfo,
+				},
+				success: function(result) {
+					// 前端获取到后端返回的数据之后,通过准备好的模板字符串进行数据拼接
+					// {result: result} 第一个result是属性名 第2个result是后端返回给前端的属性值
+					var html = template('tpl', {result: result});
+					// 将拼接好的模板字符串放入容器中
+					listBox.innerHTML = html;
+					// 显示ul容器
+					listBox.style.display = "block";
+				},
+				error: function() {
+
+				}
+			});
+		   // 设置800毫秒之后才发送请求
+		}, 800);
+	};
+</script>
+</html>

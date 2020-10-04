@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 1. 将模板引擎的库文件引入到当前页面 -->
+	<script src="./js/template-web.js"></script>
+</head>
+<body>
+	<!-- 定义一个容器,用来存放我们存放好的字符串 -->
+	<div id="container"></div>
+
+	<!-- 
+		2. 准备art-template模板
+		id="tpl" 给模板指定名称
+		type="text/html" 我们在script中书写的代码会被IDE识别为js,添加type="text/html"后
+		就会识别为html语法了
+	-->
+	<script type="text/html" id="tpl">
+		<h1>{{username}} {{age}}</h1>
+	</script>
+</body>
+<script type="text/javascript">
+	/*
+		3. 当我们引入template-web.js文件之后,在全局作用域下就会多出一个template()方法
+		我们通过这个方法指定 哪个模板和哪个数据进行绑定
+		参数1:	模板id
+		参数2:  数据对象
+		返回值: 模板+数据拼接好的html字符串
+	*/
+	let html = template('tpl', {username: 'zhangsan', age: 20});
+	// 将拼接好的字符串放入容器中
+	document.getElementById("container").innerHTML = html;
+</script>
+</html>

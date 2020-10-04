@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="/js/ajax.js"></script>
+	<title>CORS跨域资源共享</title>
+</head>
+<body>
+	<button id="btn">点我发送请求</button>
+	<!-- 
+		// 拦截所有请求
+		app.use((req, res, next) => {
+			// 1.允许哪些客户端访问
+			// 注意：如果跨域请求中涉及到cookie信息传递，值不可以为*号 必须是具体的域名信息
+			res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
+
+			// 2.允许客户端使用哪些请求方法访问
+			res.header('Access-Control-Allow-Methods', 'get,post')
+
+			// 允许客户端发送跨域请求时携带cookie信息
+			res.header('Access-Control-Allow-Credentials', true);
+			next();
+		});
+	 -->
+</body>
+<script>
+	// 获取按钮
+	var btn = document.getElementById('btn');
+	// 为按钮添加点击事件
+	btn.onclick = function () {
+		ajax({
+			type: 'get',
+			// 需要跨域访问的地址,由于服务器端已经配置了CORS跨域资源共享,因此可以通过Ajax获取到服务器端的响应
+			url: 'http://localhost:3001/cross',
+			success: function (data) {
+				console.log(data)
+			},
+		});
+	};
+</script>
+</html>

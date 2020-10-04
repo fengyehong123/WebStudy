@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>二进制文件的上传</title>
+	<link rel="stylesheet" href="./assets/bootstrap/dist/css/bootstrap.min.css">
+	<style type="text/css">
+		.container {
+			padding-top: 60px;
+		}
+		.padding {
+			padding: 5px 0 20px 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="form-group">
+			<label>请选择文件</label>
+			<!-- 默认情况下只能选择一个文件 -->
+			<input type="file" id="file" multiple>
+			<div class="padding" id="box">
+				<!-- <img src="" alt=""> -->
+			</div>
+			<!-- 进度条 -->
+			<div class="progress">
+				<!-- 实实在在的进度条 -->
+				<div class="progress-bar" style="width: 0%;" id="bar">0%</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	// 获取文件选择控件
+	var file = document.getElementById('file');
+	// 获取进度条元素
+	var bar = document.getElementById('bar');
+	// 获取图片容器
+	var box = document.getElementById('box');
+
+	// 为用户选择控件添加onchange事件,当用户选择文件的时候进行触发
+	file.onchange = function() {
+		// 创建空的formData()表单对象,为存放用户选择的文件做准备
+		var formData = new FormData();
+		// 将用户选择的文件追加到formData表单对象中
+		// this.files 是一个集合,虽然因为文件选择输入框没有添加multiple属性,导致只能选择一个文件
+		// 但是因为是集合,所以得通过 this.files[0] 的方式来获取我们选择的那一个文件
+		formData.append("attrName", this.files[0]);
+
+		// 发送Ajax请求
+		let xhr = new XMLHttpRequest();
+		xhr.open("post", "http://localhost:3000/upload");
+
+		// 在文件上传的过程中持续的触发.如果上传的文件过大,就会分批上传,每一批上传的时候,都会触发下面的事件
+		// .upload.onprogress 是Ajax对象自带的事件
+		xhr.upload.onprogress = function(event) {
+			/*
+				event.loaded 文件已经上传了多少
+				event.total  上传文件的总大小
+			*/
+			// 计算上传过程中的百分比
+			let result = (event.loaded / event.total) * 100 + "%";
+			// 修改进度条的宽度
+			bar.style.width = result;
+			// 将百分比显示在进度条中
+			bar.innerHTML = result;
+		};
+
+		xhr.send(formData);
+
+		xhr.onload = function() {
+			if(xhr.status == 200) {
+				// 将json字符串转换为json对象
+				let result = JSON.parse(xhr.responseText);
+				// 动态创建img标签
+				let img = document.createElement("img");
+				// 给图片设置src属性
+				img.src = result.path;
+				// img标签的.onload事件,当图片完全加载完毕之后才会触发下面的事件
+				img.onload = function() {
+					// 图片加载完成之后,将图片显示在页面中
+					box.appendChild(img);
+				};
+			}
+		};
+	};
+	
+</script>
+</html>

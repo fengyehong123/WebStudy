@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FormData的实例方法</title>
+</head>
+<body>
+	<!-- 创建普通的html表单 -->
+	<form id="form">
+		<input type="text" name="username">
+		<input type="password" name="password">
+		<input type="button" id="btn" value="提交">
+	</form>
+</body>
+<script type="text/javascript">
+
+	/*
+		我们不会直接把用户输入的数据提交到服务器端,需要在提交之前对用户输入的数据进行校验
+		FormData的实例方法
+			1.	获取表单对象中的属性值
+				fromData.get("key"); key指的是表单控件name的属性值
+				应用场景
+					对用户输入的数据进行校验
+			2. 设置表单对象中的属性值
+				fromData.set("key", "value");
+				应用场景
+					1. 用户在发布文章的时候,如果没有选择发布时间,我们可以给用户默认的选择一个当前的系统时间
+					2. 用户在文本框中输入金钱的数额,但是服务端要求金钱的数额必须要保留两位小数点,
+					   这个时候就需要获取用户在文本框输入的值,然后为用户输入的值保留两位小数,最后将处理后的
+					   数据重新设置到表单对象中,最后再提交到服务器
+			3. 删除表单对象中属性的值
+				formData.delete("key");
+				应用场景
+					用户注册的时候需要让用户输入两次密码来,但是提交到后台的时候,只需要第一次输入的密码就可以了
+					需要把第二次输入的密码给删除掉
+			4. 向表单对象中追加属性值
+				formData.append("key", "value");
+				应用场景
+					如果我们创建new FormData()对象的时候,不传递DOM对象作为参数,那就会创建一个FormData对象
+					这个时候就可以通过formData.append追加新的属性值
+			
+			注意:
+				fromData.set() 和 fromData.append() 方法的区别是,在属性名已经存在的情况下,
+				set会覆盖掉已经有的键名的值,append会保留两个值
+	*/
+	// 获取按钮
+	var btn = document.getElementById('btn');
+	// 获取表单
+	var form = document.getElementById('form');
+
+	// 为按钮添加点击事件
+	btn.onclick = function() {
+
+		var formData = new FormData(form);
+		
+		// 获取表单对象中属性的值
+		console.log(formData.get("username"));
+		// 我们对用户输入的用户名进行处理,加上一个前缀,改变了表单某一个属性的值
+		formData.set("username", "MyNameIs:" + formData.get("username"));
+
+		// 我们给表单添加一个新值(这个值在表单控件中并不存在)
+		formData.set("age", 100);
+		// 我们看浏览器的发送出去的post请求就能发现,age为100和age为999的数据都发送出去了
+		// 后端默认只会接受到我们后来设置的age为999的数据.但是若后端经过特殊设置,是可以接受到两个age的参数的
+		formData.append("age", 999);
+
+		// 删除用户输入的密码
+		formData.delete("password");
+
+		// 创建Ajax对象
+		var xhr = new XMLHttpRequest();
+		// 对ajax对象进行配置
+		xhr.open("post", "http://localhost:3000/formData");
+		// 发送Ajax请求
+		xhr.send(formData);
+		// 监听xhr对象下面的onload事件
+		xhr.onload = function() {
+			// 对象http状态码进行判断
+			if(xhr.status == 200) {
+				console.log(xhr.responseText);  // {"username":"MyNameIs:jiafeitian", "age":"100"}
+			};
+		};
+
+		// 创建一个空的表单对象
+		let f = new FormData();
+		// 向空的表单对象中追加新的属性
+		f.append("address", "qingdao");
+		console.log("地址是:" + f.get("address"));  // 地址是:qingdao
+	};
+	
+</script>
+</html>
