@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="./js/jquery.min.js"></script>
+	<title>serialize方法说明</title>
+</head>
+<body>
+	<form id="form">
+		<input type="text" name="username">
+		<input type="password" name="password">
+		<input type="submit" value="提交">
+	</form>
+</body>
+<script type="text/javascript">
+	// 给表单添加一个提交事件
+	$('#form').on('submit', function () {
+		// 将表单的内容拼接成字符串类型的参数
+		let params = $("#form").serialize();
+		console.log(params);  // username=jiafeitian&password=123456
+		console.log("---------------------------------------------")
+
+		serializeObject($(this));
+
+
+		return false;  // 只是为了模拟提交,不用真的去提交
+	});
+
+	// 将表单中用户输入的内容转换为对象类型,jQuery中并没有这样的方法,我们需要自己手动进行封装
+	function serializeObject(obj) {
+		// 处理结果的对象
+		let result = {};
+		/*
+			.serializeArray(): jQuery中的方法,会将表单中用户输入的内容转换为数组,数组里面存储的是对象
+			如下:
+				[
+					{
+						name: "username",
+						value: "用户输入的姓名"
+					},
+					{
+						name: "password",
+						value: "用户输入的密码"
+					}
+				]
+		*/
+		let params = obj.serializeArray();
+		// 对数组进行遍历循环,将数组类型转换为对象类型
+		$.each(params, function(index, element) {
+			// 向对象中添加元素
+			result[element.name] = element.value;
+		});
+
+		// console.log(result);  // {username: "jiafeitian", password: "123123"}
+
+		// 将处理的结果返回到函数外部
+		return result;
+	}
+
+</script>
+</html>

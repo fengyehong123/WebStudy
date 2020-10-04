@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="./js/jquery.min.js"></script>
+	<title>$.ajax方法基本使用</title>
+</head>
+<body>
+	<button id="btn">发送请求</button>
+</body>
+<script>
+	$('#btn').on('click', function () {
+
+		/*
+			jQuery中的get和post方法使用方法相同
+			参数1: URL
+			参数2: 要提交的数据(key&value或者对象都可以)
+			参数3: 回调函数
+		*/
+		$.get('/base', 'name=zhangsan&age=30', function (response) {
+			console.log("get方法的返回值:");  // get方法的返回值:
+			console.log(response);  // {name: "zhaoliu", age: 35}
+		})
+		
+		$.post('/base', {name: "zhangsan", age: 30}, function (response) {
+			console.log("post方法的返回值:");  // post方法的返回值:
+			console.log(response);  // {name: "zhaoliu", age: 35}
+		})
+	});
+</script>
+</html>

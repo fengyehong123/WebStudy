@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="./js/jquery.min.js"></script>
+	<title>beforeSend的使用</title>
+</head>
+<body>
+	<button id="btn">发送请求</button>
+	<script>
+		$('#btn').on('click', function () {
+			$.ajax({
+				// 请求方式
+				type: 'post',
+				// 请求地址 
+				url: '/user',
+				// 在请求发送之前调用
+				beforeSend: function () {
+					alert('请求不会被发送');
+					// 请求不会被发送
+					return false;
+				},
+				success: function (response) {
+					console.log(response);
+				}
+			})
+		});
+	</script>
+</body>
+</html>

@@ -47,7 +47,7 @@ $(function() {
 
         // 计算小计模块,根据文本框的值 * 当前商品的价格 = 商品的小计
         // this代表当前点击的+号按钮,我们通过+号按钮一层层的找到 价格元素
-        //var p = $(this).parent().parent().siblings(".p-price").html();
+        //var p = $(this).parent().paren t().siblings(".p-price").html();
         var p = $(this).parents(".p-num").siblings(".p-price").html();
 
         // 去掉金额前的羊角符号

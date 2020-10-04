@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">发送请求</button>
+	<div id="container"></div>
+	<script type="text/javascript">
+		var btn = document.getElementById('btn');
+		var container = document.getElementById('container');
+
+		btn.onclick = function () {
+			var xhr = new XMLHttpRequest();
+			xhr.open('get', '/xml');
+			xhr.send();
+			xhr.onload = function () {
+				// xhr.responseXML 获取服务器端返回的xml数据
+				var xmlDocument = xhr.responseXML;
+				var title = xmlDocument.getElementsByTagName('title')[0].innerHTML;
+				container.innerHTML = title;
+			}
+		}
+	</script>
+</body>
+</html>

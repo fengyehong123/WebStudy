@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- 引入jQuery -->
+	<script src="./js/jquery.min.js"></script>
+	<title>$.ajax方法基本使用</title>
+</head>
+<body>
+	<button id="btn">发送请求</button>
+</body>
+<script>
+	$('#btn').on('click', function () {
+		// jQuery中的ajax请求
+		$.ajax({
+			// 请求方式
+			type: 'get',
+			// 请求地址
+			url: 'http://localhost:3000/base',
+			// url: '/base', 这种写法也是可以的
+			// 请求成功以后函数被调用
+			success: function (response) {
+				// response为服务器端返回的数据,方法内部会自动将json字符串转换为json对象
+				console.log(response);
+			},
+			// 请求失败以后函数被调用
+			error: function (xhr) {
+				console.log(xhr)
+			}
+		})
+	});
+</script>
+</html>

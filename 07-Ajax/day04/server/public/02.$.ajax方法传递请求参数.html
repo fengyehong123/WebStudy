@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- 引入jQuery文件 -->
+	<script src="./js/jquery.min.js"></script>
+	<title>$.ajax携带请求参数</title>
+</head>
+<body>
+	<button id="btn">发送请求</button>
+</body>
+<script>
+	// 要发送的参数
+	var params = {
+		name: 'wangwu', 
+		age: 300
+	};
+	
+	// 点击发送Ajax请求
+	$('#btn').on('click', function () {
+		$.ajax({
+			// 请求方式
+			type: 'post',
+			// 请求地址
+			url: '/user',
+			// 向服务器端发送请求要携带的参数,我们需要些json对象转换为json字符串
+			data: JSON.stringify(params),
+			// 指定参数的格式类型
+			contentType: 'application/json',
+			// 请求成功以后函数被调用
+			success: function (response) {
+				// response为服务器端返回的数据,方法内部会自动将json字符串转换为json对象
+				console.log(response);
+			}
+		})
+	});
+</script>
+</html>
