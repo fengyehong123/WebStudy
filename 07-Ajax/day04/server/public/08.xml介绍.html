@@ -2,26 +2,40 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>XML基本介绍</title>
 </head>
 <body>
 	<button id="btn">发送请求</button>
 	<div id="container"></div>
-	<script type="text/javascript">
-		var btn = document.getElementById('btn');
-		var container = document.getElementById('container');
-
-		btn.onclick = function () {
-			var xhr = new XMLHttpRequest();
-			xhr.open('get', '/xml');
-			xhr.send();
-			xhr.onload = function () {
-				// xhr.responseXML 获取服务器端返回的xml数据
-				var xmlDocument = xhr.responseXML;
-				var title = xmlDocument.getElementsByTagName('title')[0].innerHTML;
-				container.innerHTML = title;
-			}
-		}
-	</script>
 </body>
+<script type="text/javascript">
+
+	/*
+		一般现在服务器不会向客户端返回XML格式的数据了,此处仅仅作为了解
+	*/
+	var btn = document.getElementById('btn');
+	var container = document.getElementById('container');
+
+	btn.onclick = function () {
+		var xhr = new XMLHttpRequest();
+		xhr.open('get', '/xml');
+		xhr.send();
+		xhr.onload = function () {
+			console.log(xhr.responseXML);
+			/*
+				// 后端返回给前端的XML数据
+				<message>
+					<title>消息标题</title>
+					<content>消息内容</content>
+				</message>
+			*/ 
+			// xhr.responseXML 获取服务器端返回的xml数据
+			var xmlDocument = xhr.responseXML;
+			// 我们使用XML对象解析XML数据,获取title中的数据
+			var title = xmlDocument.getElementsByTagName('title')[0].innerHTML;
+			console.log(title);  // 消息标题
+			container.innerHTML = title;
+		}
+	}
+</script>
 </html>
