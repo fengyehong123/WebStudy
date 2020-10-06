@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跟随鼠标的天使</title>
+</head>
+<style>
+    img {
+        position: absolute;
+        top: 2px;
+    }
+</style>
+<body>
+    <img src="./images/angel.gif" alt="天使">
+</body>
+<script>
+    let img = document.querySelector("img");
+
+    // 只要这个页面上的鼠标移动就会触发下面的事件
+    document.addEventListener("mousemove", function(event) {
+        // 获取当前鼠标的位置坐标
+        let x = event.pageX;
+        let y = event.pageY;
+
+        // 每次鼠标移动,我们都会获得最新的鼠标坐标,把这个x和y坐标做为图片的top和left 值就可以移动图片
+        img.style.left = x - 50 + "px";
+        img.style.top = y - 40 + "px";
+    });
+</script>
+</html>

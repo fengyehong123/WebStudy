@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常见的鼠标事件</title>
+</head>
+<body>
+    <div>
+        我是一段不愿意分享的文字,我无法鼠标右键,也无法被复制
+    </div>
+</body>
+<script>
+    // 禁用鼠标右键
+    document.addEventListener("contextmenu", function(event) {
+        event.preventDefault();
+    });
+    
+    // 禁止选中文字
+    document.addEventListener("selectstart", function(event) {
+        event.preventDefault();
+    });
+</script>
+</html>

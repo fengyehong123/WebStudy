@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阻止事件冒泡</title>
+</head>
+<style>
+    .father {
+        overflow: hidden;
+        width: 300px;
+        height: 300px;
+        margin: 100px auto;
+        background-color: pink;
+        text-align: center;
+    }
+    
+    .son {
+        width: 200px;
+        height: 200px;
+        margin: 50px;
+        background-color: purple;
+        line-height: 200px;
+        color: #fff;
+    }
+</style>
+<body>
+    <div class="father">
+        <div class="son">son儿子</div>
+    </div>
+</body>
+<script>
+    /*
+        阻止事件冒泡的方法 .stopPropagation()
+    */
+
+    // 当我们点击son元素的时候,只想弹出son元素的弹窗,但是因为冒泡事件的存在导致,父元素和document对象身上的
+    // click事件都被触发.我们需要使用.stopPropagation()事件来阻止冒泡事件
+    let son = document.querySelector(".son");
+    son.addEventListener("click", function(e) {
+        alert("son");
+        // 弹窗弹出了之后,通过.stopPropagation()来阻止冒泡事件的发生
+        e.stopPropagation();
+        // 下面的这种写法也可以阻止冒泡事件的发生,但并不是W3C阻止推荐的写法
+        // e.cancelBubble = true;
+    }, false);
+
+    let father = document.querySelector(".father");
+    father.addEventListener("click", function(e) {
+        alert("father");
+    }, false);
+
+    document.addEventListener("click", function(event) {
+        alert("document");
+    });
+
+</script>
+</html>

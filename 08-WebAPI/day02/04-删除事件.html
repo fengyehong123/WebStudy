@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>删除事件</title>
+</head>
+<style>
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+    }
+</style>
+<body>
+    <div>传统的方式删除事件1</div>
+    <div>正常的方式删除事件2</div>
+    <div>兼容性的方式删除事件3</div>
+</body>
+<script>
+    // 获取所有的div元素
+    let divs = document.querySelectorAll("div");
+
+    divs[0].onclick = function() {
+        // 因为点击事件在下面被删除了,因此这个弹窗只会执行一次
+        alert("传统的方式删除事件");
+        // 传统的方式删除事件
+        divs[0].onclick = null;
+    };
+
+    // 回调函数中的fn,不需要写小括号
+    divs[1].addEventListener("click", fn); 
+    function fn() {
+        alert("正常的方式删除事件");
+        // removeEventListener 事件的删除
+        divs[1].removeEventListener('click', fn);
+    };
+
+    // 兼容性的方式删除事件函数
+    divs[2].attachEvent('onclick', fn1);
+    function fn1() {
+        alert("兼容性的方式删除事件");
+        divs[2].detachEvent('onclick', fn1);
+    }
+
+</script>
+</html>

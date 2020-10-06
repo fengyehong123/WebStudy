@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象的e.target</title>
+</head>
+<style>
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+    }
+</style>
+<body>
+    <div>123</div>
+    <ul>
+        <li>abc</li>
+        <li>abc</li>
+        <li>abc</li>
+    </ul>
+</body>
+<script>
+    /*
+        event.target和this的区别
+        event.target:
+            点击了哪个元素,就返回哪个元素
+        this:
+            哪个元素绑定了点击事件,就返回哪个元素
+    */
+    let div = document.querySelector("div");
+    // div元素绑定了click事件,我们点击的也是div元素,因此这种情况下的 event.target和this相同
+    div.addEventListener("click", function(event) {
+        console.log(event.target);  // <div>123</div>
+        console.log(this);  // <div>123</div>
+        // event.currentTarget的作用和this相同
+        console.log(event.currentTarget);  // <div>123</div>
+    });
+
+    let ul = document.querySelector("ul");
+    ul.addEventListener("click",  function(event) {
+        // 虽然ul绑定了点击事件,但我们真正点击的时候,点击的是li元素,而不是ul元素,这种情况下的event.target和this不同
+        console.log(event.target);  // <li>abc</li>
+        console.log(this);  // <ul>...</ul>
+        // event.currentTarget的作用和this相同
+        console.log(event.currentTarget);  // <ul>...</ul>
+    });
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象阻止默认行为</title>
+</head>
+<body>
+    <div>123</div>
+    <a href="http://www.baidu.com">百度</a>
+
+    <form action="http://www.baidu.com">
+        <input type="submit" value="提交" name="sub">
+    </form>
+</body>
+<script>
+    // 获取div的DOM元素对象
+    let div = document.querySelector("div");
+    // 给DOM元素对象添加事件
+    div.addEventListener("click", fn);
+    div.addEventListener("mouseover", fn);
+    div.addEventListener("mouseout", fn);
+
+    function fn(event) {
+        // event.type => 返回当前对象事件的名称
+        console.log(event.type);
+    };
+
+    // 阻止默认行为(事件).例如让链接不跳转或者让提交按钮不提交
+    let aDom = document.querySelector('a');
+    aDom.addEventListener("click", function(event) {
+        // 阻止a标签的默认点击跳转行为
+        event.preventDefault();
+    });
+</script>
+</html>
