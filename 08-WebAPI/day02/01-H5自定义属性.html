@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H5自定义属性</title>
+</head>
+<body>
+    <div 
+        getTime="20" 
+        data-index="2" 
+        data-list-name="andy">
+    </div>
+</body>
+<script>
+    /*
+        自定义属性的设置:
+            H5规定自定义属性要以 data- 开头作为属性名并且赋值
+        自定义属性的获取:
+            兼容性获取:
+                element.getAttribute("data-XXX")
+            H5新增的获取方式:
+                element.dataset.XXX
+                或者
+                element.dataset["XXX"]
+    */
+
+    // 获取元素DOM对象
+    var divDOM = document.querySelector('div');
+    // 获取DOM对象中的属性
+    console.log(divDOM.getAttribute('getTime'));  // 20
+
+    // 通过兼容性的方式获取DOM对象中的data-XXX属性值
+    console.log(divDOM.getAttribute('data-index'));  // 2
+    console.log(divDOM.getAttribute('data-list-name'));  // andy
+
+    // H5新增的获取自定义属性的方法 它只能获取data-开头的属性值
+    console.log(divDOM.dataset);  // DOMStringMap {index: "2", listName: "andy"}
+
+    console.log(divDOM.dataset.index);  // 2
+    console.log(divDOM.dataset['index']);  // 2
+
+    // 如果自定义属性里面有多个-链接的单词，我们获取的时候采取 驼峰命名法
+    console.log(divDOM.dataset.listName);  // andy
+    console.log(divDOM.dataset['listName']);  // andy
+</script>
+</html>

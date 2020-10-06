@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onchange事件</title>
+</head>
+<body>
+    <div>
+        <h2>当你离开输入框后,函数将被触发,将小写字母转为大写字母.</h2>
+        <label for="">输入你的名字:</label>
+        <input type="text" id="fname" onchange="myFunction()">
+    </div>
+</body>
+<script>
+    /*
+        onchange 属性可以使用于： <input>,<select>,<textarea>。
+        onchange 事件会在域的内容改变时发生.
+        onchange 事件也可用于单选框与复选框改变后触发的事件.
+    */
+    function myFunction() {
+        let fname = document.querySelector("#fname");
+        // 小写转大写
+        fname.value = fname.value.toUpperCase();
+    }
+</script>
+</html>

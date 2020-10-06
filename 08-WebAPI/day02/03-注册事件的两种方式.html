@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件注册的两种方式</title>
+</head>
+<body>
+    <button>传统注册事件</button>
+    <button>方法监听注册事件</button>
+    <button>ie9 attachEvent</button>
+</body>
+<script>
+    // 选中所有的button按钮
+    var btns = document.querySelectorAll('button');
+
+    // 传统的方式进行事件绑定
+    btns[0].onclick = function() {
+        alert('我是第一个alert弹窗');
+    };
+    // 只会弹出下面的弹窗,上面的onclick事件被下面的onclick事件给覆盖
+    btns[0].onclick = function() {
+        alert('我是第二个alert弹窗');
+    };
+
+    // 事件监听器的方式进行事件绑定,两个弹窗都会执行
+    btns[1].addEventListener("click", () => {
+        alert("事件监听1");
+    });
+    btns[1].addEventListener("click", function() {
+        alert("事件监听2");
+    });
+
+    // attachEvent ie9以前的版本支持
+    // 非IE9之后的版本会报错: Uncaught TypeError: btns[2].attachEvent is not a function
+    btns[2].attachEvent('onclick', function() {
+        alert("我有兼容性");
+    });
+</script>
+</html>

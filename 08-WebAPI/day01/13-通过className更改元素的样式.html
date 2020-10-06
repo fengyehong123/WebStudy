@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>className修改样式</title>
+</head>
+<style>
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+    }
+    
+    .change {
+        background-color: purple;
+        color: #fff;
+        font-size: 25px;
+        margin-top: 100px; 
+    }
+</style>
+<body>
+    <div class="first">文本</div>
+</body>
+<script>
+    var text = document.querySelector('div');
+    // 点击div盒子,添加点击事件
+    text.onclick = function() {
+        /*
+            如果样式比较少的话,我们可以通过 element.style的方式来修改元素样式
+            样式比较多的话,我们需要通过 .className的方式来修改样式
+            我们还需要保留原来的类名,因此我们使用了多类名选择器
+        */
+        this.className = "first change";
+    }
+</script>
+</html>

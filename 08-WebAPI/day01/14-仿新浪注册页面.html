@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿新浪注册页面</title>
+</head>
+<style>
+    div {
+        width: 600px;
+        margin: 100px auto;
+    }
+    
+    .message {
+        display: inline-block;
+        font-size: 12px;
+        color: #999;
+        background: url(./images/mess.png) no-repeat left center;
+        padding-left: 20px;
+    }
+    
+    .wrong {
+        color: red;
+        background-image: url(./images/wrong.png);
+    }
+    
+    .right {
+        color: green;
+        background-image: url(./images/right.png);
+    }
+</style>
+<body>
+    <div class="register">
+        <input type="password" class="ipt">
+        <p class="message">请输入6~16位密码</p>
+    </div>
+</body>
+<script>
+    // 获取元素
+    let ipt = document.querySelector(".ipt");
+    let message = document.querySelector(".message");
+
+    // 获取密码输入文本框的焦点离开事件
+    ipt.onblur = function() {
+        // 获取用户输入的密码
+        let password = this.value;
+        // 对密码的长度进行判断
+        if(password.length < 6 || password.length > 16) {
+            // 修改提示信息和给提示信息添加新的类名
+            message.innerHTML = "您输入的位数不对要求6~16位";
+            message.className = "message wrong";
+        } else {
+            message.innerHTML = "输入正确";
+            message.className = "message right";
+        }
+    };
+</script>
+</html>

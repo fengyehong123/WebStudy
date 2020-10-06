@@ -51,8 +51,9 @@
     // 获取所有的小li元素
     let liList = document.querySelectorAll("li");
 
-    // 一共有三种遍历元素的方式,我们可以使用lambda的方式
+    // 一共有三种遍历元素的方式
 
+    // 最普通的方式
     /*
         var lis = document.querySelectorAll('li');
         for (var i = 0; i < lis.length; i++) {
@@ -61,6 +62,7 @@
         }
     */
     
+    // .forEach()的方式
     /*
         liList.forEach(function(element, index) {
             // 让索引号 乘以 44 就是每个li 的背景y坐标  index就是我们的y坐标
@@ -68,7 +70,8 @@
             liList[index].style.backgroundPosition = '0 -' + y + 'px';
         });
     */
-
+    
+    // .forEach() + lambda表达式的方式
     liList.forEach((element, index) => {
         var y = index * 44;
         liList[index].style.backgroundPosition = '0 -' + y + 'px';

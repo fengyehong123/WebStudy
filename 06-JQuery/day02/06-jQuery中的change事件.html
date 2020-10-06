@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery.min.js"></script>
+    <title>jQuery中的change事件</title>
+</head>
+<body>
+    <p>元素改变后执行一个函数:</p>
+    <p>在输入框中写一些东西，按下 enter 键或点击输入框外的区域。</p>
+    输入你的名字: <input class="inputField" type="text">
+    
+
+    <p>在下拉列表选择一个选项。</p>
+    <p>汽车匹配:
+        <select class="selectField" name="cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="fiat">Fiat</option>
+            <option value="audi">Audi</option>
+        </select>
+    </p>
+
+    <hr>
+
+    <button>输入框中触发 change 事件</button>
+    <div>
+        输入你的名字: 
+        <!-- 
+            我们给input输入框绑定了onchange事件
+            这个事件我们可以在input输入框中输入数据后触发
+            或者通过点击button按钮来手动触发
+         -->
+        <input id="inputObj" value="Runoob" onchange="alertTest(this)" type="text">
+    </div>
+    
+</body>
+<script>
+    /*
+        当元素的值改变时发生change事件(仅适用于表单字段)
+        change()方法触发change事件,或规定当发生change事件时运行的函数
+        注意：
+            当用于select元素时,change事件会在选择某个选项时发生
+            当用于text field(普通的input输入框) 或 text area(多行文本输入框) 时,change事件会在元素失去焦点时发生
+    */
+
+    function alertTest(obj) {
+        alert(obj.value);
+    };
+    
+    $(function() {
+        // 当文本框输入数据之后,回车或者元素失去焦点时触发
+        $(".inputField").change(function() {
+            $(this).css("background-color","red");
+        });
+
+        // 当select元素进行下拉列表选择之后才触发
+        $(".selectField").change(function() {
+            $(this).css("background-color","skyblue");
+        });
+
+        // 通过点击button按钮来手动触发input中的事件
+        $("button").click(() => {
+            $("#inputObj").change();
+        });
+    });
+</script>
+</html>

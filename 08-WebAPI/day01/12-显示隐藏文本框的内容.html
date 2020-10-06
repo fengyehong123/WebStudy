@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>显示隐藏文本框的内容</title>
+</head>
+<style>
+    input {
+        color: #999;
+    }
+</style>
+<body>
+    <input type="text" value="手机">
+</body>
+<script>
+    let inputDOM = document.querySelector("input");
+
+    // .onfocus: 输入框获得焦点事件
+    inputDOM.onfocus = function() {
+        if(this.value == "手机") {
+            this.value = "";
+        }
+        // 获得焦点需要把文本框里面的文字颜色变黑
+        this.style.color = '#333';
+    };
+
+    // .onblur: 输入框失去焦点事件
+    inputDOM.onblur = function() {
+        // 如果文本框里面没有数字的话
+        if(this.value === "") {
+            this.value = "手机";
+        }
+        // 失去焦点需要把文本框里面的文字颜色变浅色
+        this.style.color = '#999';
+    };
+</script>
+</html>
