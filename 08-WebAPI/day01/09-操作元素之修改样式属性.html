@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改样式属性</title>
+</head>
+<style>
+    div {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+    }
+</style>
+<body>
+    <div></div>
+</body>
+<script>
+    // 获取元素
+    let div = document.querySelector("div");
+    
+    // 注册事件,修改样式
+    div.onclick = function() {
+        // style里面的属性要采取驼峰式命名法
+        this.style.backgroundColor = "purple";
+        this.style.width = "300px";
+    };
+</script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取特殊元素</title>
+</head>
+<body>
+    <script>
+        // 1. 获取body元素
+        let body = document.body;
+        console.log(body);  // <body>...</body>
+
+        // 2. 获取HTML元素
+        // 错误的操作方式
+        console.log(document.html);  // undefined
+        // 正确的操作方式,通过documentElement来获取
+        let htmlElement = document.documentElement;
+        console.log(htmlElement);  // <html lang="en">...</html>
+    </script>
+</body>
+</html>

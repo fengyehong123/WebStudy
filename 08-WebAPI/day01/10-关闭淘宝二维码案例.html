@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关闭淘宝二维码</title>
+</head>
+<style>
+    .box {
+        position: relative;
+        width: 74px;
+        height: 88px;
+        border: 1px solid #ccc;
+        margin: 100px auto;
+        font-size: 12px;
+        text-align: center;
+        color: #f40;
+        /* display: block; */
+    }
+    
+    .box img {
+        width: 60px;
+        margin-top: 5px;
+    }
+    
+    .close-btn {
+        position: absolute;
+        top: -1px;
+        left: -16px;
+        width: 14px;
+        height: 14px;
+        border: 1px solid #ccc;
+        line-height: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div class="box">
+        淘宝二维码
+        <img src="./images/tao.png" alt="">
+        <i class="close-btn">×</i>
+    </div>
+</body>
+<script>
+    // 获取关闭元素
+    let closeBtn = document.querySelector(".close-btn");
+    // 获取存放二维码这个盒子的元素
+    let box = document.querySelector(".box");
+
+    // 点击关闭按钮把二维码盒子隐藏起来,在用户看来这个盒子就是被删除了
+    closeBtn.onclick = function() {
+        box.style.display = "none";
+    };
+</script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getElementById获取元素</title>
+</head>
+<body>
+    <div id="time">2019-9-9</div>
+</body>
+<script>
+    // 通过ID选择器,获取到的是一个DOM对象
+    let timer = document.getElementById("time");
+
+    console.log(timer);  // <div id="time">2019-9-9</div>
+    console.log(typeof timer);  // object
+
+    // console.dir 打印我们返回的元素对象 更好的查看里面的属性和方法
+    console.dir(timer);
+
+</script>
+</html>

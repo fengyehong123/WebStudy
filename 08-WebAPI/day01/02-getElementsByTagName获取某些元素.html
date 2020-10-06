@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>知否知否，应是等你好久11</li>
+        <li>知否知否，应是等你好久11</li>
+        <li>知否知否，应是等你好久11</li>
+        <li>知否知否，应是等你好久11</li>
+    </ul>
+
+    <ol id="ol">
+        <li>生僻字</li>
+        <li>生僻字</li>
+        <li>生僻字</li>
+        <li>生僻字</li>
+    </ol>
+</body>
+<script>
+    // 标签选择器,获取的是元素对象的集合,以伪数组的形式进行存储
+    let lis = document.getElementsByTagName("li");
+    /*
+        如果页面中只有一个li 返回的还是伪数组的形式 
+        如果页面中没有这个元素 返回的是空的伪数组的形式
+    */
+    console.log(lis);  // HTMLCollection(8)
+    /*
+        0: li
+        1: li
+        2: li
+        3: li
+        4: li
+        5: li
+        6: li
+        7: li
+    */
+
+    console.log(lis[0]);  // <li>知否知否，应是等你好久11</li>
+
+    // 如果需要依次打印DOM对象的话,可以采用遍历的方式
+    for(var i = 0; i < lis.length; i++) {
+        console.log(lis[i]);
+    };
+    
+    console.log("------------------------");
+    // 先通过getElementById()选择器选出ol这个DOM对象,然后通过DOM对象选出li这个DOM对象
+    var ol = document.getElementById('ol');
+    console.log(ol.getElementsByTagName('li'));  // HTMLCollection(4) [li, li, li, li]
+
+    // getElementsByTagName()获取到是动态集合,即：当页面增加了标签,这个集合中也就增加了元素。
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改元素属性</title>
+</head>
+<style>
+    img {
+        width: 300px;
+    }
+</style>
+<body>
+    <button id="ldh">刘德华</button>
+    <button id="zxy">张学友</button> <br>
+    <img src="./images/ldh.jpg" alt="" title="刘德华">
+</body>
+<script>
+    // 修改img标签的src属性
+
+    // 获取相应的DOM元素
+    var ldh = document.getElementById('ldh');
+    var zxy = document.getElementById('zxy');
+    var img = document.querySelector('img');
+
+    // 注册事件,处理程序.点击button按钮的时候,修改img标签中src的属性值
+    zxy.onclick = function() {
+        img.src = './images/zxy.jpg';
+        img.title = '张学友思密达';
+    }
+    ldh.onclick = function() {
+        img.src = './images/ldh.jpg';
+        img.title = '刘德华';
+    }
+</script>
+</html>

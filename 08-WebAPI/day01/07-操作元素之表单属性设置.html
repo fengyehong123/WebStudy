@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单属性设置</title>
+</head>
+<body>
+    <button>按钮</button>
+    <input type="text" value="输入内容">
+</body>
+<script>
+    // 获取元素
+    let btn = document.querySelector("button");
+    let input = document.querySelector("input");
+
+    // 给button按钮添加点击事件
+    btn.onclick = function() {
+        // input.innerHTML = '点击了'; 这个是普通盒子,比如div标签里面的内容.
+        // 表单里面的值,文字内容是通过value属性来修改的
+        input.value = "我被点击了";
+        // this 指向的是事件函数的调用者 btn
+        // 想要某个表单被禁用,就是使用 .disabled = true
+        this.disabled = true;
+    };
+</script>
+</html>

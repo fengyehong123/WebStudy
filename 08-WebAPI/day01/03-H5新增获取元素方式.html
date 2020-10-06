@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H5新增的获取元素的方式</title>
+</head>
+<body>
+    <div class="box">盒子1</div>
+    <div class="box">盒子2</div>
+    <div id="nav">
+        <ul>
+            <li>首页</li>
+            <li>产品</li>
+        </ul>
+    </div>
+</body>
+<script>
+    // 1. getElementsByClassName() 根据类名获得某些元素集合
+    // 直接写类名就可以了,不需要用 . + 类名的方式
+    let boxs = document.getElementsByClassName("box");
+    // 获取到的是一个伪数组的集合
+    console.log(boxs);  // HTMLCollection(2)
+
+    // 2. querySelector() 返回指定选择器的第一个元素对象.注意:选择器需要加符号 .box  #nav
+    let firstBox = document.querySelector(".box");
+    // 虽然类名为 .box 的盒子有两个,但是只会获取到第一个盒子
+    console.log(firstBox);  // <div class="box">盒子1</div>
+    var nav = document.querySelector('#nav');
+    console.log(nav);  // 获取到的是 nav这个盒子
+    var li = document.querySelector('li');
+    console.log(li);  // <li>首页</li>
+
+    // 3. querySelectorAll()返回指定选择器的所有元素对象集合
+    let boxList = document.querySelectorAll(".box");
+    // 获取到两个元素的对象集合
+    console.log(boxList);  // NodeList(2) [div.box, div.box]
+    var lis = document.querySelectorAll('li');
+    console.log(lis);  // NodeList(2) [li, li]
+</script>
+</html>

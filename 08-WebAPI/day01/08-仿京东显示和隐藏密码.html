@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>显示和隐藏密码</title>
+</head>
+<style>
+    .box {
+        position: relative;
+        width: 400px;
+        border-bottom: 1px solid #ccc;
+        margin: 100px auto;
+    }
+    
+    .box input {
+        width: 370px;
+        height: 30px;
+        border: 0;
+        outline: none;
+    }
+    
+    .box img {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        width: 24px;
+    }
+</style>
+<body>
+    <div class="box">
+        <label for="">
+            <img src="./images/close.png" alt="" id="eye">
+        </label>
+        <input type="password" name="" id="pwd">
+    </div>
+</body>
+<script>
+    // 获取元素
+    var eye = document.getElementById('eye');
+    var pwd = document.getElementById('pwd');
+
+    // 设置flag睁眼闭眼的flag
+    let flag = 0;
+    // 注册事件,处理程序
+    eye.onclick = function() {
+        if(flag == 0) {
+            // 修改文本输入框的属性
+            pwd.type = "text";
+            // 修改img标签的src属性值
+            eye.src = "./images/open.png";
+            // 修改flag值
+            flag = 1;
+        } else {
+            pwd.type = "password";
+            eye.src = "./images/close.png";
+            flag = 0;
+        }
+    }
+</script>
+</html>
