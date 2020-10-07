@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件对象</title>
+</head>
+<body>
+    <!-- 
+        键盘事件对象属性 event.keyCode
+        作用: 返回该键的ASCII值
+
+        注意:
+            1. keyup 和 keydown不区分字母大小写,但是keypress区分大小写
+            2. 在我们的实际开发过程中,我们更多的使用keydown和keyup,因为能识别所有的键(包括功能键)
+            3. keypress不能识别功能键,但是keypress的keyCode属性能区分大小写,返回不同的ASCII码
+     -->
+</body>
+<script>
+    document.addEventListener("keyup", function(event) {
+        console.log(`keyup==>${event.keyCode}`);
+        if(event.keyCode === 13) {
+            alert("刚才按下的是回车键");
+        } else {
+            alert("按下的不是回车键");
+        };
+    });
+</script>
+</html>

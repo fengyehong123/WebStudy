@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快递单号查询</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .search {
+        position: relative;
+        width: 178px;
+        margin: 100px;
+    }
+    
+    .con {
+        display: none;
+        position: absolute;
+        top: -40px;
+        width: 171px;
+        border: 1px solid rgba(0, 0, 0, .2);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+        padding: 5px 0;
+        font-size: 18px;
+        line-height: 20px;
+        color: #333;
+    }
+    
+    .con::before {
+        content: '';
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 28px;
+        left: 18px;
+        border: 8px solid #000;
+        border-style: solid dashed dashed;
+        border-color: #fff transparent transparent;
+    }
+</style>
+<body>
+    <div class="search">
+        <div class="con">123</div>
+        <input type="text" placeholder="请输入您的快递单号" class="jd">
+    </div>
+</body>
+<script>
+    // 获取大号字体的盒子元素
+    let con = document.querySelector(".con");
+    // 获取文本输入框的盒子元素
+    let jd = document.querySelector(".jd");
+
+    // 当键盘按下的时候,如果文本框中没有内容的话,就不显示大号字体的盒子
+    jd.addEventListener("keyup", function(event) {
+        if(this.value.trim() == "") {
+            con.style.display = "none";
+        } else {
+            // 如果文本框中有内容,就显示大号字体的盒子,并且把文本框中的内容放到大号字体的盒子中去
+            con.style.display = "block";
+            con.innerText = this.value;
+        }
+    });
+
+    // 当我们失去这个焦点的时候,就隐藏这个盒子
+    jd.addEventListener("blur", function(event) {
+        con.style.display = "none";
+    });
+
+    // 当我们获取这个焦点的时候,就显示这个盒子
+    jd.addEventListener("focus", function() {
+        if(this.value.trim() != "") {
+            con.style.display = "block";
+        }
+    });
+
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常用的键盘事件</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        onkeyup:
+            某个键盘按键被松开时触发
+        onkeypress:
+            某个键盘被按下时触发,但是不识别功能键(例如左右箭头,ctrl,shift等)
+        onkeydown:
+            某个键盘被按下时触发,能够识别功能键
+        注意:
+            如果使用addEventListener的话,就不需要添加on
+            
+        这三个事件的执行顺序是:
+            keydown --> keypress --> keyup
+    */
+
+    // 先执行
+    document.addEventListener("keyup", function() {
+        console.log("某个键盘按键被松开时触发");
+    });
+
+    // 后执行
+    document.addEventListener("keypress", function() {
+        console.log("我按下了press");
+    });
+
+    // 最后执行
+    document.addEventListener("keydown", function() {
+        console.log("我按下了down");
+    });
+</script>
+</html>
