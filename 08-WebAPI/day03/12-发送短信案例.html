@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发送短信案例</title>
+</head>
+<body>
+    手机号码： <input type="number"> <button>发送</button>
+</body>
+<script>
+    // 获取页面上的按钮元素
+    let button = document.querySelector("button");
+
+    // 定义倒计时的秒数
+    let time = 3;
+
+    // 给按钮添加点击事件,点击之后会触发定时任务
+    button.addEventListener("click", function() {
+        // 点击发送短信按钮之后,将按钮设置为不可用
+        button.disabled = true;
+        // 每隔一秒钟调用一次定时器,执行定时器里面的函数减少页面上的计时秒数
+        let timer = setInterval(() => {
+            if(time == 0) {
+                // 清除定时器
+                clearTimeout(timer);
+                // 将按钮设置为可用
+                button.disabled = false;
+                // 修改按钮的问题
+                button.innerHTML = "发送";
+                time = 3;
+            } else {
+                // 修改页面上的文字
+                button.innerHTML = '还剩下' + time + '秒';
+                // 减少秒数
+                time--;
+            }
+        }, 1000);
+    });
+</script>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS的执行队列</title>
+</head>
+<body>
+    <!-- 
+        JS执行机制
+        1. 先执行 执行栈中的同步任务
+        2. 异步任务(回调函数)放入任务队列中
+        3. 一旦执行栈中的所有的同步任务执行完毕,系统就会按照次序读取任务队列中的异步任务,于是被读取
+           的异步任务结束等待状态,进行执行栈,开始执行.
+        
+        由于主线程不断的重复获取任务,执行任务,再获取任务,再执行任务,所以这种执行机制被称为事件循环(event loop)
+     -->
+</body>
+<script>
+    /*
+         JS原本是单线程的,如果在执行过程中出现了耗时操作造成阻塞,后面的代码要一直等到前面的代码
+        执行完毕之后才能执行
+
+        为了解决这个问题,利用多核CPU的计算能力,HTML5提出了Web Worker标准,允许JavaScript脚本创建
+        多个线程.于是JS中出现了同步和异步
+    */
+    /*
+        console.log(1);
+        // 耗时操作
+        setTimeout(function() {
+            console.log(3);
+        }, 1000);
+        console.log(2);
+        因此这段代码打印的顺序是 1, 2, 3
+    */
+
+    /*
+        同步任务
+            同步任务都主线程上执行,形成一个执行栈
+        异步任务
+            JS的异步任务是通过回调函数来实现的
+            一般而言,异步任务有以下3种类型
+            1. 普通事件,例如 click 和 resize 等
+            2. 资源加载,例如 load 和 error等
+            3. 定时器,包括setInterval,setTimeout等
+        异步任务相关的回调函数都要添加到任务队列中执行(任务队列也称为消息队列)
+    */
+    console.log(1);
+    // 执行的间隔为0秒
+    setTimeout(function() {
+        console.log(3);
+    }, 0);
+    console.log(2);
+
+    /* 
+        上面的代码在执行的时候,会先执行主线程上的同步任务(两个console.log()打印任务)
+        然后再去任务队列中执行异步任务
+        setTimeout虽然耗时操作设置为0毫秒(立即执行),但setTimeout是异步任务,
+        所以后执行
+        所以打印顺序依旧是 1, 2, 3
+    */
+</script>
+</html>

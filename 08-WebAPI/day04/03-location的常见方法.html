@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>location的常见方法</title>
+</head>
+<body>
+    <button class="btn1">assign点击跳转</button>
+    <hr>
+    <button class="btn2">replace点击跳转</button>
+    <hr>
+    <button class="btn3">刷新页面</button>
+</body>
+<script>
+    let btn1 = document.querySelector(".btn1");
+    btn1.addEventListener("click", function() {
+        // 记录浏览历史,所以可以实现后退功能(点击浏览器上的后退按钮可以回退到当前页面)
+        location.assign('http://www.baidu.com');
+    });
+
+    let btn2 = document.querySelector(".btn2");
+    btn2.addEventListener("click", function() {
+        // 不记录浏览历史，所以不可以实现后退功能(点击浏览器上的后退按钮无法回退到当前页面)
+        location.replace('http://www.baidu.com');
+    });
+
+    let btn3 = document.querySelector(".btn3");
+    btn3.addEventListener("click", function() {
+        // 重新加载页面,添加参数 true相当于强制刷新页面
+        location.reload(true);
+    });
+</script>
+</html>

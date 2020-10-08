@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5秒之后跳转页面</title>
+</head>
+<body>
+    <button>点击按钮进行跳转</button>
+    <div></div>
+</body>
+<script>
+    var timer = 5;
+    // 获取元素
+    var btn = document.querySelector('button');
+    var div = document.querySelector('div');
+
+    // 点击按钮进行跳转
+    btn.addEventListener("click", function() {
+        window.location.href = 'http://www.itcast.cn';
+    });
+
+    /*
+        设置一个定时器,每隔一秒钟执行一次,减去1秒.一共减去5秒
+    */
+    setInterval(function() {
+        if(timer == 0) {
+            // 5秒之后,添加location.href属性,进行页面跳转
+            window.location.href = 'http://www.itcast.cn';
+        } else {
+            div.innerHTML = '您将在' + timer + '秒钟之后跳转到首页';
+            timer--;
+        }
+    },1000);
+    
+</script>
+</html>
