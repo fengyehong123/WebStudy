@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清除定时器</title>
+</head>
+<body>
+    <button>点击清除定时器</button>
+</body>
+<script>
+    /*
+        定时器的清除
+        clearTimeout(定时器名称);
+    */
+    let btn = document.querySelector("button");
+    // 设置一个定时器
+    let timer = setTimeout(function() {
+        alert("定时器执行了");
+    }, 5000);
+
+    // 定时器的清除
+    btn.addEventListener("click", function() {
+        clearTimeout(timer);
+    });
+</script>
+</html>

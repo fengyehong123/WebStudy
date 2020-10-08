@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window的onload事件</title>
+</head>
+<script>
+    /*
+        1. window的onload()事件会等到页面的所有元素(DOM,图片,css)加载完成后才会执行,所以js代码可以写到DOM上面
+        2. 多个window.addEventListener("load", function() {XXX})事件会按照顺序执行
+           但是 多个window.onload = function() {XXX}事件的话,后面事件会覆盖前面的事件
+    */
+
+    window.addEventListener("load", function() {
+        var btn = document.querySelector("button");
+        btn.addEventListener("click", function() {
+            alert("hello world");
+        });
+    });
+    window.addEventListener("load", function() {
+        var btn = document.querySelector("button");
+        btn.addEventListener("click", function() {
+            alert("hello JS");
+        });
+    });
+
+    /*
+        DOMContentLoaded 是等待DOM元素加载完毕(css,图片等可以不加载完)就可以执行
+        因此加载速度比load快,所以会最先执行
+        在jQuery中一般这样书写
+        $(function() {
+            // ...
+        })
+    */ 
+    window.addEventListener("DOMContentLoaded", function() {
+        var btn = document.querySelector("button");
+        btn.addEventListener("click", function() {
+            alert("我虽然晚定义,但是最先执行");
+        });
+    });
+</script>
+<body>
+    <button>按钮</button>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>窗口大小事件调整</title>
+</head>
+<style>
+    div {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+    }
+</style> 
+<body>
+    <div></div>
+</body>
+<script>
+    /*
+        调整窗口大小事件
+        window.onresize = function() {XXX};
+        // 一般使用下面这种
+        window.addEventListener("resize", function() {XXX});
+
+        // 屏幕的宽度
+        window.innerWidth
+        // 屏幕的高度
+        window.innerHeight
+    */
+    document.addEventListener("DOMContentLoaded", function() {
+        let div = document.querySelector("div");
+        // 给整个浏览器对象添加窗口调整事件
+        window.addEventListener("resize", function() {
+            console.log(window.innerWidth);
+            console.log(window.innerHeight);
+
+            // 当浏览器窗口的宽度 < 800 的时候
+            if(window.innerWidth <= 800) {
+                div.style.display = "none";
+            } else {
+                div.style.display = "block";
+            }
+        });
+    });
+</script>
+</html>

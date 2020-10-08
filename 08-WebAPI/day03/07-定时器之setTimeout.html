@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout定时器</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        setTimeout定时器,也叫炸弹定时器,因为到了时间之后只会执行一次
+
+        语法规范: window.setTimeout(调用函数, 延时时间);
+        1. 这个window在调用的时候可以省略
+        2. 这个延时时间单位是毫秒,但是可以省.如果省略默认的是0
+        3. 这个调用函数可以直接写函数
+           还可以写函数名
+           还有一个写法==>'函数名()' 不推荐使用这种写法
+        4. 页面中可能有很多的定时器,我们经常给定时器加标识符(定时器名称)
+    */
+
+    setTimeout(() => {
+        console.log("回调函数是一个匿名函数的定时器执行了");
+    }, 2000);
+
+    // 使用lambda表达式的方式定义一个匿名函数,
+    let callback = () => {
+        console.log("炸弹已经爆炸!");
+    };
+
+    // 由于有多个定时器,我们给定时器取了名称
+    let timer1 = setTimeout(callback, 3000);
+    let timer2 = setTimeout(callback, 5000);
+</script>
+</html>

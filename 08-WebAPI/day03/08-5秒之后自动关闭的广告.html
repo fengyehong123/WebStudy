@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自动关闭广告</title>
+</head>
+<body>
+    <img src="./images/ad.jpg" alt="" class="ad">
+</body>
+<script>
+    // 广告元素
+    let ad = document.querySelector(".ad");
+
+    // 定义定时器的回调函数
+    let closeAd = () => {
+        ad.style.display = "none";
+    };
+
+    // 设置定时器,5秒之后隐藏广告
+    setTimeout(closeAd, 5000);
+
+    // 设置定时器,6秒之后显示广告
+    setTimeout(function() {
+        ad.style.display = "block";
+    }, 6000);
+</script>
+</html>

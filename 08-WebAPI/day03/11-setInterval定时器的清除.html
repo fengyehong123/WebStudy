@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval定时器的清除</title>
+</head>
+<body>
+    <button class="begin">开启定时器</button>
+    <button class="stop">停止定时器</button>
+</body>
+<script>
+    // 按钮元素的获取
+    var begin = document.querySelector('.begin');
+    var stop = document.querySelector('.stop');
+
+    var timer = null;
+    // 点击按钮添加定时器
+    begin.addEventListener("click", function() {
+        timer = setInterval(() => {
+            console.log("hello world");
+        }, 1000);
+    });
+
+    // 点击按钮清除定时器
+    stop.addEventListener("click", function() {
+        clearTimeout(timer);
+    });
+</script>
+</html>

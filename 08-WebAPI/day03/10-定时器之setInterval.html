@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval定时器</title>
+</head>
+<body>
+    <!-- 
+        setInterval定时器.每隔一段时间,就去调用这个回调函数,会调用很多次,一直重复调用这个函数
+        window.setInterval(调用函数, 延时时间);
+     -->
+</body>
+<script>
+    // 每隔两秒钟调用一次匿名回调函数
+    setInterval(function() {
+        console.log("我被调用了一次");
+    }, 2000);
+</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM顶级对象</title>
+</head>
+<body>
+    <div></div>
+</body>
+<script>
+    // 因为BOM包含DOM,所以选择器的完成写法应该是下面这样,但是window一般会省略
+    // window.document.querySelector("div");
+
+    // 定义在`全局作用域`中的变量,函数都会变成window对象的属性和方法
+    var num = 10;  // 我们定义一个全局作用域中的变量
+    console.log(num);  // 10
+    /*
+        因为let具有块级作用域的特点,因此如果我们把 var num = 10 改为 let num = 10的话
+        console.log(window.num) 的结果就是 ==> undefined
+    */ 
+    console.log(window.num);  // 10
+
+
+    // 定义一个全局作用域函数
+    function fn() {
+        console.log("hello world");
+    }
+    // 我们平常调用函数都是直接函数名+()进行调用的
+    fn();  // hello world
+    // 全局作用域的函数会变为window对象的方法
+    window.fn();  // hello world
+
+    // alert()属于window方法
+    alert("123");
+    window.alert("456");
+
+    // var name = 10;
+    // 我们不要使用var定义name变量,因为name本身就是window对象的一个属性
+    // 直接打印`window.name`会打印出空字符串,如果我们使用var定义了name变量,会覆盖掉window的默认属性
+    console.log(window.name);  // 结果为空字符串
+
+</script>
+</html>
