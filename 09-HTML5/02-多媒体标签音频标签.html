@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多媒体标签音频标签</title>
+</head>
+<body>
+    <!-- 
+        不同浏览器对controls控件的显示是不同的
+        谷歌浏览器把autoplay属性给禁用了,IE浏览器并没有禁用
+     -->
+    <audio src="./media/snow.mp3" controls="controls" autoplay="autoplay"></audio>
+    <hr>
+    <!-- 
+        因为不同的浏览器支持不同的音频格式,我们采取的解决方案是,我们为这个音频准备多个格式
+     -->
+    <audio controls="controls">
+        <source src="./media/snow.mp3" type="audio/mpeg" />
+        <source src="./media/snow.ogg" type="audio/ogg" />
+        <!-- 当碰到IE6,7,8的时候,就显示下面的这段文字.支持audio音频标签的浏览器不会显示下面的文字 -->
+        您的浏览器不支持播放声音
+    </audio>
+</body>
+<script>
+    /*
+        属性        值            描述
+
+        autoplay    autoplay     如果出现该属性,则音频在就绪后马上就播放
+
+        controls    controls     如果出现该属性,则向用户展示控件,比如播放按钮
+
+        loop        loop         如果出现该属性,则每当音频结束时重新开始播放
+
+        src         url          要播放的音频URL
+
+    */
+</script>
+</html>

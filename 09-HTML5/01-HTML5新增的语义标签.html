@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5语义标签</title>
+</head>
+<style>
+    header,
+    nav,
+    section,
+    aside,
+    footer {
+        /* 加上这句代码是为了兼容IE9前的版本 */
+        display: block;
+
+        height: 120px;
+        background-color: pink;
+        margin: 10px;
+    }
+</style>
+<body>
+    <!-- 
+        以前的布局,我们基本使用div来做,但是div对于搜索引擎来说没有意义
+        <div class="header"></div>
+        <div class="nav"></div>
+        <div class="content"></div>
+        <div class="footer"></div>
+     -->
+    <!-- 
+        这种语义化标准主要是针对搜索引擎的
+        这些新标签页面中可以使用多次
+        在IE9中默认把这些新标签当做行内元素,我们需要手动转换为块级元素
+     -->
+
+    <!-- 头部标签 -->
+    <header>头部标签</header>
+    <!-- 导航标签 -->
+    <nav>导航标签</nav>
+    <!-- 内容标签 -->
+    <article>
+        <!-- 块级标签 -->
+        <section>块级标签</section>
+    </article>
+    <!-- 侧边栏标签 -->
+    <aside>侧边栏标签</aside>
+    <!-- 尾部标签 -->
+    <footer>尾部标签</footer>
+</body>
+</html>
