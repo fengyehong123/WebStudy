@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mouseenter和mouseover的区别</title>
+</head>
+<style>
+    .father1,
+    .father2 {
+        width: 300px;
+        height: 300px;
+        background-color: pink;
+    }
+    .son1,
+    .son2 {
+        width: 200px;
+        height: 200px;
+        background-color: purple;
+    }
+</style>
+<body>
+    <div class="father1">
+        <div class="son1"></div>
+    </div>
+
+    <hr>
+
+    <div class="father2">
+        <div class="son2"></div>
+    </div>
+</body>
+<script>
+    /*
+        mouseenter和mouseover这两个事件,都可以在经过元素的时候被触发
+        mouseenter只会经过自身盒子触发,不会有冒泡事件
+        mouseover经过自身盒子的时候会触发,经过子盒子还是会触发,有冒泡事件
+
+        我们使用mouseenter和mouseleave事件来触发鼠标经过和鼠标离开事件,不会有冒泡事件的发生
+        
+    */
+    var father1 = document.querySelector('.father1');
+    var son1 = document.querySelector('.son1');
+
+    var father2 = document.querySelector('.father2');
+    var son2 = document.querySelector('.son2');
+
+    father1.addEventListener("mouseenter", function() {
+        console.log("鼠标经过自身盒子触发,没有冒泡事件");
+    });
+    father1.addEventListener("mouseleave", function() {
+        console.log("鼠标离开元素的时候触发,没有冒泡事件");
+    });
+
+    father2.addEventListener("mouseover", function() {
+        console.log("鼠标经过自身盒子和子盒子触发,有冒泡事件");
+    });
+
+</script>
+</html>
