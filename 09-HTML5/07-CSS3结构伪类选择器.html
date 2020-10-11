@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3结构伪类选择器</title>
+</head>
+<style>
+    /* 
+        匹配第一个子元素
+        因为ul里面的子元素全部是li
+        我们可以把选择器写成
+            ul li:first-child
+        也可以写成
+            ul :first-child
+        但是不能写成
+            ul:first-child
+            否则会选择ul而不是li
+    */
+    ul :first-child {
+        background-color: pink;
+    }
+    /* 匹配最后一个子元素 */
+    ul li:last-child {
+        background-color: deeppink;
+    }
+    /* 匹配第8个子元素 */
+    ul li:nth-child(8) {
+        background-color: red;
+    }
+    /* 
+        匹配奇数
+        ul li:nth-child(even) {
+            background-color: pink;
+        }
+
+        匹配偶数
+        ul li:nth-child(odd) {
+            background-color: pink;
+        }
+
+        2n+1类似于 odd奇数
+        ul li:nth-child(2n+1) {
+            background-color: pink;
+        }
+        2n类似于 even偶数
+        ul li:nth-child(2n) {
+            background-color: pink;
+        }
+
+        5n 选择第0,5,10,15等元素
+        ul li:nth-child(5n) {
+            background-color: pink;
+        }
+
+        n+5就是从第5个往后面选择,包含第5个
+        ul li:nth-child(n+5) {
+            background-color: pink;
+        }
+
+        n-5就是选择前面的5个
+        ul li:nth-child(n-5) {
+            background-color: pink;
+        }
+    
+    */
+</style>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+</body>
+</html>

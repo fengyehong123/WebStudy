@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3属性选择器</title>
+</head>
+<style>
+    /* 
+        属性选择器的使用方法
+    */
+
+    /* 选择具有disabled属性的button元素 */
+    button[disabled] {
+        color: yellow;
+    }
+
+    /* 选择type属性的值为search的input元素 */
+    input[type="search"] {
+        color: pink;
+    }
+    
+    /* 选择class属性值以ico开头的div元素 */
+    div[class^="icon"] {
+        color: red;
+    }
+
+    /* 选择class属性值以ico结尾的div元素 */
+    div[class$="icon"] {
+        color: green;
+    }
+
+    /* 选择class属性值中包含cona的div元素 */
+    div[class*="cona"] {
+        color: blue;
+    }
+</style>
+<body>
+    <button>按钮</button>
+    <button>按钮</button>
+    <!-- 
+        disabled 是禁用我们的按钮
+     -->
+    <button disabled="disabled">按钮</button>
+    <button disabled="disabled">按钮</button>
+
+    <input type="text" name="" id="" value="文本框">
+    <input type="text" name="" id="" value="文本框">
+    <input type="text" name="" id="" value="文本框">
+    <input type="search" name="" id="" value="搜索框">
+    <input type="search" name="" id="" value="搜索框">
+    <input type="search" name="" id="" value="搜索框">
+    <div class="icon1">图标1</div>
+    <div class="icona2">图标2</div>
+    <div class="icon3">图标3</div>
+    <div class="iicon3">图标4</div>
+    <div class="absicon">图标5</div>
+</body>
+</html>

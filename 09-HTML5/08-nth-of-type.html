@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nth-of-type</title>
+</head>
+<style>
+    /* 
+        of-type 选择指定类型的元素
+        :nth-child(n) 选择父元素里面的第n个子元素,它不管里面的孩子是否同一种类型
+        当一个元素中的子元素并不是一个类型的标签的时候,上述两个选择器的不同就凸显出来了
+    */
+    div.div1 span:first-of-type {
+        background-color: purple;
+    }
+    
+    div.div1 span:last-of-type {
+        background-color: skyblue;
+    }
+    /* span:nth-of-type(2)中的2是以span标签为基础进行统计的,并不包含div.div1中的子元素p标签 */
+    div.div1 span:nth-of-type(2) {
+        background-color: red;
+    }
+    /* --------------------------- */
+    /* 在div.div2中,第一个span标签是第2个子元素,所以使用span:nth-child(2) */
+    div.div2 span:nth-child(2) {
+        background-color: pink;
+    }
+    /* 
+        在div.div2中,第一个子元素并不是span标签,而是p标签.所以下面的选择器并不会选中任何元素
+        并不会有任何元素被设置为red颜色
+    */
+    div.div2 span:nth-child(1) {
+        background-color: red;
+    }
+    /* --------------------------- */
+    /* div.div3下面的第1个元素(p标签)设置为pink颜色 */
+    div.div3 :nth-child(1) {
+        background-color: pink;
+    }
+    /* div.div3下面的第2个元素(第一个span标签)设置为purple颜色 */
+    div.div3 :nth-child(2) {
+        background-color: purple;
+    }
+</style>
+<body>
+    <div class="div1">
+        <p>我是一个p标签</p>
+        <span>我是第1个span</span>
+        <span>我是第2个span</span>
+        <span>我是第3个span</span>
+    </div>
+    <hr>
+    <div class="div2">
+        <p>我是一个p标签</p>
+        <span>我是第1个span</span>
+        <span>我是第2个span</span>
+        <span>我是第3个span</span>
+    </div>
+    <hr>
+    <div class="div3">
+        <p>我是一个p标签</p>
+        <span>我是第1个span</span>
+        <span>我是第2个span</span>
+        <span>我是第3个span</span>
+    </div>
+    <!-- ul 里面我们只允许放li  所以 nth-child 和 nth-of-type 就一样了 -->
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>
