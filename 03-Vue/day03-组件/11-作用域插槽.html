@@ -26,7 +26,8 @@
                 <!-- 
                     通过slotPropsHaHa.info.id来判断到底哪条数据需要添加 相应的样式
                  -->
-                <strong v-if='slotPropsHaHa.info.id==3' class="current">{{slotPropsHaHa.info.name}}</strong>
+                <span v-if='slotPropsHaHa.info.id==3' class="current">{{slotPropsHaHa.info.name}}</span>
+                <strong v-if='slotPropsHaHa.info.id==3' class="current">{{slotPropsHaHa.info.id}}</strong>
                 <span v-else>{{slotPropsHaHa.info.name}}</span>
             </template>
         </fruit-list>
@@ -44,7 +45,7 @@
         <div>
             <li :key='item.id' v-for='item in list'>
                 <!-- 作用域插槽需要绑定一个属性,这个属性是我们自定义的,例如下面的info -->
-                <slot :info='item'>{{item.name}}</slot>
+                <slot :info='item'>{{item.随便写的东西,不管用}}</slot>
             </li>
         </div>
         `

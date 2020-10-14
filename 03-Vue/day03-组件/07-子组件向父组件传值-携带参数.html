@@ -19,7 +19,7 @@
         template: `
             <div>
                 <ul>
-                <li :key='index' v-for='(item,index) in parr'>{{item}}</li>
+                    <li :key='index' v-for='(item,index) in parr'>{{item}}</li>
                 </ul>
                 <!--子组件向父组件传递参数-->
                 <button @click='$emit("enlarge-text", 5)'>扩大父组件中字体大小</button>
