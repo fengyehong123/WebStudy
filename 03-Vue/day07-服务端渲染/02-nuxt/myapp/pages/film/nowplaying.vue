@@ -19,7 +19,8 @@ export default {
             dataList: ["1111", "2222", "3333"]
         }
     },
-    asyncData() {
+    asyncData(data) {
+        console.log(data);
         return axios({
             url:"https://m.maizuo.com/gateway?cityId=110100&pageNum=1&pageSize=10&type=1&k=6341699",
             headers:{

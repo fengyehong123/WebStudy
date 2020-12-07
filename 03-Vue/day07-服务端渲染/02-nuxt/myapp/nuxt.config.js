@@ -33,11 +33,22 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    // 添加反向代理模块
+    '@nuxtjs/proxy'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
-
+  axios: {
+    // 在axios中开启反向代理
+    proxy: true
+  },
+  // 配置反向代理,凡是路径中带有/ajax的,都代理到target所对应的路径中
+  proxy: {
+    '/ajax': {
+      target: "https://m.maoyan.com",
+      changeOrigin: true
+    }
+  },
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     transpile: [/^element-ui/],

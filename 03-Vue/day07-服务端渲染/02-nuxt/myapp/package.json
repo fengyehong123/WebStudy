@@ -14,5 +14,7 @@
     "element-ui": "^2.13.2",
     "nuxt": "^2.14.6"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@nuxtjs/proxy": "^2.0.1"
+  }
 }
