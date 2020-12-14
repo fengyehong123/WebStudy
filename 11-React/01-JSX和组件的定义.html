@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <!-- 
+        和Vue相同，React中也需要有一个容器来存放相关的组件，并且该容器应该只有一个根标签
+     -->
+    <div id="example"></div>
+</body>
+<script type="text/babel">
+
+    // 定义一个对象
+    const person = {
+        name: "jia",
+        age: 20,
+        address: "地球"
+    }
+
+    // 最简单的虚拟DOM，在实际开发中一般不会直接这么写
+    const Hello = (
+        <h1>我是单纯的虚拟DOM！</h1>
+    );
+
+    // 通过function构建的组件
+    function Hello1(props) {
+        return (
+            <div>
+                {/* 因为这个组件在另一个组件中被使用，因此这个组件中的数据只能是从上一层组件中传递过来 */}
+                <h1>我是通过function构建的虚拟DOM! 我是从外部传递过来的地址值: {props.address}</h1>
+
+                {/* React中的props属性是只读的，因此在虚拟DOM中的这种操作是错误的。例如: props.age = 200 */}
+                <div>我今年{props.age}岁了</div>
+
+                {/* 可以直接在{}中使用js的相关API */}
+                <p>{new Date().toLocaleTimeString()}</p>
+                <p>{1 + 1 }</p>
+            </div>  
+        );
+    }
+
+    // 通过ES6的方式构建的组件
+    class Hello2 extends React.Component {
+        render() {
+            return (
+                <div>
+                    {/* ES6的方式定义的组件来接收传递的参数 */}
+                    我是通过ES6构建的虚拟DOM {this.props.name}
+                    {/* 在一个组件的内部使用另一个组件,并向组件中传递数据 */}
+                    <Hello1 address={this.props.address} age={this.props.age} />
+                </div>
+            );
+        }
+    }
+
+    // 把组件给渲染到页面上
+    ReactDOM.render(
+        // 使用ES6的语法对person对象进行属性扩散，简化代码书写
+        // 标签第一个字母必须大写，否则不会当成组件进行解析
+        <Hello2 {...person} />,
+        // 指定一个DOM对象，用于当做容器存放我们自定义的各种组件
+        document.getElementById('example')
+    );
+</script>
+</html>

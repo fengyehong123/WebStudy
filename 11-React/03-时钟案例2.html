@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+
+    // 定义一个组件
+    class Clock extends React.Component {
+
+        // 添加一个构造函数
+        constructor(props) {
+            super(props);
+            // 当类组件被初始化的时候，会通过new Date()来初始化this.state的值
+            this.state = {date: new Date()};
+        }
+
+        /*
+            这个声明周期方法会在组件被渲染到DOM之后运行
+            当组件第一次被渲染到DOM中的时候,就为其设置一个计时器.这在 React 中被称为“挂载（mount）”。
+        */ 
+        componentDidMount() {
+            this.timerID = setInterval(
+                () => this.tick(),
+                1000
+            );
+        }
+
+        /*
+            当DOM中Clock组件被删除的时候,应该清除计时器.这在 React 中被称为“卸载（unmount）”。
+            一旦 Clock 组件从 DOM 中被移除，React 就会调用 componentWillUnmount() 生命周期方法，这样计时器就停止了
+        */
+        componentWillUnmount() {
+            clearInterval(this.timerID);
+        }
+
+        // 定义一个叫tick()的方法，因为在声明周期方法componentDidMount()中设置了定时器，因此Clock组件每秒钟都会调用该方法
+        tick() {
+            this.setState({
+                /*
+                    Clock 组件会通过调用 setState() 来计划进行一次 UI 更新。得益于 setState() 的调用，React 能够知道 state 已经改变了，
+                    然后会重新调用 render() 方法来确定页面上该显示什么。这一次，render() 方法中的 this.state.date 就不一样了，
+                    如此以来就会渲染输出更新过的时间。React 也会相应的更新 DOM。
+                */ 
+                date: new Date(),
+            })
+        }
+
+        render() {
+            return (
+                <div>
+                    <h1>Hello, World!</h1>
+                    <h2>It is {this.state.date.toLocaleTimeString()}</h2>
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(
+        <Clock />,
+        document.querySelector("#root")
+    )    
+</script>
+</html>

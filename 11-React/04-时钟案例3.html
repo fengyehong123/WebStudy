@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+
+    // 使用funcrion的方式定义一个组件
+    function FormattedDate(props) {
+        return (
+            <h2>It is {props.date.toLocaleTimeString()}.</h2>
+        );
+    }
+
+    // 使用class的方式定义一个组件
+    class Clock extends React.Component {
+        
+        constructor(props) {
+            super(props);
+            this.state = {date: new Date()};
+        }
+
+        componentDidMount() {
+            this.timerID = setInterval(
+                () => this.tick(),
+                1000
+            );
+        }
+
+        componentWillUnmount() {
+            clearInterval(this.timerID);
+        }
+
+        tick() {
+            this.setState({
+                date: new Date()
+            });
+        }
+
+        render() {
+            return (
+                <div>
+                    <h1>Hello, world!</h1>
+                    {/*
+                        在一个组件中使用另一个组件
+                        FormattedDate组件会在其props中接收参数date，但是组件本身无法知道它是来自于Clock的state，或是Clock的props,还是手动输入的
+                        这通常会被叫做“自上而下”或是“单向”的数据流。任何的 state 总是所属于特定的组件，而且从该 state 派生的任何数据或 UI 只能影响树中“低于”它们的组件。
+                        如果你把一个以组件构成的树想象成一个 props 的数据瀑布的话，那么每一个组件的 state 就像是在任意一点上给瀑布增加额外的水源，但是它只能向下流动。
+                    */}
+                    <FormattedDate date={this.state.date} />
+                </div>
+            );
+        }
+    }
+
+    // 对组件进行渲染
+    ReactDOM.render(
+        <Clock />,
+        document.getElementById('root')
+    );
+</script>
+</html>

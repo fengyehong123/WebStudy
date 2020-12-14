@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    // 全局数组
+    const messages = ['aaa', 'bbb', 'ccc'];
+
+    // 定义一个展示用户登录状态的组件
+    class ShowLoginState extends React.Component {
+
+        constructor() {
+            super();
+            this.state = {isLoggedIn: false}
+        }
+
+        render() {
+            const isLoggedIn = this.state.isLoggedIn;
+            return (
+                <div>
+                    {/* 通过三元表达式来展示 */}
+                    用户现在<b>{isLoggedIn ? "已经" : "没有"}</b>登录
+                </div>
+            )
+        }
+    }
+
+    function MailBox(props) {
+        const unreadMessages = props.unreadMessages;
+        return (
+            <div>
+                <h1>Hello!</h1> 
+                <ShowLoginState />
+                {
+                    /*
+                        在JavaScript中,true && expression 总是会返回expression, 
+                        而false && expression 总是会返回false.
+                        因此,如果条件是true,&&右侧的元素就会被渲染,如果是false,React会忽略并跳过它.
+                    */ 
+                    unreadMessages.length > 0 &&
+                    <h2>
+                        你有 {unreadMessages.length} 条未读消息.
+                    </h2>
+                }
+            </div>
+        );
+    }
+
+    ReactDOM.render(
+        <MailBox unreadMessages={messages} />,
+        document.getElementById('root')
+    );
+    
+    
+</script>
+</html>

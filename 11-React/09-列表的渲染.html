@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    // 定义一个全局数组
+    const numbers = [1, 2, 3, 4, 5];
+
+    // 通常你需要在一个组件中渲染列表
+    // 这个组件接收numbers数组作为参数并输出一个元素列表
+    function NumberList(props) {
+        const numberList = props.numbers;
+        // 将数组中的每个元素变成<li>标签,最后我们将得到的数组赋值给listItems
+        const listItems = numberList.map((number) => {
+            return (
+                <li key={number.toString()}>
+                    {number}
+                </li>
+            );
+        })
+
+        // 组件中返回我们的数组
+        return (
+            <ul>{listItems}</ul>
+        );
+    }
+
+    ReactDOM.render(
+        <NumberList numbers={numbers} />,
+        document.getElementById('root')
+    );
+</script>
+</html>

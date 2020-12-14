@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+
+    // 定义一个组件
+    class Clock extends React.Component {
+        render() {
+            return (
+                <div>
+                    <h1>Hello, World!</h1>
+                    <h2>It is {this.props.data.toLocaleTimeString()}</h2>
+                </div>
+            );
+        }
+    }
+
+    // 定义一个函数，函数内部把组件渲染到页面上
+    function tick() {
+        ReactDOM.render(
+            <Clock data={new Date()} />,
+            document.querySelector("#root")
+        )
+    }
+
+    // 使用定时器，每一秒钟执行一次渲染函数
+    setInterval(tick, 1000);
+    
+</script>
+</html>

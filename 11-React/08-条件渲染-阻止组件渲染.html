@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<style>
+    * {
+        font-family: sans-serif;
+        margin: 0;
+    }
+    button {
+        height: 40px;
+        width: 200px;
+    }
+    .warning {
+        background-color: red;
+        text-align: center;
+        width: 100%;
+        padding: 10px;
+
+        font-size: 14pt;
+        color: white;
+    }
+</style>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    function WarningBanner(props) {
+        // 如果props.warn的状态时false,就不进行渲染
+        if(!props.warn) {
+            // 若返回null,就不进行渲染
+            return null;
+        }
+
+        return (
+            <div className="warning">
+                Warning!
+            </div>
+        );
+    }
+
+    class Page extends React.Component {
+        constructor(props) {
+            super(props);
+            // 指定状态
+            this.state = {showWarning: true};
+            // 函数的绑定
+            this.handleToggleClick = this.handleToggleClick.bind(this);
+        }
+
+        // 改变组件状态的函数
+        handleToggleClick() {
+            this.setState(prevState => ({
+                showWarning: !prevState.showWarning
+            }))
+        }
+
+        render() {
+            return (
+                <div>
+                    {/* 把当前组件的状态传递给WarningBanner组件 */}
+                    <WarningBanner warn={this.state.showWarning} />
+                    {/* 点击按钮,改变当前组件的状态 */}
+                    <button onClick={this.handleToggleClick}>
+                        {this.state.showWarning ? "隐藏" : "显示"}
+                    </button>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(
+        <Page />,
+        document.querySelector("#root")
+    );
+</script>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+
+    // 定义一个给用户使用的组件
+    function UserGreeting(props) {
+        return <h1>Welcome back!</h1>;
+    }
+
+    // 定义一个给游客使用的组件
+    function GuestGreeting(props) {
+        return <h1>Please sign up.</h1>;
+    }
+
+    // 定义一个打招呼组件，该组件会根据用户的身份来展示不同的组件
+    function Greeting(props) {
+        // 获取登录状态
+        const isLoggedIn = props.isLoggedIn;
+
+        // 根据登录状态来决定使用哪个组件
+        // 如果登录状态就返回用户组件
+        if(isLoggedIn) {
+            return <UserGreeting />;
+        }
+
+        // 如果用户没有登录，就返回游客组件
+        return <GuestGreeting />;
+    }
+
+    // 登录按钮组件
+    function LoginButton(props) {
+        return (
+            <button onClick={props.onClick}>
+                Login
+            </button>
+        );
+    }
+
+    // 退出登录按钮组件
+    function LogoutButton(props) {
+        return (
+            <button onClick={props.onClick}>
+                Logout
+            </button>
+        );
+    }
+
+    // 定义一个登录控制组件
+    class LoginControl extends React.Component {
+
+        // 类的构造函数
+        constructor(props){
+            super(props);
+            // 函数的绑定
+            this.handleLoginClick = this.handleLoginClick.bind(this);
+            this.handleLogoutClick = this.handleLogoutClick.bind(this);
+            // 组件的状态
+            this.state = {isLoggedIn: false};
+        }
+
+        // 登录的时候改变状态
+        handleLoginClick() {
+            this.setState({isLoggedIn: true});
+        }
+
+        // 退出登录的时候改变状态
+        handleLogoutClick() {
+            this.setState({isLoggedIn: false});
+        }
+
+        render() {
+            const isLoggedIn = this.state.isLoggedIn;
+            let button;
+
+            // 根据登录的状态判断要返回的哪个组件
+            if (isLoggedIn) {
+                button = <LogoutButton onClick={this.handleLogoutClick} />;
+            } else {
+                button = <LoginButton onClick={this.handleLoginClick} />;
+            }
+
+            return (
+                <div>
+                    {/* 打招呼的组件 */}
+                    <Greeting isLoggedIn={isLoggedIn} />
+                    {/* 登录或者退出组件 */}
+                    {button}
+                </div>
+            );
+        }
+    }
+
+    // 把组件渲染到页面上
+    ReactDOM.render(
+        <LoginControl />,
+        document.getElementById('root')
+    );
+    
+</script>
+</html>
