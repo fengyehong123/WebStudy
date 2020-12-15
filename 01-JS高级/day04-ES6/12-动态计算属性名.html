@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var person = {
+        name : '张三',
+        age : 20
+    }
+    var attName1 = 'name';
+    //这里 attName1表示的是一个变量名
+    console.log(person[attName1]);  // 张三
+    console.log(person["name"]);  // 张三
+
+    console.log("--------------");
+
+    var attName2 = 'name';
+    var p = {
+        // 这里的attName2是属性名,相当于各级p定义了属性名叫attName的属性.
+        attName2 : '李四', 
+        age : 20
+    }
+    console.log(p[attName2])  // undefined
+
+    console.log("--------------");
+
+    var attName3 = 'name';
+    var p = {
+        // 引用了变量attName3.相当于添加了一个属性名为name的属性
+        [attName3] : '王五', 
+        age : 20
+    }
+    console.log(p[attName3])  // 王五
+</script>
+</html>

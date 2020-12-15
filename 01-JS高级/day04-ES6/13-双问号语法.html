@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双问号语法</title>
+</head>
+<body>
+    
+</body>
+<script> 
+    /*
+        ES6中的双问号语法 ??
+        如果??左边的值是 null 或者 undefined的话,就返回右边的值
+    */
+    const num2 = null;
+    const result2 = num2 ?? 1000;
+    console.log(result2);  // 1000
+
+    const num3 = undefined;
+    const result3 = num3 ?? "哈哈哈,我不是undefined";
+    console.log(result3);  // 哈哈哈,我不是undefined
+
+    const num4 = 1;
+    const result4 = num4 ?? 1000;
+    console.log(result4);  // 1
+
+</script>
+</html>

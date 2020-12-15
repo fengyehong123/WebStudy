@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的参数默认值</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // ES6之前，当未传入参数时，text = 'default'；
+    function printText(text) {
+        text = text || 'default';
+        console.log(text);
+    }
+
+    // ES6的新语法
+    function printText(text = 'default') {
+        console.log(text);
+    }
+
+    printText('hello');  // hello
+    printText();  // default
+</script>
+</html>
