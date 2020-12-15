@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+
+    class FlavorForm extends React.Component {
+
+        constructor(props) {
+            super(props);
+            this.state = {value: ""};
+            // 绑定的函数
+            this.handleChange = this.handleChange.bind(this);
+            this.handleSubmit = this.handleSubmit.bind(this);
+        }
+
+        // 修改表单的状态
+        handleChange(event) {
+            this.setState({value: event.target.value})
+        }
+
+        // 表单的提交
+        handleSubmit(event) {
+            alert("您选择的风味是:" + this.state.value);
+            // 阻止默认事件的发生
+            event.preventDefault();
+        }
+
+        render() {
+            return (
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        选择你喜欢的风味:
+                        <select value={this.state.value} onChange={this.handleChange}>
+                            <option value="grapefruit">葡萄柚</option>
+                            <option value="lime">酸橙</option>
+                            <option value="coconut">椰子</option>
+                            <option value="mango">芒果</option>
+                        </select>
+                    </label>
+                    <input type="submit" value="提交" />
+                </form>
+            );
+        }
+    }
+   
+
+    ReactDOM.render(
+        <FlavorForm />,
+        document.getElementById('root')
+    );
+    
+</script>
+</html>

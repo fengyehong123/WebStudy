@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<style>
+    html, body, #root {
+        width: 100%;
+        height: 100%;
+    }
+
+    .SplitPane {
+        width: 100%;
+        height: 100%;
+    }
+
+    .SplitPane-left {
+        float: left;
+        width: 30%;
+        height: 100%;
+    }
+
+    .SplitPane-right {
+        float: left;
+        width: 70%;
+        height: 100%;
+    }
+
+    .Contacts {
+        width: 100%;
+        height: 100%; 
+        background: lightblue;
+    }
+
+    .Chat {
+        width: 100%;
+        height: 100%; 
+        background: pink;
+    }
+
+</style>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+
+    /*
+        <Contacts /> 和 <Chat /> 之类的 React 元素本质就是对象（object），所以你可以把它们当作 props，像其他数据一样传递。这种方法可能使你想起别的库中“槽”（slot）的概念，
+        但在 React 中没有“槽”这一概念的限制，你可以将任何东西作为 props 进行传递。
+    */
+
+    // 定义一个联系组件
+    function Contacts() {
+        return (
+            <div className="Contacts"></div>
+        );
+    }
+
+    // 定义一个聊天组件
+    function Chat() {
+        return (
+            <div className="Chat"></div>
+        );
+    }
+
+    // 定义一个面板分隔组件，该组件中用于存放联系组件和聊天组件
+    // 我们先在面板分隔组件中留出位置用于存放联系和聊天组件
+    function SplitPane(props) {
+        return (
+            <div className="SplitPane">
+                <div className="SplitPane-left">
+                    {/* 面板组件中留出的用于存放其他组件的地方 */}
+                    {props.left}
+                </div>
+                <div className="SplitPane-right">
+                    {/* 面板组件中留出的用于存放其他组件的地方 */}
+                    {props.right}
+                </div>
+            </div>
+        );
+    }
+
+    // 定义一个App组件，用于存放面板分隔组件
+    function App() {
+        return (
+            // 我们把定义好的聊天组件和联系组件当做参数传递到面板分隔组件中
+            <SplitPane left={<Contacts />} right={<Chat />}/>
+        );
+    }
+
+    ReactDOM.render(
+        <App />,
+        document.getElementById('root')
+    );
+    
+</script>
+</html>

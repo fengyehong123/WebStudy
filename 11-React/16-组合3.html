@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<style>
+    .FancyBorder {
+        padding: 10px 10px;
+        border: 10px solid;
+    }
+
+    .FancyBorder-blue {
+        border-color: blue;
+    }
+
+    .Dialog-title {
+        margin: 0;
+        font-family: sans-serif;
+    }
+
+    .Dialog-message {
+        font-size: larger;
+    }
+</style>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+
+    // 最外侧的边框组件
+    function FancyBorder(props) {
+        return (
+            <div className={'FancyBorder FancyBorder-' + props.color}>
+                {props.children}
+            </div>
+        );
+    }
+
+    // 对话框组件
+    function Dialog(props) {
+        return (
+            <FancyBorder color="blue">
+                <h1 className="Dialog-title">
+                    {props.title}
+                </h1>
+                <p className="Dialog-message">
+                    {props.message}
+                </p>
+                {/* 下面的props.children用来存放外部传入Dialog组件中的组件 */}
+                {props.children}
+                {/* 上面的h1标签,p标签，还有{props.children} 都会当做一个整体传递到FancyBorder组件中，因为FancyBorder组件中使用了{props.children}来接收外界传递的所有的数据 */}
+            </FancyBorder>
+        );
+    }
+
+    // 登录对话框组件
+    class SignUpDialog extends React.Component {
+
+        constructor(props) {
+            super(props);
+            this.state = {login: ""};
+            this.handleChange = this.handleChange.bind(this);
+            this.handleSignUp = this.handleSignUp.bind(this);
+        }
+
+        // 更改组件状态的方法
+        handleChange(event) {
+            // 将状态更改为我们在输入框中输入的数据
+            this.setState({login: event.target.value});
+        }
+
+        // 点击登录按钮时所触发的方法
+        handleSignUp() {
+            alert(`Welcome aboard, ${this.state.login}!`);
+        }
+
+        render() {
+            return (
+                <Dialog title="Mars Exploration Program" message="How should we refer to you?">
+                    <input value={this.state.login} onChange={this.handleChange} />
+                    <button onClick={this.handleSignUp}>Sign Me Up!</button>
+                </Dialog>
+            );
+        }
+    }
+
+    ReactDOM.render(
+        <SignUpDialog />,
+        document.getElementById('root')
+    );
+    
+</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<style>
+    * {
+        font-family: sans-serif;
+        margin: 0;
+    }
+    button {
+        height: 40px;
+        width: 200px;
+    }
+</style>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+
+    /*
+        key 帮助 React 识别哪些元素改变了，比如被添加或删除。因此你应当给数组中的每一个元素赋予一个确定的标识。
+        一个元素的 key 最好是这个元素在列表中拥有的一个独一无二的字符串。通常，我们使用数据中的 id 来作为元素的 key：
+    */
+
+    // 定义一个全局数组
+    const listNumber = [1, 2, 3, 4, 5];
+
+    // 定义一个组件，用来展示遍历好的数组
+    function ListItem(props) {
+        return (
+            // key属性不应该在此处指定
+            <li>{props.value}</li>
+        );
+    }
+
+    // 定义一个用来遍历数组中数据的组件
+    function ShowNumberList(props) {
+        const numberList = props.numbers;
+        const ListItems = numberList.map((number) => {
+            // 总之在map()方法中的元素需要设置key属性
+            return <ListItem value={number} key={number.toString()} />
+        });
+
+        return (
+            // 把虚拟DOM返回
+            <ul>{ListItems}</ul>
+        );
+    }
+
+    ReactDOM.render(
+        <ShowNumberList numbers={listNumber} />,
+        document.getElementById('root')
+    );
+    
+</script>
+</html>

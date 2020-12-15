@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+
+    // 定义一个姓名输入表单组件
+    class NameForm extends React.Component {
+
+        constructor(props) {
+            super(props);
+            // 指定状态
+            this.state = {value: "我是一个默认值"};
+            // 函数的绑定
+            this.handleChange = this.handleChange.bind(this);
+            this.handleSubmit = this.handleSubmit.bind(this);
+        }
+
+        // 改变组件的状态
+        handleChange(event) {
+            this.setState({value: event.target.value})
+        }
+
+        // 组件的提交
+        handleSubmit(event) {
+            alert(`一个姓名被提交:` + this.state.value);
+            // 阻止默认事件的触发，阻止表单进行提交
+            event.preventDefault();
+        }
+
+        render() {
+            return (
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        Name:
+                        {/* 当输入框输入数据的时候，会通过onChange来触发handleChange方法来把表单中输入的数据更新到组件的状态中 */}
+                        <input type="text" value={this.state.value} onChange={this.handleChange} />
+                    </label>
+                    <input type="submit" value="Submit" />
+                </form>
+            );
+        }
+    }
+   
+
+    ReactDOM.render(
+        <NameForm />,
+        document.getElementById('root')
+    );
+    
+</script>
+</html>

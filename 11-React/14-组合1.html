@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<style>
+    .FancyBorder {
+        padding: 10px 10px;
+        border: 10px solid;
+    }
+
+    .FancyBorder-blue {
+        border-color: blue;
+    }
+
+    .Dialog-title {
+        margin: 0;
+        font-family: sans-serif;
+    }
+
+    .Dialog-message {
+        font-size: larger;
+    }
+</style>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+
+    // 定义一个外边框组件
+    function FancyBorder(props) {
+        return (
+            <div className={'FancyBorder FancyBorder-' + props.color}>
+                {/* 改组件空出了位置，用于存放props传递过来的其他组件 */}
+                {props.children}
+            </div>
+        )
+    }
+
+    // 定义一个欢迎对话框组件
+    function WelcomeDialog() {
+        return (
+            <FancyBorder>
+                {/* 采用组件组合的方式，在组件FancyBorder内部组合进去新的组件 */}
+                <h1 className="Dialog-title">
+                    欢迎！！！
+                </h1>
+                <p className="Dialog-message">
+                    欢迎你来到我们的空间!
+                </p>
+            </ FancyBorder>  
+        );
+    }
+    
+    ReactDOM.render(
+        <WelcomeDialog />,
+        document.getElementById('root')
+    );
+    
+</script>
+</html>
