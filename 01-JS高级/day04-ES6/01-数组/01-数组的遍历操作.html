@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // ES5中数组的遍历
+    const arr = [1, 2, 3, 4, 5];
+
+    // 普通的for循环
+    for(let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+    }
+    console.log("-------------------------");
+
+    // forEach循环配合箭头函数
+    arr.forEach((item) => {
+        console.log(item);
+    });
+    console.log("-------------------------");
+
+    // forEach循环不支持break和continue
+    arr.forEach((item) => {
+        if(item === 2) {
+            // forEach可以通过返回false的方式来模拟continue来跳出本次循环
+            return false;
+        }
+        console.log(item);  // 1 3 4 5
+    });
+    console.log("-------------------------");
+
+    // every循环，当返回true则继续循环遍历；当返回false则停止遍历，相当于break
+    // every是否继续遍历取决于返回值，如果返回值为true就继续遍历。如果返回false就退出遍历
+    // 如果需要全部遍历完成，需要返回true
+    arr.every((item) => {
+        // 因为打印1之后没有返回true，所以循环停止
+        console.log(item);  // 1
+    });
+    console.log("-------------------------");
+    arr.every((item) => {
+        console.log(item);  // 1 2 3 4 5
+        return true;
+    });
+    console.log("-------------------------");
+    arr.every((item) => {
+        if(item === 2) {
+            // 相当于for循环中的break
+            return false;
+        }
+
+        console.log(item);  // 1
+        return true;
+    });
+    console.log("-------------------------");
+
+    /* 
+        for in 循环
+        for in 循环本身是用来遍历object，而不是用来遍历数组的
+        虽然也可以遍历数组，但是会有瑕疵
+        for in循环中可以使用continue和break，但是不支持使用return,
+        如果使用return的话，会报错 Illegal return statement
+    */ 
+    let arrObj = ["元素1", "元素2", "元素3", "元素4", "元素5"];
+    for(let index in arrObj) {
+        // arrObj遍历的结果是数组中的下标
+        console.log(index, arrObj[index]);
+        /*
+            0 元素1
+            1 元素2
+            2 元素3
+            3 元素4
+            4 元素5
+        */
+    }
+    console.log("-------------------------");
+    // 瑕疵1
+    arrObj.aaa = 100;  // 因为arrObj是一个对象，所以可以定义属性并赋值
+    for(let index in arrObj) {
+        console.log(index, arrObj[index]);
+        /*
+            0 元素1
+            1 元素2
+            2 元素3
+            3 元素4
+            4 元素5
+            aaa 100  这个时候a不是索引，而是一个字符串，如果这个时候把遍历过后的索引直接返回就容易出bug
+        */
+    }
+    console.log("-------------------------");
+    // 瑕疵2
+    for(let index in arr) {
+        if(index === 2) {
+            /*
+                虽然添加了判断条件并且使用了continue但是却并没有起作用
+                原因是遍历出来的index是字符串类型的数据
+                而 index === 2 这种写法是同时判断值和类型，所以continue不起作用
+                把判断条件修改为 if(index == 2) 这种只判断值不判断类型的写法就可以解决问题
+            */ 
+
+            continue;
+        }
+        console.log(index, arr[index]);
+    }
+    console.log("-------------------------");
+
+    // ES6新增加的 for of 循环
+    // 除了支持遍历数组和object之外，还可以遍历其他可遍历的数据结构支持break和continue
+    for(let item of arrObj) {
+        console.log(item);
+        /*
+            元素1
+            元素2
+            元素3
+            元素4
+            元素5
+        */
+    }
+    console.log("-------------------------");
+    for(let item of arrObj) {
+        // for of 支持continue和break
+        if(item === "元素1") {
+            continue;
+        }
+        if(item === "元素4") {
+            break;
+        }
+
+        console.log(item);
+        /*
+            元素2
+            元素3
+        */
+    }
+    console.log("-------------------------");
+
+    const Price = {
+        A: [1.5, 2.3, 4.5],
+        B: [3, 4, 5],
+        C: [0.5, 0.8, 1.2]
+    }
+    for(let item in Price) {
+        console.log(item, Price[item]);
+    }
+
+</script>
+</html>

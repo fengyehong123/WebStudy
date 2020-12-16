@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>push和concat的区别</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        push()
+        push的item会添加到末尾，并且都是以整体的形式添加到数组末尾，数组元素会直接以数组整体的形式存在
+        push方法会直接修改原数组，返回值为加入元素后的新数组长度
+    */
+    var testPushArr = [1,2];
+    testPushArr.push(3,[4,5]);
+    console.log(testPushArr);  // 1,2,3,[4,5]
+
+    /*
+        concat()
+        concat的元素会被打碎，非数组元素无法打碎，以整体形式加入，数组元素会被打碎，以单个元素的形式加入
+        concat方法不会修改原数组，而是连接之后返回一个新的数组，通常用arr = arr.concat(...)的形式来接收返回值，否则看不到修改效果
+    */
+    var testConcatArr = [1,2];
+    var concatArr = testConcatArr.concat(3,[4,5]);
+    console.log(testConcatArr); // 1,2
+    console.log(concatArr);  // 1,2,3,4,5
+</script>
+</html>

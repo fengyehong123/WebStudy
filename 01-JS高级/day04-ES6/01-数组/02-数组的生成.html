@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的其他操作</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 伪数组
+    /*
+        具备一些数组的特性，可以遍历，有长度，但是不能直接调用数组的API
+        类似于DOM nodeList
+        严格的理解:
+        1. 按照索引的方式存储数据
+        2. 具备length属性
+        下面这种类型的数据就是一个伪数组
+            const obj = {
+                0: '2',
+                1: 'b',
+                // 注意，length属性一定要有，否则就不叫伪数组了
+                length: 2
+            }
+    */
+    // 伪数组的转换
+    const obj = {
+        0: '2',
+        1: 'b',
+        // 注意，length属性一定要有，否则就不叫伪数组了
+        length: 2
+    }
+    /*
+        使用Array.form()来实现伪数组的转换
+    */
+    let objArray = Array.from(obj);
+    // 把伪数组转换为数组，并使用数组中的API
+    objArray.forEach((item) => {
+        console.log(item);
+        /*
+            2
+            b
+        */
+    });
+
+    // Array.from()和Array.of()是ES6新增的两个用于创建数组的静态方法。
+    /*
+        Array.from()方法从一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。
+        语法:
+            Array.from(arrayLike[, mapFn[, thisArg]])
+
+            arrayLike：是一个类数组对象，即任何可迭代的结构，或者有一个length属性和可索引元素的结构
+            mapFn：可选，如果指定了该参数，新数组中的每个元素会执行该回调函数
+            thisArg：可选，执行回调函数mapFn时this对象。但这个重写的this值在箭头函数中不适用。
+    */ 
+
+    // 通过string来生成数组
+    let arr1 = Array.from('foo');
+    console.log(arr1);  // ["f", "o", "o"]
+
+    // Array.of()方法创建一个具有可变数量参数的新数组实例，而不考虑参数的数量或类型
+    let arr2 = Array.of(1, "hello", null);  // 参数可以是不同的类型
+    console.log(arr2);  // [1, "hello", null]
+
+    /*
+        Array.fill(value,start,end) 数组数据的填充
+            第一个参数：填充值
+            第二个参数：起始位置，默认为数组的开始
+            第三个函数：结束位置，默认为数组的结束
+            [start, end)
+    */ 
+    let arr3 = Array(5).fill(1);
+    console.log(arr3);  // [1, 1, 1, 1, 1]
+
+    let arr4 = [1, 2, 3, 4, 5];
+    // [start, end) 从数组下标2的位置开始填充，填充把下标第二位和第三位填充为数字 8
+    console.log(arr4.fill(8, 2, 4));  // [1, 2, 8, 8, 5]
+
+
+</script>
+</html>

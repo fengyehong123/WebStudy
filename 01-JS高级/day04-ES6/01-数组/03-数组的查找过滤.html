@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的查找和过滤</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        arrary.filter()
+        根据条件对数组进行过滤，返回一个新数组
+        就算只过滤出一个元素，也是返回一个只包含一个元素的数组
+    */ 
+    let array = [1, 2, 3, 4, 5];
+    let find = array.filter((item) => {
+        if(item === 3) {
+            return item;
+        }
+    });
+    console.log(find);  // [3]
+
+    let result = array.filter((item) => {
+        return item % 2 === 0;
+    });
+    console.log(result);  // [2, 4]
+
+    /*
+        arrary.find()
+        根据条件查找元素，如果找到就返回元素的值；如果找不到就返回undefined
+    */
+    let result1 = array.find((item) => {
+        return item === 3;
+    });
+    console.log(result1);  // 3
+    let result2 = array.find((item) => {
+        return item === 6;
+    });
+    console.log(result2);  // undefined
+    let result3 = array.find((item) => {
+        return item % 2 === 0;
+    });
+    // 虽然数组中有多个元素都满足条件，但是只要查找到一个满足条件的元素，剩下的就不会进行查找
+    console.log(result3);  // 2
+
+    /*
+        arrary.findIndex()
+        查找元素返回其索引的位置，如果能查找到就返回索引的位置，如果查找不到就返回-1
+    */
+    let result4 = array.findIndex((item) => {
+        return item % 2 === 0;
+    });
+    console.log(result4);  // 1
+
+</script>
+</html>
