@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串转数字</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        有一些内置的方法,例如parseInt和parseFloat可以用来将字符串转为数字.
+        我们还可以简单地在字符串前提供一个一元运算符(+)来实现这一点.
+    */
+
+    // 之前的写法,使用JS的API进行转换
+    let total = parseInt('453');
+    let average = parseFloat('42.6');
+    // 现在的写法,使用一个 +号来实现快速的转换
+    let total1 = +'453';
+    console.log(typeof total1, total1);  // number 453
+    let average1 = +'42.6';
+    console.log(typeof average1, average1);  // number 42.6
+</script>
+</html>

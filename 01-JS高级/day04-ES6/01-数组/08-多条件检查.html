@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多条件检查</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 对于多个值匹配,我们可以将所有的值放到数组中,然后使用indexOf()或includes()方法
+    let value = 1;
+
+    // 之前的多值匹配的写法,||的判断过多,可读性差
+    if (value === 1 || value === 'one' || value === 2 || value === 'two') {
+        // 业务代码
+    }
+
+    // 使用.indexOf()的方法来改进
+    if([1, 'one', 2, 'two'].indexOf(value) >= 0) {
+        // 业务代码
+    }
+
+    // 使用.includes()的方法来改进
+    if ([1, 'one', 2, 'two'].includes(value)) {
+        // 业务代码
+    }
+
+
+</script>
+</html>

@@ -55,9 +55,13 @@
             thisArg：可选，执行回调函数mapFn时this对象。但这个重写的this值在箭头函数中不适用。
     */ 
 
-    // 通过string来生成数组
+    // 通过Array.from()来将string转换为数组
     let arr1 = Array.from('foo');
     console.log(arr1);  // ["f", "o", "o"]
+
+    // 通过扩展运算符将string转换为数组
+    let arr22 = [...'hello'];
+    console.log(arr22);  // ["h", "h", "l", "l", "o"]
 
     // Array.of()方法创建一个具有可变数量参数的新数组实例，而不考虑参数的数量或类型
     let arr2 = Array.of(1, "hello", null);  // 参数可以是不同的类型
@@ -76,7 +80,5 @@
     let arr4 = [1, 2, 3, 4, 5];
     // [start, end) 从数组下标2的位置开始填充，填充把下标第二位和第三位填充为数字 8
     console.log(arr4.fill(8, 2, 4));  // [1, 2, 8, 8, 5]
-
-
 </script>
 </html>
