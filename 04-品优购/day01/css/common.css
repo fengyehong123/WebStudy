@@ -66,7 +66,7 @@
     height: 56px;
 }
 .logo a {
-    /* 行内元素转为快级元素 */
+    /* 行内元素转为块级元素 */
     display: block;
     width: 175px;
     height: 56px;
